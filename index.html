@@ -4,84 +4,92 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>1×1 Quest V0.3.2</title>
+<meta name="theme-color" content="#6e62d9">
+<title>1×1 Quest V0.4</title>
 <style>
-:root{--ink:#28243a;--muted:#746f82;--vio:#6e62d9;--good:#23895a;--bad:#c95555;--card:#fff;--line:#e8e3f2}
-*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(#faf6ff,#eff8ff);min-height:100vh}
-#app{max-width:520px;margin:auto;padding:18px 15px 38px}.brand{font-size:22px;font-weight:900;margin:4px 2px 14px}.card{background:var(--card);border-radius:22px;padding:18px;margin:12px 0;box-shadow:0 9px 28px #3a2c6415}
-h1,h2,h3{margin:.15em 0 .5em}.muted{color:var(--muted);font-size:13px;line-height:1.45}.center{text-align:center}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-button{font:inherit;cursor:pointer}.btn{border:0;border-radius:16px;padding:14px;font-weight:850;background:#f0edf8;color:var(--ink);width:100%}.primary{background:var(--vio);color:#fff}.profile{padding:24px 8px;background:#fff;box-shadow:0 9px 28px #3a2c6415}.profile .emoji{font-size:47px;display:block;margin-bottom:7px}
-.mode{min-height:95px}.mode b{display:block;font-size:17px;margin:5px}.rows{display:flex;flex-wrap:wrap;gap:8px}.row{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-weight:800}
-.row.active{background:#eeeaff;border-color:#cfc7ff}.topline{display:flex;justify-content:space-between;align-items:center;gap:8px}.back{width:auto;padding:9px 12px}.progress{height:9px;background:#ebe7f2;border-radius:999px;overflow:hidden;margin:10px 0}.progress i{height:100%;display:block;background:var(--vio)}
-.hero{font-size:42px;font-weight:950;text-align:center;margin:25px 0}.pattern{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin:17px 0}.bubble{min-width:58px;padding:12px 9px;border-radius:14px;background:#f1eef9;font-size:18px;font-weight:900;text-align:center}
-.explain{background:#f8f6fc;border-radius:17px;padding:15px;line-height:1.55}.inputbox{font-size:38px;font-weight:900;min-height:64px;text-align:center;padding:9px;border:2px solid #dcd6ed;border-radius:16px;background:#fff;margin:14px 0}
-.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.key{border:0;border-radius:15px;background:#f0edf8;padding:16px;font-size:22px;font-weight:900}.ok{background:var(--vio);color:#fff}.feedback{min-height:48px;margin:12px 0 4px;text-align:center;font-weight:850;line-height:1.4}.good{color:var(--good)}.bad{color:var(--bad)}
-.stats{display:flex;justify-content:space-between;font-weight:850;font-size:14px}.tag{display:inline-block;padding:6px 9px;border-radius:999px;background:#eeeaff;color:#5b50c7;font-size:12px;font-weight:850}
-.unlock{border:2px dashed #d9d2ec;border-radius:17px;padding:13px;margin-top:9px}.reward{font-size:60px}.hidden{display:none!important}.lessonChoice{margin:9px 0;text-align:left}.status{font-size:12px;color:var(--muted);margin-top:4px}
+:root{
+ --ink:#27243a;--muted:#746f82;--accent:#6e62d9;--accent2:#9a8cf1;
+ --soft:#f1eef9;--card:#fff;--line:#e7e1f0;--good:#23895a;--bad:#bd4b54;
+ --bg1:#fbf7ff;--bg2:#eef7ff
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);
+ background:linear-gradient(165deg,var(--bg1),var(--bg2));min-height:100vh}
+body.frieda{--accent:#9a56a7;--accent2:#d894b5;--soft:#f8edf7;--bg1:#fff7fb;--bg2:#f4efff}
+body.felix{--accent:#3475a8;--accent2:#52a3c7;--soft:#eaf5fb;--bg1:#f6fbff;--bg2:#edf4f8}
+#app{max-width:540px;margin:auto;padding:17px 15px 40px}
+.brand{font-size:22px;font-weight:950;margin:4px 2px 14px}.card{background:var(--card);border-radius:23px;padding:18px;margin:12px 0;box-shadow:0 10px 30px #3a2c6414}
+h1,h2,h3{margin:.15em 0 .5em}.muted{color:var(--muted);font-size:13px;line-height:1.5}.center{text-align:center}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:11px}.topline{display:flex;justify-content:space-between;align-items:center;gap:10px}
+button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{border:0;border-radius:16px;padding:14px;font-weight:850;background:var(--soft);color:var(--ink);width:100%}
+.primary{background:var(--accent);color:#fff}.back{width:auto;padding:9px 12px}.profile{padding:25px 8px;background:#fff;box-shadow:0 9px 28px #3a2c6415}
+.profile .emoji{font-size:48px;display:block;margin-bottom:7px}.mode{min-height:102px}.mode b{display:block;font-size:17px;margin:5px}
+.tag{display:inline-block;padding:6px 9px;border-radius:999px;background:var(--soft);color:var(--accent);font-size:12px;font-weight:900}
+.rows{display:flex;flex-wrap:wrap;gap:8px}.row{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-weight:850}
+.row.learned{background:var(--soft);border-color:transparent}.row.mastered{background:var(--accent);color:#fff;border-color:transparent}
+.progress{height:10px;background:#ebe7f1;border-radius:999px;overflow:hidden;margin:10px 0}.progress i{height:100%;display:block;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s}
+.lessonChoice{margin:9px 0;text-align:left}.status{font-size:12px;color:var(--muted);margin-top:4px}
+.hero{font-size:42px;font-weight:950;text-align:center;margin:23px 0}.pattern{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin:17px 0}
+.bubble{min-width:56px;padding:12px 9px;border-radius:14px;background:var(--soft);font-size:18px;font-weight:900;text-align:center}
+.explain{background:#f8f7fb;border-radius:17px;padding:15px;line-height:1.55}.tipline{margin-top:9px;font-size:14px;color:var(--muted)}
+.inputbox{font-size:38px;font-weight:900;min-height:64px;text-align:center;padding:9px;border:2px solid #dcd6e8;border-radius:16px;background:#fff;margin:14px 0}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.key{border:0;border-radius:15px;background:var(--soft);padding:16px;font-size:22px;font-weight:900}.ok{background:var(--accent);color:#fff}
+.feedback{min-height:54px;margin:12px 0 4px;text-align:center;font-weight:850;line-height:1.45}.good{color:var(--good)}.bad{color:var(--bad)}
+.stats{display:flex;justify-content:space-between;gap:6px;font-weight:850;font-size:13px;flex:1}.stats span{white-space:nowrap}
+.unlock{border:2px dashed #d9d2e7;border-radius:17px;padding:13px;margin-top:9px}.reward{font-size:62px}.hidden{display:none!important}
+.lessonDone{border-left:4px solid var(--accent)}.mini{font-size:12px}.modeHint{margin-top:12px;padding:12px;border-radius:15px;background:#fff;border:1px solid var(--line)}
+.switches{display:flex;gap:8px;margin:10px 0}.switches button{padding:10px 8px}.switches .selected{background:var(--accent);color:#fff}
+@media(max-width:380px){.hero{font-size:36px}.stats{font-size:12px}.btn{padding:12px}}
 </style>
 </head>
 <body>
-
-<noscript>
-  <div style="max-width:520px;margin:40px auto;padding:24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-    <h1>1×1 Quest V0.3.2</h1>
-    <p>JavaScript ist deaktiviert. Bitte aktiviere JavaScript, damit die App starten kann.</p>
-  </div>
-</noscript>
-<div id="boot-fallback" style="display:none;max-width:520px;margin:40px auto;padding:24px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-  <h1>1×1 Quest V0.3.2</h1>
-  <p>Die App konnte nicht vollständig gestartet werden. Bitte öffne die Browser-Konsole oder lade die Seite neu.</p>
-</div>
-<script>
-window.addEventListener('error', function(){
-  var el=document.getElementById('boot-fallback');
-  if(el) el.style.display='block';
-});
-</script>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.4</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
-<div class="brand">1×1 Quest <span class="muted">V0.3.2</span></div>
+<div class="brand">1×1 Quest <span class="muted">V0.4</span></div>
 
 <section id="profiles">
- <div class="card center"><h1>Wer spielt?</h1><p class="muted">Lernen → Trainieren → Challenge</p></div>
+ <div class="card center"><h1>Wer spielt?</h1><p class="muted">📚 Lernen → 🎯 Trainieren → ⚡ Challenge</p></div>
  <div class="grid2">
-  <button class="btn profile" onclick="selectProfile('frieda')"><span class="emoji">🌸</span>Frieda<div class="muted">6,7,8,9,11,12,15,25,50</div></button>
+  <button class="btn profile" onclick="selectProfile('frieda')"><span class="emoji">🌸</span>Frieda<div class="muted">6, 7, 8, 9, 11, 12, 15, 25, 50</div></button>
   <button class="btn profile" onclick="selectProfile('felix')"><span class="emoji">🏎️</span>Felix<div class="muted">2–10</div></button>
  </div>
 </section>
 
 <section id="home" class="hidden">
- <div class="card"><div class="topline"><div><span id="who" class="tag"></span><h2 id="hello"></h2></div><button class="btn back" onclick="show('profiles')">Profile</button></div></div>
+ <div class="card"><div class="topline"><div><span id="who" class="tag"></span><h2 id="hello"></h2></div><button class="btn back" onclick="switchProfile()">Profile</button></div>
+  <div id="homeHint" class="modeHint muted"></div>
+ </div>
  <div class="grid2">
-  <button class="btn mode" onclick="openLearn()">📚<b>Lernen</b><span class="muted">Neue Reihe verstehen</span></button>
-  <button class="btn mode" onclick="startTraining(false)">🎯<b>Trainieren</b><span class="muted">Gelernte Reihen mischen</span></button>
-  <button class="btn mode" onclick="startTraining(true)">⚡<b>Challenge</b><span class="muted">Alle Formen + Combo</span></button>
+  <button class="btn mode" onclick="openLearn()">📚<b>Lernen</b><span class="muted">Reihen verstehen & entdecken</span></button>
+  <button class="btn mode" onclick="startTraining(false)">🎯<b>Trainieren</b><span class="muted">Unsichere Aufgaben gezielt üben</span></button>
+  <button class="btn mode" onclick="startTraining(true)">⚡<b>Challenge</b><span class="muted">Gelernte Reihen bunt gemischt</span></button>
   <button class="btn mode" onclick="showRewards()">🏆<b>Belohnungen</b><span class="muted">Meilensteine ansehen</span></button>
  </div>
- <div class="card"><h3>Lernpfad</h3><div id="rowStatus" class="rows"></div></div>
+ <div class="card"><h3>Lernpfad</h3><div id="rowStatus" class="rows"></div><p class="muted">🌱 Neu · 📖 Gelernt · 💪 In Übung · ⭐ Sicher · 👑 Gemeistert</p></div>
 </section>
 
 <section id="learnSelect" class="hidden">
  <div class="card"><div class="topline"><h2>📚 Reihe lernen</h2><button class="btn back" onclick="goHome()">←</button></div>
- <p class="muted">V0.3 enthält zwei vollständig ausgearbeitete Beispiel-Lerneinheiten. Die anderen Reihen zeigen bereits ihre geplante Lernstrategie.</p>
+ <p class="muted">In V0.4 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
  <div id="lessonList"></div></div>
 </section>
 
 <section id="lesson" class="hidden">
  <div class="card">
-  <div class="topline"><span id="lessonTag" class="tag"></span><button class="btn back" onclick="openLearn()">Beenden</button></div>
+  <div class="topline"><span id="lessonTag" class="tag"></span><button class="btn back" onclick="abortLesson()">Beenden</button></div>
   <div class="progress"><i id="lessonBar"></i></div>
   <div id="lessonContent"></div>
  </div>
 </section>
 
 <section id="training" class="hidden">
- <div class="topline">
-   <button class="btn back" onclick="abortTraining()">← Zurück</button>
-   <div class="stats" style="flex:1"><span id="qcount"></span><span id="combo"></span><span id="points"></span></div>
+ <div class="topline"><button class="btn back" onclick="abortTraining()">← Zurück</button>
+  <div class="stats"><span id="qcount"></span><span id="combo"></span><span id="points"></span></div>
  </div>
  <div class="progress"><i id="trainBar"></i></div>
  <div class="card">
-  <div id="qtype" class="tag"></div>
+  <div id="modeLabel" class="tag"></div>
+  <div id="qtype" class="tag" style="margin-left:5px"></div>
   <div id="question" class="hero"></div>
   <div id="display" class="inputbox">&nbsp;</div>
   <div class="keypad" id="keys"></div>
@@ -102,163 +110,332 @@ window.addEventListener('error', function(){
 
 <script>
 const P={
- frieda:{name:"Frieda",icon:"🌸",rows:[6,7,8,9,11,12,15,25,50],
- strategies:{6:"5er-Reihe + noch einmal die Zahl",7:"Ankeraufgaben und Nachbarn",8:"Verdoppeln: 2 → 4 → 8",9:"10er-Reihe minus einmal die Zahl",11:"Zahlenmuster der 11er-Reihe",12:"10er + 2er zerlegen",15:"10er + 5er zerlegen",25:"25–50–75–100 und Hunderterpakete",50:"Hälfte der 100er-Reihe"},
- rewards:[[2,"🧥","Japanisches Streetwear-Outfit"],[4,"👘","Kimono"],[6,"🎭","Katzenmaske + Spezialaccessoire"],[9,"✨","Legendäres Manga-Outfit"]]},
- felix:{name:"Felix",icon:"🏎️",rows:[2,3,4,5,6,7,8,9,10],
- strategies:{2:"Verdoppeln",3:"2er-Reihe + noch einmal die Zahl",4:"Doppelt verdoppeln",5:"5er- und 10er-Muster",6:"5er-Reihe + noch einmal die Zahl",7:"Ankeraufgaben und Nachbarn",8:"Verdoppeln: 2 → 4 → 8",9:"10er-Reihe minus einmal die Zahl",10:"Null anhängen"},
- rewards:[[2,"🚙","Offroader"],[4,"🚐","Wohnmobil"],[6,"🏁","Rallyefahrzeug"],[9,"🏎️","Supersportwagen"]]}
+ friedа:null
 };
-let prof=null, st=null, lessonStep=0, lessonKind=null, answer="", round=null, current=null, attempts=0;
+delete P["friedа"];
+Object.assign(P,{
+ frieda:{
+  name:"Frieda",icon:"🌸",rows:[6,7,8,9,11,12,15,25,50],
+  strategies:{
+   6:"5er-Reihe + einmal die Zahl",
+   7:"Ankeraufgaben und Nachbarn",
+   8:"Dreimal verdoppeln: 1 → 2 → 4 → 8",
+   9:"10er-Reihe minus einmal die Zahl",
+   11:"11er-Muster und Zerlegen",
+   12:"10er + 2er zerlegen",
+   15:"10er + 5er zerlegen",
+   25:"25–50–75–100 und Hunderterpakete",
+   50:"Hälfte der 100er-Reihe"
+  },
+  rewards:[[2,"🧥","Japanisches Streetwear-Outfit"],[4,"👘","Kimono"],[6,"🎭","Katzenmaske + Spezialaccessoire"],[9,"✨","Legendäres Manga-Outfit"]]
+ },
+ felix:{
+  name:"Felix",icon:"🏎️",rows:[2,3,4,5,6,7,8,9,10],
+  strategies:{
+   2:"Verdoppeln",
+   3:"2er-Reihe + einmal die Zahl",
+   4:"Doppelt verdoppeln",
+   5:"5er- und 10er-Muster",
+   6:"5er-Reihe + einmal die Zahl",
+   7:"Ankeraufgaben und Nachbarn",
+   8:"Dreimal verdoppeln: 1 → 2 → 4 → 8",
+   9:"10er-Reihe minus einmal die Zahl",
+   10:"Null anhängen"
+  },
+  rewards:[[2,"🚙","Offroader"],[4,"🚐","Wohnmobil"],[6,"🏁","Rallyefahrzeug"],[9,"🏎️","Supersportwagen"]]
+ }
+});
+
+let prof=null,st=null,lessonRow=null,lessonStep=0,lessonData=null,answer="",round=null,current=null,attempts=0,transitionLock=false;
 const $=id=>document.getElementById(id);
+const allSections=["profiles","home","learnSelect","lesson","training","result","rewards"];
+
 function stateKey(){return "quest03_"+prof}
-function load(){try{return Object.assign({learned:[],mastered:[],skill:{},sessions:0},JSON.parse(localStorage.getItem(stateKey())||"{}"))}catch(e){return {learned:[],mastered:[],skill:{},sessions:0}}}
+function fresh(){return {learned:[],mastered:[],skill:{},sessions:0}}
+function load(){try{return Object.assign(fresh(),JSON.parse(localStorage.getItem(stateKey())||"{}"))}catch(e){return fresh()}}
 function save(){localStorage.setItem(stateKey(),JSON.stringify(st))}
-function show(id){["profiles","home","learnSelect","lesson","training","result","rewards"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
-function selectProfile(p){prof=p;st=load();renderHome();show("home")}
+function show(id){allSections.forEach(x=>$(x).classList.toggle("hidden",x!==id))}
+function switchProfile(){document.body.className="";show("profiles")}
+function selectProfile(p){prof=p;document.body.className=p;st=load();renderHome();show("home")}
 function goHome(){renderHome();show("home")}
+
+function rowLevel(r){
+ if(st.mastered.includes(r))return["👑","Gemeistert","mastered"];
+ let vals=[];for(let f=1;f<=10;f++)vals.push(st.skill[fam(r,f)]||0);
+ let avg=vals.reduce((a,b)=>a+b,0)/10;
+ if(avg>=2.0)return["⭐","Sicher","learned"];
+ if(avg>=0.7)return["💪","In Übung","learned"];
+ if(st.learned.includes(r))return["📖","Gelernt","learned"];
+ return["🌱","Neu",""];
+}
 function renderHome(){
- let p=P[prof];$("who").textContent=p.icon+" "+p.name;$("hello").textContent="Hallo "+p.name+"!";
- $("rowStatus").innerHTML=p.rows.map(r=>`<span class="row ${st.mastered.includes(r)?"active":""}">${st.mastered.includes(r)?"👑":st.learned.includes(r)?"📖":"🌱"} ${r}</span>`).join("")
+ const p=P[prof];$("who").textContent=p.icon+" "+p.name;$("hello").textContent="Hallo "+p.name+"!";
+ $("rowStatus").innerHTML=p.rows.map(r=>{let l=rowLevel(r);return `<span class="row ${l[2]}">${l[0]} ${r}</span>`}).join("");
+ if(!st.learned.length)$("homeHint").innerHTML="<b>Start-Tipp:</b> Beginne mit 📚 Lernen. Danach werden die gelernten Reihen für Training und Challenge freigeschaltet.";
+ else $("homeHint").innerHTML=`Du hast bereits <b>${st.learned.length}</b> Reihe${st.learned.length===1?"":"n"} gelernt. 🎯 Trainieren passt die Aufgaben an deinen Lernstand an; ⚡ Challenge mischt alle gelernten Reihen.`;
 }
+
 function openLearn(){
- let p=P[prof];
+ const p=P[prof];
  $("lessonList").innerHTML=p.rows.map(r=>{
-   let full=(prof==="frieda"&&r===25)||(prof==="felix"&&r===7);
-   return `<button class="btn lessonChoice" onclick="${full?`startLesson(${r})`:`previewLesson(${r})`}"><b>${r}er-Reihe</b><div class="status">${p.strategies[r]} ${full?"· ✓ interaktiv":"· Vorschau"}</div></button>`
- }).join(""); show("learnSelect")
+  let l=rowLevel(r);
+  return `<button class="btn lessonChoice ${st.learned.includes(r)?"lessonDone":""}" onclick="startLesson(${r})"><b>${l[0]} ${r}er-Reihe</b><div class="status">${p.strategies[r]} · ${l[1]}</div></button>`
+ }).join("");
+ show("learnSelect")
 }
-function previewLesson(r){
- $("lessonTag").textContent=r+"er-Reihe · Strategie";
- $("lessonBar").style.width="20%";
- $("lessonContent").innerHTML=`<h2>${P[prof].strategies[r]}</h2><div class="explain">Diese Lerneinheit wird nach dem gleichen Prinzip aufgebaut: <b>Anschauen → Muster entdecken → mit Hilfe rechnen → selbst lösen → kurze Festigung.</b></div><br><button class="btn primary" onclick="openLearn()">Zurück</button>`;
- show("lesson")
+
+function makeLesson(r){
+ const q=(text,ans,help)=>({type:"q",title:"Jetzt du",text,ans,help});
+ const info=(title,hero,body)=>({type:"info",title,hero,body});
+ if(r===2)return[
+  info("Verdoppeln","6 + 6 = 12","Die 2er-Reihe bedeutet: Eine Zahl wird <b>verdoppelt</b>. 2 × 6 ist also 6 + 6."),
+  info("Noch ein Beispiel","2 × 8 = 16","Denk einfach: 8 + 8."),
+  q("2 × 7 = ?",14,"Verdopple 7: 7 + 7."),
+  q("2 × 9 = ?",18,"Verdopple 9: 9 + 9."),
+  q("2 × 6 = ?",12,"Denk an 6 + 6.")
+ ];
+ if(r===3)return[
+  info("2er + einmal mehr","3 × 6","Erst 2 × 6 = 12. Dann noch einmal 6 dazu: <b>18</b>."),
+  info("Baue auf Bekanntem auf","3 × 8 = 24","2 × 8 = 16, dann +8 = 24."),
+  q("3 × 7 = ?",21,"2 × 7 = 14. Dann +7."),
+  q("3 × 9 = ?",27,"2 × 9 = 18. Dann +9."),
+  q("3 × 6 = ?",18,"2 × 6 = 12. Dann +6.")
+ ];
+ if(r===4)return[
+  info("Doppelt verdoppeln","4 × 6","Verdopple 6 → 12. Verdopple 12 noch einmal → <b>24</b>."),
+  info("So geht's schnell","4 × 8 = 32","8 → 16 → 32."),
+  q("4 × 7 = ?",28,"7 → 14 → 28."),
+  q("4 × 9 = ?",36,"9 → 18 → 36."),
+  q("4 × 6 = ?",24,"6 → 12 → 24.")
+ ];
+ if(r===5)return[
+  info("Das 5er-Muster","5 · 10 · 15 · 20","Die Ergebnisse enden immer auf <b>0 oder 5</b>."),
+  info("Die Hälfte von ×10","5 × 8 = 40","10 × 8 = 80. Die Hälfte davon ist 40."),
+  q("5 × 7 = ?",35,"Das Ergebnis endet auf 5. Oder: Hälfte von 70."),
+  q("5 × 9 = ?",45,"Hälfte von 90."),
+  q("5 × 6 = ?",30,"Hälfte von 60.")
+ ];
+ if(r===6)return[
+  info("Nutze die 5er-Reihe","6 × 7","5 × 7 = 35. Noch einmal 7 dazu: <b>42</b>."),
+  info("Noch ein Beispiel","6 × 8 = 48","5 × 8 = 40. Dann +8."),
+  q("6 × 6 = ?",36,"5 × 6 = 30. Dann +6."),
+  q("6 × 9 = ?",54,"5 × 9 = 45. Dann +9."),
+  q("6 × 7 = ?",42,"5 × 7 = 35. Dann +7.")
+ ];
+ if(r===7)return[
+  info("Nutze einen Anker","5 × 7 = 35","Die 5er-Aufgabe ist ein guter <b>Anker</b>. Von dort gehst du weiter."),
+  info("Nachbaraufgaben","7 × 7 = 49","6 × 7 = 42. Noch einmal +7 ergibt 49."),
+  q("8 × 7 = ?",56,"7 × 7 = 49. Dann +7."),
+  q("9 × 7 = ?",63,"10 × 7 = 70. Dann −7."),
+  q("6 × 7 = ?",42,"5 × 7 = 35. Dann +7.")
+ ];
+ if(r===8)return[
+  info("Verdoppeln hilft","8 × 6","2 × 6 = 12 → 4 × 6 = 24 → 8 × 6 = <b>48</b>."),
+  info("Drei Stufen","8 × 7 = 56","7 → 14 → 28 → 56."),
+  q("8 × 8 = ?",64,"8 → 16 → 32 → 64."),
+  q("8 × 9 = ?",72,"9 → 18 → 36 → 72."),
+  q("8 × 6 = ?",48,"6 → 12 → 24 → 48.")
+ ];
+ if(r===9)return[
+  info("10er minus einmal","9 × 7","10 × 7 = 70. Einmal 7 abziehen: <b>63</b>."),
+  info("Das 9er-Muster","09 · 18 · 27 · 36 · 45","Die Zehner steigen, die Einer fallen. Außerdem ist die Quersumme immer 9."),
+  q("9 × 8 = ?",72,"10 × 8 = 80. Dann −8."),
+  q("9 × 6 = ?",54,"10 × 6 = 60. Dann −6."),
+  q("9 × 7 = ?",63,"70 − 7.")
+ ];
+ if(r===10)return[
+  info("Einfach eine Null","10 × 7 = 70","Bei der 10er-Reihe kommt hinter die Zahl einfach eine <b>0</b>."),
+  info("Noch ein Beispiel","10 × 9 = 90","9 wird zu 90."),
+  q("10 × 6 = ?",60,"Hänge an die 6 eine 0."),
+  q("10 × 8 = ?",80,"Hänge an die 8 eine 0."),
+  q("10 × 4 = ?",40,"Hänge an die 4 eine 0.")
+ ];
+ if(r===11)return[
+  info("Das 11er-Muster","11 · 22 · 33 · 44","Bis 9 × 11 wiederholt sich die Ziffer: 7 × 11 = 77."),
+  info("Bei größeren Zahlen zerlegen","11 × 12","10 × 12 = 120 und 1 × 12 = 12. Zusammen <b>132</b>."),
+  q("11 × 8 = ?",88,"Bis 9 wiederholt sich die Ziffer."),
+  q("11 × 12 = ?",132,"120 + 12."),
+  q("11 × 7 = ?",77,"Die 7 zweimal.")
+ ];
+ if(r===12)return[
+  info("10er + 2er","12 × 8","10 × 8 = 80 und 2 × 8 = 16. Zusammen <b>96</b>."),
+  info("Immer zerlegen","12 × 7 = 84","70 + 14 = 84."),
+  q("12 × 6 = ?",72,"60 + 12."),
+  q("12 × 9 = ?",108,"90 + 18."),
+  q("12 × 8 = ?",96,"80 + 16.")
+ ];
+ if(r===15)return[
+  info("10er + 5er","15 × 6","10 × 6 = 60 und 5 × 6 = 30. Zusammen <b>90</b>."),
+  info("Ein schneller Anker","15 × 8 = 120","80 + 40 = 120."),
+  q("15 × 7 = ?",105,"70 + 35."),
+  q("15 × 9 = ?",135,"90 + 45."),
+  q("15 × 6 = ?",90,"60 + 30.")
+ ];
+ if(r===25)return[
+  info("Entdecke das Muster","25 · 50 · 75 · 100","Jedes Mal kommen 25 dazu. Vier 25er ergeben genau <b>100</b>."),
+  info("Baue Hunderterpakete","8 × 25 = 200","4 × 25 = 100. Also sind 8 × 25 zwei Hunderter."),
+  q("6 × 25 = ?",150,"4 × 25 = 100 und 2 × 25 = 50."),
+  q("9 × 25 = ?",225,"8 × 25 = 200. Dann +25."),
+  q("7 × 25 = ?",175,"8 × 25 = 200. Dann −25.")
+ ];
+ if(r===50)return[
+  info("Hälfte von ×100","7 × 50","7 × 100 = 700. Die Hälfte davon ist <b>350</b>."),
+  info("Das Ergebnis endet auf 00 oder 50","6 × 50 = 300","Gerade Faktoren ergeben volle Hunderter."),
+  q("8 × 50 = ?",400,"8 × 100 = 800. Die Hälfte."),
+  q("7 × 50 = ?",350,"7 × 100 = 700. Die Hälfte."),
+  q("9 × 50 = ?",450,"9 × 100 = 900. Die Hälfte.")
+ ];
+ return[];
 }
-function startLesson(r){lessonKind=r;lessonStep=0;renderLesson();show("lesson")}
+function startLesson(r){lessonRow=r;lessonStep=0;lessonData=makeLesson(r);renderLesson();show("lesson")}
+function abortLesson(){if(confirm("Lerneinheit beenden? Du kannst später hier weitermachen."))openLearn()}
 function renderLesson(){
- $("lessonTag").textContent=lessonKind+"er-Reihe · Lernen";
- $("lessonBar").style.width=((lessonStep+1)/5*100)+"%";
- if(prof==="frieda"&&lessonKind===25) lesson25();
- else lesson7();
+ let s=lessonData[lessonStep];answer="";transitionLock=false;
+ $("lessonTag").textContent=lessonRow+"er-Reihe · "+P[prof].strategies[lessonRow];
+ $("lessonBar").style.width=((lessonStep+1)/lessonData.length*100)+"%";
+ if(s.type==="info"){
+  $("lessonContent").innerHTML=`<h2>${s.title}</h2><div class="hero">${s.hero}</div><div class="explain">${s.body}</div><br><button class="btn primary" onclick="nextLesson()">Weiter</button>`;
+ }else{
+  $("lessonContent").innerHTML=`<h2>${s.title}</h2><div class="hero">${s.text}</div><div id="display" class="inputbox">&nbsp;</div><div class="keypad" id="keys"></div><div id="feedback" class="feedback"></div>`;
+  buildKeys("lesson");
+ }
 }
-function nextLesson(){lessonStep++;if(lessonStep>=5){finishLesson();return}renderLesson()}
-function lesson25(){
- let c="";
- if(lessonStep===0)c=`<h2>Entdecke das Muster</h2><div class="pattern"><div class="bubble">25</div><div class="bubble">50</div><div class="bubble">75</div><div class="bubble">100</div></div><div class="explain">Jedes Mal kommen <b>25</b> dazu. Vier 25er ergeben genau <b>100</b>.</div>`;
- if(lessonStep===1)c=`<h2>Baue Hunderterpakete</h2><div class="hero">4 × 25 = 100</div><div class="explain">Darum ist <b>8 × 25</b> einfach zweimal 100 = <b>200</b>.</div>`;
- if(lessonStep===2)c=`<h2>Nutze einen Anker</h2><div class="hero">7 × 25 = ?</div><div class="explain">Du weißt: 8 × 25 = 200.<br>Einmal 25 weniger: <b>200 − 25 = 175</b>.</div>`;
- if(lessonStep===3)c=`<h2>Jetzt du</h2><div class="hero">6 × 25 = ?</div>${lessonInput(150)}`;
- if(lessonStep===4)c=`<h2>Noch einmal ohne Tipp</h2><div class="hero">9 × 25 = ?</div>${lessonInput(225)}`;
- if(lessonStep<3)c+=`<br><button class="btn primary" onclick="nextLesson()">Weiter</button>`;
- $("lessonContent").innerHTML=c;if(lessonStep>=3)buildKeys("lesson")
+function nextLesson(){lessonStep++;if(lessonStep>=lessonData.length){finishLesson();return}renderLesson()}
+function checkLesson(){
+ if(!answer||transitionLock)return;
+ let s=lessonData[lessonStep];
+ if(Number(answer)===s.ans){
+  transitionLock=true;$("feedback").className="feedback good";$("feedback").textContent="✓ Richtig!";
+  setTimeout(nextLesson,550)
+ }else{
+  $("feedback").className="feedback bad";$("feedback").innerHTML=`Noch einmal. 💡 ${s.help}`;
+  answer="";$("display").innerHTML="&nbsp;"
+ }
 }
-function lesson7(){
- let c="";
- if(lessonStep===0)c=`<h2>Nutze Aufgaben, die du kennst</h2><div class="hero">5 × 7 = 35</div><div class="explain">Die 5er-Aufgabe ist ein guter <b>Anker</b>. Von dort kannst du weitergehen.</div>`;
- if(lessonStep===1)c=`<h2>Ein Nachbar mehr</h2><div class="hero">6 × 7</div><div class="explain">5 × 7 = 35.<br>Noch einmal 7 dazu: <b>35 + 7 = 42</b>.</div>`;
- if(lessonStep===2)c=`<h2>Noch ein Nachbar</h2><div class="hero">7 × 7 = 49</div><div class="explain">Von 6 × 7 = 42 gehst du noch <b>+7</b> weiter.</div>`;
- if(lessonStep===3)c=`<h2>Jetzt du</h2><div class="hero">8 × 7 = ?</div><div class="explain">Tipp: 7 × 7 = 49. Rechne noch einmal +7.</div>${lessonInput(56)}`;
- if(lessonStep===4)c=`<h2>Ohne Tipp</h2><div class="hero">9 × 7 = ?</div>${lessonInput(63)}`;
- if(lessonStep<3)c+=`<br><button class="btn primary" onclick="nextLesson()">Weiter</button>`;
- $("lessonContent").innerHTML=c;if(lessonStep>=3)buildKeys("lesson")
-}
-function lessonInput(correct){window.lessonCorrect=correct;answer="";return `<div id="display" class="inputbox">&nbsp;</div><div class="keypad" id="keys"></div><div id="feedback" class="feedback"></div>`}
 function finishLesson(){
- if(!st.learned.includes(lessonKind))st.learned.push(lessonKind);save();
+ if(!st.learned.includes(lessonRow))st.learned.push(lessonRow);save();
  $("lessonBar").style.width="100%";
- $("lessonContent").innerHTML=`<div class="center"><div class="reward">📖</div><h2>${lessonKind}er-Reihe gelernt!</h2><p class="muted">Sie kann jetzt im Training auftauchen. Mit weiterer Übung wird sie erst „sicher“ und später „gemeistert“.</p><button class="btn primary" onclick="goHome()">Fertig</button></div>`
+ $("lessonContent").innerHTML=`<div class="center"><div class="reward">📖</div><h2>${lessonRow}er-Reihe gelernt!</h2><p class="muted">Jetzt darf sie in 🎯 Training und ⚡ Challenge vorkommen. „Gemeistert“ wird sie erst durch sicheres Üben in verschiedenen Aufgabenformen.</p><button class="btn primary" onclick="goHome()">Fertig</button></div>`
+}
+
+function fam(r,f){return r+"x"+f}
+function startTraining(challenge){
+ let available=st.learned.slice();
+ if(!available.length){alert("Lerne zuerst mindestens eine Reihe im Bereich 📚 Lernen.");openLearn();return}
+ round={challenge,total:10,index:0,combo:0,maxCombo:0,first:0,points:0,rows:available,queue:[],helped:0};
+ show("training");nextQ()
+}
+function abortTraining(){
+ if(!round){goHome();return}
+ if(confirm("Übung wirklich beenden? Dein bisheriger Lernstand bleibt gespeichert.")){round=null;goHome()}
+}
+function weightedRow(){
+ let arr=[];
+ round.rows.forEach(r=>{
+  let vals=[];for(let f=1;f<=10;f++)vals.push(st.skill[fam(r,f)]||0);
+  let avg=vals.reduce((a,b)=>a+b,0)/10;
+  let weight=round.challenge?1:Math.max(1,5-Math.floor(avg));
+  for(let i=0;i<weight;i++)arr.push(r);
+ });
+ return arr[Math.floor(Math.random()*arr.length)]
+}
+function makeQ(){
+ let r=weightedRow(),f=1+Math.floor(Math.random()*10),prod=r*f;
+ let skill=st.skill[fam(r,f)]||0;
+ let types=round.challenge?["mul","div","gap"]:["mul"];
+ if(!round.challenge&&skill>=1)types.push("div");
+ if(!round.challenge&&skill>=2)types.push("gap");
+ let t=types[Math.floor(Math.random()*types.length)];
+ if(t==="mul")return{r,f,key:fam(r,f),ans:prod,text:`${r} × ${f} = ?`,label:"Multiplikation"};
+ if(t==="div"){
+  let flip=Math.random()<.5;
+  return{r,f,key:fam(r,f),ans:flip?f:r,text:`${prod} ÷ ${flip?r:f} = ?`,label:"Umkehraufgabe"}
+ }
+ let flip=Math.random()<.5;
+ return{r,f,key:fam(r,f),ans:flip?r:f,text:flip?`? × ${f} = ${prod}`:`${r} × ? = ${prod}`,label:"Lückenaufgabe"}
+}
+function nextQ(){
+ if(round.index>=round.total){finishRound();return}
+ current=round.queue.length&&Math.random()<.5?round.queue.shift():makeQ();
+ attempts=0;answer="";transitionLock=false;
+ $("qcount").textContent=(round.index+1)+" / "+round.total;
+ $("combo").textContent="🔥 "+round.combo;$("points").textContent="⭐ "+round.points;
+ $("trainBar").style.width=(round.index/round.total*100)+"%";
+ $("modeLabel").textContent=round.challenge?"⚡ Challenge":"🎯 Training";
+ $("qtype").textContent=current.label;$("question").textContent=current.text;$("display").innerHTML="&nbsp;";$("feedback").textContent="";
+ buildKeys("train")
+}
+function getHelp(q){
+ if(q.label==="Multiplikation"){
+  if(q.r===9)return `10 × ${q.f} = ${10*q.f}. Ziehe ${q.f} ab.`;
+  if(q.r===6)return `5 × ${q.f} = ${5*q.f}. Addiere noch ${q.f}.`;
+  if(q.r===8)return `Verdopple ${q.f} dreimal: ×2 → ×4 → ×8.`;
+  if(q.r===12)return `10 × ${q.f} + 2 × ${q.f}.`;
+  if(q.r===15)return `10 × ${q.f} + 5 × ${q.f}.`;
+  if(q.r===25)return `Nutze 4 × 25 = 100 als Anker.`;
+  if(q.r===50)return `Rechne ×100 und nimm die Hälfte.`;
+  let anchor=Math.max(1,q.f-1);return `${q.r} × ${anchor} = ${q.r*anchor}. Dann noch +${q.r}.`
+ }
+ if(q.label==="Umkehraufgabe")return `Denk an die passende Malaufgabe: ${q.r} × ${q.f} = ${q.r*q.f}.`;
+ return `Denk an die Aufgabenfamilie: ${q.r} × ${q.f} = ${q.r*q.f}.`;
+}
+function checkTraining(){
+ if(!answer||transitionLock)return;attempts++;
+ if(Number(answer)===current.ans){
+  transitionLock=true;
+  if(attempts===1){
+   round.first++;round.combo++;round.maxCombo=Math.max(round.maxCombo,round.combo);
+   let bonus=[3,5,10].includes(round.combo)?2:0;round.points+=3+bonus;
+   st.skill[current.key]=Math.min(4,(st.skill[current.key]||0)+1)
+  }else round.points++;
+  $("feedback").className="feedback good";
+  $("feedback").textContent=round.combo>=3?`✓ Richtig! 🔥 ${round.combo}er-Serie`:"✓ Richtig!";
+  round.index++;save();setTimeout(nextQ,550)
+ }else{
+  round.combo=0;st.skill[current.key]=Math.max(0,(st.skill[current.key]||0)-1);
+  if(!round.queue.some(x=>x.key===current.key))round.queue.push({...current});
+  $("feedback").className="feedback bad";
+  if(attempts===1)$("feedback").textContent="Fast – versuch es noch einmal.";
+  else if(attempts===2){round.helped++;$("feedback").innerHTML="💡 <b>Hilfe:</b> "+getHelp(current)}
+  else{
+   transitionLock=true;round.helped++;
+   $("feedback").innerHTML=`🧠 <b>Lösungshilfe:</b> ${current.r} × ${current.f} = ${current.r*current.f}. Die Aufgabe kommt später noch einmal.`;
+   round.index++;save();setTimeout(nextQ,1250)
+  }
+  answer="";$("display").innerHTML="&nbsp;";save()
+ }
 }
 function buildKeys(context){
  let el=$("keys");if(!el)return;
  el.innerHTML=[1,2,3,4,5,6,7,8,9,"⌫",0,"✓"].map(x=>`<button class="key ${x==="✓"?"ok":""}" onclick="keyPress('${x}','${context}')">${x}</button>`).join("")
 }
 function keyPress(k,context){
+ if(transitionLock)return;
  if(k==="⌫")answer=answer.slice(0,-1);
  else if(k==="✓"){context==="lesson"?checkLesson():checkTraining();return}
  else if(answer.length<4)answer+=k;
  $("display").textContent=answer||"\u00a0"
 }
-function checkLesson(){
- if(!answer)return;
- if(Number(answer)===window.lessonCorrect){$("feedback").className="feedback good";$("feedback").textContent="✓ Richtig!";setTimeout(nextLesson,550)}
- else{$("feedback").className="feedback bad";$("feedback").textContent="Noch einmal – nutze den Trick.";answer="";$("display").innerHTML="&nbsp;"}
-}
-function fam(r,f){return r+"x"+f}
-function startTraining(challenge){
- let available=st.learned.slice();
- if(challenge && !available.length){
-   alert("Für die Challenge musst du zuerst mindestens eine Reihe im Lernmodus lernen.");
-   return;
- }
- if(!available.length) available=[P[prof].rows[0]];
- round={challenge,total:10,index:0,combo:0,maxCombo:0,first:0,points:0,rows:available,queue:[]};
- show("training");nextQ()
-}
-function abortTraining(){
- if(!round){goHome();return}
- if(confirm("Übung wirklich beenden? Dein bisheriger Lernstand bleibt gespeichert.")){
-   round=null;
-   goHome();
- }
-}
-function makeQ(){
- let r=round.rows[Math.floor(Math.random()*round.rows.length)], f=1+Math.floor(Math.random()*10), prod=r*f;
- let skill=st.skill[fam(r,f)]||0, types=round.challenge?["mul","div","gap"]:["mul"];
- if(!round.challenge&&skill>=1)types.push("div");if(!round.challenge&&skill>=2)types.push("gap");
- let t=types[Math.floor(Math.random()*types.length)];
- if(t==="mul")return{r,f,key:fam(r,f),ans:prod,text:`${r} × ${f} = ?`,label:"Multiplikation"};
- if(t==="div"){let flip=Math.random()<.5;return{r,f,key:fam(r,f),ans:flip?f:r,text:`${prod} ÷ ${flip?r:f} = ?`,label:"Umkehraufgabe"}}
- let flip=Math.random()<.5;return{r,f,key:fam(r,f),ans:flip?r:f,text:flip?`? × ${f} = ${prod}`:`${r} × ? = ${prod}`,label:"Lückenaufgabe"}
-}
-function nextQ(){
- if(round.index>=round.total){finishRound();return}
- current=round.queue.length&&Math.random()<.45?round.queue.shift():makeQ();attempts=0;answer="";
- $("qcount").textContent=(round.index+1)+" / "+round.total;$("combo").textContent="🔥 "+round.combo;$("points").textContent="⭐ "+round.points;
- $("trainBar").style.width=(round.index/round.total*100)+"%";$("qtype").textContent=current.label;$("question").textContent=current.text;$("display").innerHTML="&nbsp;";$("feedback").textContent="";buildKeys("train")
-}
-function checkTraining(){
- if(!answer)return;attempts++;
- if(Number(answer)===current.ans){
-   if(attempts===1){round.first++;round.combo++;round.maxCombo=Math.max(round.maxCombo,round.combo);round.points+=3+([3,5,10].includes(round.combo)?2:0);st.skill[current.key]=Math.min(4,(st.skill[current.key]||0)+1)}
-   else round.points++;
-   $("feedback").className="feedback good";$("feedback").textContent=round.combo>=3?`✓ Richtig! 🔥 ${round.combo}er-Serie`:"✓ Richtig!";
-   round.index++;save();setTimeout(nextQ,550)
- }else{
-   round.combo=0;st.skill[current.key]=Math.max(0,(st.skill[current.key]||0)-1);
-   if(!round.queue.some(x=>x.key===current.key))round.queue.push({...current});
-   $("feedback").className="feedback bad";
-   if(attempts===1){
-     $("feedback").textContent="Fast – versuch es noch einmal.";
-   }else if(attempts===2){
-     if(current.label==="Multiplikation"){
-       let anchor=Math.max(1,current.f-1);
-       $("feedback").innerHTML=`💡 Hilfe: ${current.r} × ${anchor} = ${current.r*anchor}. Rechne noch einmal +${current.r}.`;
-     }else if(current.label==="Umkehraufgabe"){
-       $("feedback").innerHTML=`💡 Hilfe: Denk an die passende Malaufgabe: ${current.r} × ${current.f} = ${current.r*current.f}.`;
-     }else{
-       $("feedback").innerHTML=`💡 Hilfe: Welche Zahl fehlt in ${current.r} × ${current.f} = ${current.r*current.f}?`;
-     }
-   }else{
-     $("feedback").innerHTML=`🧠 Lösungshilfe: ${current.r} × ${current.f} = <b>${current.r*current.f}</b>. Die Aufgabe kommt später noch einmal.`;
-     setTimeout(()=>{round.index++; nextQ();},1100);
-   }
-   answer="";$("display").innerHTML="&nbsp;";save()
+function recalcMastery(){
+ for(let r of P[prof].rows){
+  if(!st.learned.includes(r))continue;
+  let vals=[];for(let f=1;f<=10;f++)vals.push(st.skill[fam(r,f)]||0);
+  let secure=vals.filter(v=>v>=3).length;
+  if(secure>=8&&!st.mastered.includes(r))st.mastered.push(r)
  }
 }
 function finishRound(){
- // simple mastery threshold for prototype
- for(let r of P[prof].rows){
-  let vals=[];for(let f=1;f<=10;f++)vals.push(st.skill[fam(r,f)]||0);
-  if(vals.reduce((a,b)=>a+b,0)/10>=2.6&&!st.mastered.includes(r))st.mastered.push(r)
- }
- st.sessions++;save();
- $("summary").innerHTML=`<p><b>${round.first}/${round.total}</b> beim ersten Versuch</p><p>Beste Serie: <b>🔥 ${round.maxCombo}</b></p><p>Punkte: <b>⭐ ${round.points}</b></p>`;
- let icon=prof==="frieda"?"🎀":"🛞",name=prof==="frieda"?"Neues Style-Teil":"Neues Tuning-Teil",text="Belohnung für die abgeschlossene Runde.";
- let unlock=P[prof].rewards.filter(x=>st.mastered.length>=x[0]);if(unlock.length){let u=unlock[unlock.length-1];icon=u[1];name=u[2];text="Meilenstein-Belohnung durch echten Lernfortschritt."}
+ recalcMastery();st.sessions++;save();
+ $("summary").innerHTML=`<p><b>${round.first}/${round.total}</b> beim ersten Versuch</p><p>Beste Serie: <b>🔥 ${round.maxCombo}</b></p><p>Hilfen genutzt: <b>${round.helped}</b></p><p>Punkte: <b>⭐ ${round.points}</b></p>`;
+ let icon=prof==="frieda"?"🎀":"🛞",name=prof==="frieda"?"Kleines Style-Teil":"Kleines Tuning-Teil",text="Belohnung für die abgeschlossene Runde.";
+ let unlock=P[prof].rewards.filter(x=>st.mastered.length>=x[0]);
+ if(unlock.length){let u=unlock[unlock.length-1];icon=u[1];name=u[2];text="Meilenstein-Belohnung für echten Lernfortschritt."}
  $("rewardIcon").textContent=icon;$("rewardName").textContent=name;$("rewardText").textContent=text;show("result")
 }
 function showRewards(){
- $("rewardList").innerHTML=P[prof].rewards.map(x=>`<div class="unlock">${st.mastered.length>=x[0]?"🔓":"🔒"} <b>${x[1]} ${x[2]}</b><div class="muted">${st.mastered.length>=x[0]?"Freigeschaltet":`${st.mastered.length}/${x[0]} Reihen gemeistert`}</div></div>`).join("");show("rewards")
+ $("rewardList").innerHTML=P[prof].rewards.map(x=>`<div class="unlock">${st.mastered.length>=x[0]?"🔓":"🔒"} <b>${x[1]} ${x[2]}</b><div class="muted">${st.mastered.length>=x[0]?"Freigeschaltet":`${st.mastered.length}/${x[0]} Reihen gemeistert`}</div></div>`).join("");
+ show("rewards")
 }
 </script>
-</body></html>
+</body>
+</html>
