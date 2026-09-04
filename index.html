@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#6e62d9">
-<title>1×1 Quest V0.4</title>
+<title>1×1 Quest V0.4.1</title>
 <style>
 :root{
  --ink:#27243a;--muted:#746f82;--accent:#6e62d9;--accent2:#9a8cf1;
@@ -39,13 +39,20 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .unlock{border:2px dashed #d9d2e7;border-radius:17px;padding:13px;margin-top:9px}.reward{font-size:62px}.hidden{display:none!important}
 .lessonDone{border-left:4px solid var(--accent)}.mini{font-size:12px}.modeHint{margin-top:12px;padding:12px;border-radius:15px;background:#fff;border:1px solid var(--line)}
 .switches{display:flex;gap:8px;margin:10px 0}.switches button{padding:10px 8px}.switches .selected{background:var(--accent);color:#fff}
+.memorizeTabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.memorizeTabs button{padding:10px 6px}
+.memorizeTabs .selected{background:var(--accent);color:#fff}
+.speechControls{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.speechLine{font-size:28px;font-weight:900;text-align:center;margin:18px 0;min-height:72px}
+.smallSelect{width:100%;padding:11px;border:1px solid var(--line);border-radius:14px;background:#fff;font:inherit}
+.paperBox{border:2px dashed #d8d0e5;border-radius:18px;padding:18px;text-align:center;background:#fcfbfe}
 @media(max-width:380px){.hero{font-size:36px}.stats{font-size:12px}.btn{padding:12px}}
 </style>
 </head>
 <body>
-<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.4</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.4.1</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
-<div class="brand">1×1 Quest <span class="muted">V0.4</span></div>
+<div class="brand">1×1 Quest <span class="muted">V0.4.1</span></div>
 
 <section id="profiles">
  <div class="card center"><h1>Wer spielt?</h1><p class="muted">📚 Lernen → 🎯 Trainieren → ⚡ Challenge</p></div>
@@ -70,7 +77,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 <section id="learnSelect" class="hidden">
  <div class="card"><div class="topline"><h2>📚 Reihe lernen</h2><button class="btn back" onclick="goHome()">←</button></div>
- <p class="muted">In V0.4 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
+ <p class="muted">In V0.4.1 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
  <div id="lessonList"></div></div>
 </section>
 
@@ -79,6 +86,20 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
   <div class="topline"><span id="lessonTag" class="tag"></span><button class="btn back" onclick="abortLesson()">Beenden</button></div>
   <div class="progress"><i id="lessonBar"></i></div>
   <div id="lessonContent"></div>
+ </div>
+</section>
+
+
+<section id="memorize" class="hidden">
+ <div class="card">
+  <div class="topline"><div><span id="memTag" class="tag"></span><h2>🧠 Auswendig lernen</h2></div><button class="btn back" onclick="leaveMemorize()">←</button></div>
+  <p class="muted">Wähle eine Lernart. Du kannst so lange wiederholen, bis sich die Reihe sicher anfühlt.</p>
+  <div class="memorizeTabs">
+   <button id="tabListen" class="btn selected" onclick="setMemMode('listen')">🔊 Anhören</button>
+   <button id="tabWrite" class="btn" onclick="setMemMode('write')">✍️ Aufschreiben</button>
+   <button id="tabRecall" class="btn" onclick="setMemMode('recall')">🧠 Aus Kopf</button>
+  </div>
+  <div id="memContent"></div>
  </div>
 </section>
 
@@ -148,7 +169,7 @@ Object.assign(P,{
 
 let prof=null,st=null,lessonRow=null,lessonStep=0,lessonData=null,answer="",round=null,current=null,attempts=0,transitionLock=false;
 const $=id=>document.getElementById(id);
-const allSections=["profiles","home","learnSelect","lesson","training","result","rewards"];
+const allSections=["profiles","home","learnSelect","lesson","memorize","training","result","rewards"];
 
 function stateKey(){return "quest03_"+prof}
 function fresh(){return {learned:[],mastered:[],skill:{},sessions:0}}
@@ -179,7 +200,7 @@ function openLearn(){
  const p=P[prof];
  $("lessonList").innerHTML=p.rows.map(r=>{
   let l=rowLevel(r);
-  return `<button class="btn lessonChoice ${st.learned.includes(r)?"lessonDone":""}" onclick="startLesson(${r})"><b>${l[0]} ${r}er-Reihe</b><div class="status">${p.strategies[r]} · ${l[1]}</div></button>`
+  return `<div class="lessonChoice"><button class="btn ${st.learned.includes(r)?"lessonDone":""}" onclick="startLesson(${r})"><b>${l[0]} ${r}er-Reihe</b><div class="status">${p.strategies[r]} · ${l[1]}</div></button>${st.learned.includes(r)?`<button class="btn" style="margin-top:6px;padding:10px" onclick="openMemorize(${r})">🧠 ${r}er-Reihe auswendig lernen</button>`:""}</div>`
  }).join("");
  show("learnSelect")
 }
@@ -315,7 +336,126 @@ function checkLesson(){
 function finishLesson(){
  if(!st.learned.includes(lessonRow))st.learned.push(lessonRow);save();
  $("lessonBar").style.width="100%";
- $("lessonContent").innerHTML=`<div class="center"><div class="reward">📖</div><h2>${lessonRow}er-Reihe gelernt!</h2><p class="muted">Jetzt darf sie in 🎯 Training und ⚡ Challenge vorkommen. „Gemeistert“ wird sie erst durch sicheres Üben in verschiedenen Aufgabenformen.</p><button class="btn primary" onclick="goHome()">Fertig</button></div>`
+ $("lessonContent").innerHTML=`<div class="center"><div class="reward">📖</div><h2>${lessonRow}er-Reihe verstanden!</h2><p class="muted">Jetzt kannst du sie direkt noch auswendig festigen – durch Anhören, Aufschreiben oder Abrufen aus dem Kopf.</p><div class="grid2"><button class="btn" onclick="openMemorize(${lessonRow})">🧠 Auswendig lernen</button><button class="btn primary" onclick="goHome()">Später</button></div></div>`
+}
+
+
+let memRow=null,memMode="listen",memIndex=0,memOrder=[],memSpeaking=false,memRecallTries=0;
+
+function openMemorize(r){
+ memRow=r;memMode="listen";memIndex=0;memOrder=[1,2,3,4,5,6,7,8,9,10];
+ $("memTag").textContent=r+"er-Reihe";
+ renderMemorize();show("memorize")
+}
+function leaveMemorize(){stopSpeech();openLearn()}
+function setMemMode(mode){
+ stopSpeech();memMode=mode;memIndex=0;answer="";
+ ["Listen","Write","Recall"].forEach(x=>$("tab"+x).classList.toggle("selected",mode===x.toLowerCase()));
+ renderMemorize()
+}
+function renderMemorize(){
+ if(memMode==="listen")renderListen();
+ else if(memMode==="write")renderWrite();
+ else renderRecall()
+}
+function renderListen(){
+ $("memContent").innerHTML=`
+  <div class="explain">Die App liest die Reihe vor. Du kannst mitsprechen oder den <b>Mitsprech-Takt</b> wählen: Aufgabe hören → kurz selbst antworten → Lösung hören.</div>
+  <div class="switches">
+   <button id="orderForward" class="btn selected" onclick="setMemOrder('forward')">Vorwärts</button>
+   <button id="orderBackward" class="btn" onclick="setMemOrder('backward')">Rückwärts</button>
+   <button id="orderMixed" class="btn" onclick="setMemOrder('mixed')">Gemischt</button>
+  </div>
+  <label class="muted">Sprechweise</label>
+  <select id="speechStyle" class="smallSelect">
+    <option value="full">„7 mal 6 ist 42“</option>
+    <option value="pause">Mitsprech-Takt: „7 mal 6 …“ → Pause → „42“</option>
+  </select>
+  <div id="speechLine" class="speechLine">${memRow} × 1 = ${memRow}</div>
+  <div class="speechControls">
+   <button class="btn primary" onclick="startSpeech()">▶︎ Start</button>
+   <button class="btn" onclick="stopSpeech()">⏹ Stop</button>
+   <button class="btn" onclick="speakCurrent()">🔁 Aktuelle Aufgabe</button>
+   <button class="btn" onclick="startSpeech()">🔁 Ganze Reihe</button>
+  </div>
+  <p class="muted center">Auf dem iPhone startet die Sprachausgabe nach einem Tippen auf Start.</p>`;
+}
+function setMemOrder(kind){
+ if(kind==="forward")memOrder=[1,2,3,4,5,6,7,8,9,10];
+ else if(kind==="backward")memOrder=[10,9,8,7,6,5,4,3,2,1];
+ else memOrder=[1,2,3,4,5,6,7,8,9,10].sort(()=>Math.random()-.5);
+ memIndex=0;
+ ["Forward","Backward","Mixed"].forEach(x=>$("order"+x)?.classList.toggle("selected",kind===x.toLowerCase()));
+ updateSpeechLine()
+}
+function updateSpeechLine(){
+ let f=memOrder[memIndex]||1;
+ if($("speechLine"))$("speechLine").textContent=`${memRow} × ${f} = ${memRow*f}`
+}
+function speakText(text,after){
+ if(!("speechSynthesis" in window)){alert("Sprachausgabe wird auf diesem Gerät leider nicht unterstützt.");return}
+ let u=new SpeechSynthesisUtterance(text);u.lang="de-DE";u.rate=.9;
+ u.onend=()=>{if(after)after()};
+ speechSynthesis.speak(u)
+}
+function startSpeech(){stopSpeech();memSpeaking=true;memIndex=0;speakSequence()}
+function stopSpeech(){memSpeaking=false;if("speechSynthesis" in window)speechSynthesis.cancel()}
+function speakCurrent(){
+ stopSpeech();let f=memOrder[memIndex]||1;let style=$("speechStyle")?.value||"full";
+ if(style==="pause")speakText(`${memRow} mal ${f}`,()=>setTimeout(()=>speakText(String(memRow*f)),1200));
+ else speakText(`${memRow} mal ${f} ist ${memRow*f}`)
+}
+function speakSequence(){
+ if(!memSpeaking)return;
+ if(memIndex>=memOrder.length){memSpeaking=false;return}
+ updateSpeechLine();
+ let f=memOrder[memIndex],style=$("speechStyle")?.value||"full";
+ if(style==="pause"){
+  speakText(`${memRow} mal ${f}`,()=>setTimeout(()=>{if(memSpeaking)speakText(String(memRow*f),()=>{memIndex++;setTimeout(speakSequence,450)})},1200))
+ }else{
+  speakText(`${memRow} mal ${f} ist ${memRow*f}`,()=>{memIndex++;setTimeout(speakSequence,350)})
+ }
+}
+function renderWrite(){
+ let f=memOrder[memIndex]||1;
+ $("memContent").innerHTML=`
+  <div class="paperBox"><div class="muted">Schreibe diese Rechnung einmal auf Papier:</div>
+  <div class="hero">${memRow} × ${f} = ${memRow*f}</div>
+  <p class="muted">Sprich sie dabei am besten laut mit.</p></div>
+  <div class="grid2" style="margin-top:12px">
+   <button class="btn" onclick="prevWrite()">← Zurück</button>
+   <button class="btn primary" onclick="nextWrite()">Weiter →</button>
+  </div>
+  <button class="btn" style="margin-top:10px" onclick="shuffleWrite()">🔀 Gemischt wiederholen</button>`;
+}
+function nextWrite(){memIndex=(memIndex+1)%memOrder.length;renderWrite()}
+function prevWrite(){memIndex=(memIndex-1+memOrder.length)%memOrder.length;renderWrite()}
+function shuffleWrite(){memOrder=[1,2,3,4,5,6,7,8,9,10].sort(()=>Math.random()-.5);memIndex=0;renderWrite()}
+function renderRecall(){
+ let f=memOrder[memIndex]||1;answer="";memRecallTries=0;
+ $("memContent").innerHTML=`
+  <div class="explain">Jetzt ohne Vorlage. Falsche Aufgaben bleiben in der Runde und kommen später noch einmal.</div>
+  <div class="hero">${memRow} × ${f} = ?</div>
+  <div id="display" class="inputbox">&nbsp;</div><div class="keypad" id="keys"></div>
+  <div id="feedback" class="feedback"></div>
+  <div class="muted center">Aufgabe ${memIndex+1} / ${memOrder.length}</div>`;
+ buildKeys("memorize")
+}
+function checkMemorize(){
+ if(!answer)return;let f=memOrder[memIndex],correct=memRow*f;memRecallTries++;
+ if(Number(answer)===correct){
+  $("feedback").className="feedback good";$("feedback").textContent="✓ Richtig!";
+  setTimeout(()=>{memIndex++;if(memIndex>=memOrder.length)finishRecall();else renderRecall()},450)
+ }else{
+  $("feedback").className="feedback bad";
+  if(memRecallTries===1)$("feedback").textContent="Noch einmal versuchen.";
+  else $("feedback").innerHTML=`💡 Hilfe: ${P[prof].strategies[memRow]}.`;
+  answer="";$("display").innerHTML="&nbsp;";
+  if(memRecallTries>=2&&!memOrder.slice(memIndex+1).includes(f))memOrder.push(f)
+ }
+}
+function finishRecall(){
+ $("memContent").innerHTML=`<div class="center"><div class="reward">🧠</div><h2>Runde geschafft!</h2><p class="muted">Du kannst die Reihe noch einmal anhören, aufschreiben oder zurück zum Lernen gehen.</p><div class="grid2"><button class="btn" onclick="setMemMode('listen')">🔊 Noch einmal</button><button class="btn primary" onclick="openLearn()">Fertig</button></div></div>`
 }
 
 function fam(r,f){return r+"x"+f}
@@ -412,7 +552,7 @@ function buildKeys(context){
 function keyPress(k,context){
  if(transitionLock)return;
  if(k==="⌫")answer=answer.slice(0,-1);
- else if(k==="✓"){context==="lesson"?checkLesson():checkTraining();return}
+ else if(k==="✓"){context==="lesson"?checkLesson():context==="memorize"?checkMemorize():checkTraining();return}
  else if(answer.length<4)answer+=k;
  $("display").textContent=answer||"\u00a0"
 }
