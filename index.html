@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#6e62d9">
-<title>1×1 Quest V0.6</title>
+<title>1×1 Quest V0.6.1</title>
 <style>
 :root{
  --ink:#27243a;--muted:#746f82;--accent:#6e62d9;--accent2:#9a8cf1;
@@ -70,10 +70,10 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 </style>
 </head>
 <body>
-<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.6</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.6.1</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
 <div class="brandbar">
-  <div class="brand">1×1 Quest <span class="muted">V0.6</span></div>
+  <div class="brand">1×1 Quest <span class="muted">V0.6.1</span></div>
   <div class="wallet">
     <button id="coinBag" class="coinbag" onclick="showRewards()" aria-label="Münzbeutel">🪙 <span id="coinCount">0</span></button>
     <button id="soundBtn" class="soundbtn" onclick="toggleSound()" aria-label="Ton an oder aus">🔊</button>
@@ -103,7 +103,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 <section id="learnSelect" class="hidden">
  <div class="card"><div class="topline"><h2>📚 Reihe lernen</h2><button class="btn back" onclick="goHome()">←</button></div>
- <p class="muted">In V0.6 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
+ <p class="muted">In V0.6.1 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
  <div id="lessonList"></div></div>
 </section>
 
@@ -643,7 +643,7 @@ function nextQ(){
  current=round.queue.length&&Math.random()<.5?round.queue.shift():makeQ();
  attempts=0;answer="";transitionLock=false;
  $("qcount").textContent=(round.index+1)+" / "+round.total;
- $("combo").textContent="🔥 "+round.combo;$("points").textContent="⭐ "+round.points;
+ $("combo").textContent="🔥 "+round.combo;
  $("trainBar").style.width=(round.index/round.total*100)+"%";
  $("modeLabel").textContent=round.challenge?"⚡ Challenge":"🎯 Training";
  $("qtype").textContent=current.label;$("question").textContent=current.text;$("display").innerHTML="&nbsp;";$("feedback").textContent="";
