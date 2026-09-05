@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#6e62d9">
-<title>1×1 Quest V0.6.1</title>
+<title>1×1 Quest V0.9</title>
 <style>
 :root{
  --ink:#27243a;--muted:#746f82;--accent:#6e62d9;--accent2:#9a8cf1;
@@ -67,13 +67,32 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .previewStage{border:1px solid var(--line);border-radius:20px;padding:18px;text-align:center;margin:12px 0;background:#fff}
 .previewEmoji{font-size:58px;line-height:1.2}
 .previewText{margin-top:8px;font-weight:900}
+
+.celebrateOverlay{position:fixed;inset:0;z-index:10000;background:#191329aa;display:flex;align-items:center;justify-content:center;padding:22px}
+.celebrateCard{position:relative;overflow:hidden;width:min(92vw,430px);border-radius:28px;background:#fff;padding:24px 20px 20px;text-align:center;box-shadow:0 24px 70px #0005}
+.celebrateScene{border-radius:22px;padding:24px 12px;margin:8px 0 14px;position:relative;overflow:hidden}
+.celebrateScene.frieda{background:linear-gradient(160deg,#fff2fa,#f6e8ff 55%,#ffe9f0)}
+.celebrateScene.felix{background:linear-gradient(160deg,#eaf6ff,#dbeaff 55%,#fff0c9)}
+.celebrateIcon{font-size:92px;line-height:1.1;filter:drop-shadow(0 8px 10px #0002);animation:rewardPop .55s cubic-bezier(.2,.9,.25,1.2)}
+.celebrateTitle{font-size:25px;font-weight:950;margin:3px 0}.celebrateName{font-size:22px;font-weight:950}
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.confetti i{position:absolute;top:-18px;font-style:normal;font-size:20px;animation:confettiFall var(--d) linear forwards;animation-delay:var(--delay)}
+@keyframes rewardPop{0%{transform:scale(.35) rotate(-8deg);opacity:0}70%{transform:scale(1.15) rotate(3deg)}100%{transform:scale(1);opacity:1}}
+@keyframes confettiFall{0%{transform:translateY(-20px) rotate(0);opacity:0}10%{opacity:1}100%{transform:translateY(520px) rotate(520deg);opacity:.2}}
+@media(prefers-reduced-motion:reduce){.celebrateIcon,.confetti i{animation:none}.confetti{display:none}}
+
+.assetPreview{position:relative;display:flex;align-items:center;justify-content:center;min-height:170px;border-radius:22px;overflow:hidden;background:#fff}
+.assetPreview img{max-width:100%;max-height:210px;object-fit:contain;display:block}
+.assetFallback{font-size:82px;line-height:1}
+.assetNote{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
+.rewardThumb{width:64px;height:64px;border-radius:14px;object-fit:contain;background:#fff;border:1px solid var(--line)}
 </style>
 </head>
 <body>
-<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.6.1</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.9</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
 <div class="brandbar">
-  <div class="brand">1×1 Quest <span class="muted">V0.6.1</span></div>
+  <div class="brand">1×1 Quest <span class="muted">V0.9</span></div>
   <div class="wallet">
     <button id="coinBag" class="coinbag" onclick="showRewards()" aria-label="Münzbeutel">🪙 <span id="coinCount">0</span></button>
     <button id="soundBtn" class="soundbtn" onclick="toggleSound()" aria-label="Ton an oder aus">🔊</button>
@@ -103,7 +122,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 <section id="learnSelect" class="hidden">
  <div class="card"><div class="topline"><h2>📚 Reihe lernen</h2><button class="btn back" onclick="goHome()">←</button></div>
- <p class="muted">In V0.6.1 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
+ <p class="muted">In V0.9 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
  <div id="lessonList"></div></div>
 </section>
 
@@ -150,7 +169,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 </section>
 
 <section id="rewards" class="hidden">
- <div class="card"><div class="topline"><h2>🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div class="explain"><b>Deine Münzen gehören dir.</b> Kleine Prämien kannst du direkt kaufen. Besondere Prämien brauchen zusätzlich echten Lernfortschritt.</div><div id="collectionBox"></div><div id="rewardList"></div></div>
+ <div class="card"><div class="topline"><h2>🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div class="explain"><b>Deine Münzen gehören dir.</b> Kleine Prämien kannst du direkt kaufen. Besondere Prämien brauchen zusätzlich echten Lernfortschritt.</div><div id="collectionBox"></div><div class="assetNote">V0.9 ist bereits für echte Bilddateien vorbereitet. Solange ein Bild noch fehlt, erscheint automatisch das bisherige Symbol.</div><div id="rewardList"></div></div>
 </section>
 </main>
 
@@ -212,6 +231,41 @@ Object.assign(P,{
 
 let prof=null,st=null,lessonRow=null,lessonStep=0,lessonData=null,answer="",round=null,current=null,attempts=0,transitionLock=false;
 const $=id=>document.getElementById(id);
+
+const ASSETS={
+ frieda:{
+  base:"assets/frieda/base.png",
+  bow:"assets/frieda/bow.png",
+  shoes:"assets/frieda/shoes.png",
+  bag:"assets/frieda/bag.png",
+  pinkhair:"assets/frieda/pinkhair.png",
+  street:"assets/frieda/street.png",
+  kimono:"assets/frieda/kimono.png",
+  mask:"assets/frieda/mask.png",
+  legend:"assets/frieda/legend.png"
+ },
+ felix:{
+  base:"assets/felix/base.png",
+  rims:"assets/felix/rims.png",
+  paint:"assets/felix/paint.png",
+  lights:"assets/felix/lights.png",
+  spoiler:"assets/felix/spoiler.png",
+  offroad:"assets/felix/offroad.png",
+  camper:"assets/felix/camper.png",
+  rally:"assets/felix/rally.png",
+  supercar:"assets/felix/supercar.png"
+ }
+};
+function assetPath(id){
+ return ASSETS[prof]&&ASSETS[prof][id]?ASSETS[prof][id]:null
+}
+function rewardVisual(item,size="large"){
+ const p=assetPath(item.id);
+ if(!p)return `<div class="assetFallback">${item.icon}</div>`;
+ const cls=size==="thumb"?"rewardThumb":"";
+ return `<img class="${cls}" src="${p}" alt="${item.name}" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div class=&quot;assetFallback&quot;>${item.icon}</div>')">`
+}
+
 const allSections=["profiles","home","learnSelect","lesson","memorize","training","result","rewards"];
 
 function stateKey(){return "quest03_"+prof}
@@ -732,6 +786,35 @@ function finishRound(){
  $("rewardText").textContent="Die Münzen bleiben in deinem Beutel. Im Prämien-Shop entscheidest du selbst, wofür du sie ausgeben möchtest.";
  show("result")
 }
+
+function rewardCelebration(item){
+ const old=document.querySelector(".celebrateOverlay");if(old)old.remove();
+ const overlay=document.createElement("div");overlay.className="celebrateOverlay";
+ const pieces=prof==="frieda"?["✨","🌸","★","✦","🌸","✨"]:["🏁","★","✦","🟦","🟨","🏁"];
+ let conf="";
+ for(let i=0;i<28;i++){
+  let p=pieces[i%pieces.length];
+  conf+=`<i style="left:${3+Math.random()*94}%;--d:${1.5+Math.random()*1.5}s;--delay:${Math.random()*.55}s">${p}</i>`
+ }
+ const sceneText=prof==="frieda"?"✨ Du bist spitze! ✨":"🏁 Vollgas! Du bist spitze! 🏁";
+ overlay.innerHTML=`<div class="celebrateCard">
+   <div class="confetti">${conf}</div>
+   <div class="celebrateTitle">🎉 Neue Prämie!</div>
+   <div class="celebrateScene ${prof}">
+    <div class="assetPreview">${rewardVisual(item,"large")}</div>
+    <div class="celebrateName">${item.name}</div>
+    <div class="muted">${sceneText}</div>
+   </div>
+   <div class="tag">✓ Jetzt in deiner Sammlung</div>
+   <button class="btn primary" style="width:100%;margin-top:16px" onclick="closeCelebration()">Weiter</button>
+  </div>`;
+ document.body.appendChild(overlay);
+ if(st.sound!==false)playBuySound()
+}
+function closeCelebration(){
+ const o=document.querySelector(".celebrateOverlay");if(o)o.remove();
+ showRewards()
+}
 function buyReward(id){
  normalizeRewardState();
  let item=P[prof].rewards.find(x=>x.id===id); if(!item)return;
@@ -742,9 +825,8 @@ function buyReward(id){
  if(prof==="felix"&&item.cat==="addon"){
   let arr=st.equipped.addon||[];st.equipped.addon=[...arr,id]
  }else if(!st.equipped[item.cat])st.equipped[item.cat]=id;
- save();updateWallet();playBuySound();
- const t=document.createElement("div");t.className="coinToast";t.textContent=`🎉 ${item.name} gekauft!`;
- document.body.appendChild(t);setTimeout(()=>t.remove(),1400);showRewards()
+ save();updateWallet();
+ rewardCelebration(item)
 }
 
 function normalizeRewardState(){
@@ -773,9 +855,15 @@ function collectionPreview(){
  const owned=P[prof].rewards.filter(x=>st.owned.includes(x.id));
  const equipped=owned.filter(x=>isEquipped(x));
  if(!owned.length)return `<div class="collection"><div class="collectionTitle">🎒 Meine Sammlung</div><div class="muted">Noch keine Prämie gekauft. Such dir ein erstes Ziel aus!</div></div>`;
- let visual=prof==="frieda"?(equipped.length?equipped.map(x=>x.icon).join(" "):"👧"):
- ((equipped.find(x=>x.cat==="vehicle")||{icon:"🚗"}).icon+" "+equipped.filter(x=>x.cat!=="vehicle").map(x=>x.icon).join(" "));
- return `<div class="collection"><div class="collectionTitle">🎒 Meine Sammlung</div><div class="previewStage"><div class="previewEmoji">${visual}</div><div class="previewText">${equipped.length?"Gerade ausgewählt":"Noch nichts ausgerüstet"}</div></div><div class="collectionItems">${owned.map(x=>`<span class="collectionChip">${x.icon} ${x.name}${isEquipped(x)?'<span class="equippedBadge">aktiv</span>':''}</span>`).join("")}</div></div>`
+ let hero=null;
+ if(prof==="frieda")hero=equipped.find(x=>["outfit","hair"].includes(x.cat))||equipped[0];
+ else hero=equipped.find(x=>x.cat==="vehicle")||equipped[0];
+ let visual=hero?rewardVisual(hero,"large"):(prof==="frieda"?'<div class="assetFallback">👧</div>':'<div class="assetFallback">🚗</div>');
+ return `<div class="collection">
+   <div class="collectionTitle">🎒 Meine Sammlung</div>
+   <div class="previewStage"><div class="assetPreview">${visual}</div><div class="previewText">${equipped.length?"Gerade ausgewählt":"Noch nichts ausgerüstet"}</div></div>
+   <div class="collectionItems">${owned.map(x=>`<span class="collectionChip">${x.icon} ${x.name}${isEquipped(x)?'<span class="equippedBadge">aktiv</span>':''}</span>`).join("")}</div>
+  </div>`
 }
 function showRewards(){
  if(!prof||!st)return;
@@ -785,7 +873,7 @@ function showRewards(){
   let owned=st.owned.includes(x.id),equipped=isEquipped(x),gateOk=st.mastered.length>=x.gate,canBuy=gateOk&&(st.coins||0)>=x.price&&!owned;
   let status=owned?(equipped?"✅ Ausgewählt":"✅ Gehört dir"):!gateOk?`🔒 Erst ab ${x.gate} gemeisterten Reihen`:(st.coins||0)<x.price?`Noch ${x.price-(st.coins||0)} Münzen sparen`:"Jetzt kaufbar";
   let action=owned?`<button class="btn ${equipped?"":"primary"}" onclick="equipReward('${x.id}')">${equipped?"Ablegen / Abwählen":"Benutzen"}</button>`:`<button class="btn ${canBuy?"primary":""}" onclick="buyReward('${x.id}')" ${canBuy?"":"disabled"}>${gateOk?"Kaufen":"Noch gesperrt"}</button>`;
-  return `<div class="shopItem ${owned?"owned":!gateOk?"locked":""}"><div class="shopTop"><div class="shopIcon">${x.icon}</div><div class="shopInfo"><b>${x.name}</b><div class="price">🪙 ${x.price}</div><div class="muted">${status}</div></div></div>${action}</div>`
+  return `<div class="shopItem ${owned?"owned":!gateOk?"locked":""}"><div class="shopTop"><div class="shopIcon">${rewardVisual(x,"thumb")}</div><div class="shopInfo"><b>${x.name}</b><div class="price">🪙 ${x.price}</div><div class="muted">${status}</div></div></div>${action}</div>`
  }).join("");
  show("rewards")
 }
