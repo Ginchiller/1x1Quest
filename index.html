@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#6e62d9">
-<title>1×1 Quest V0.5.1</title>
+<title>1×1 Quest V0.6</title>
 <style>
 :root{
  --ink:#27243a;--muted:#746f82;--accent:#6e62d9;--accent2:#9a8cf1;
@@ -58,13 +58,22 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .shopItem .btn{margin-top:10px;padding:11px}.coinEarn{display:inline-block;background:var(--soft);border-radius:999px;padding:6px 10px;font-weight:900;margin:3px}
 @media (prefers-reduced-motion: reduce){.coinFly{display:none}}
 
+
+.collection{border:1px solid var(--line);border-radius:18px;padding:14px;margin:12px 0;background:var(--soft)}
+.collectionTitle{font-weight:950;margin-bottom:8px}
+.collectionItems{display:flex;flex-wrap:wrap;gap:8px}
+.collectionChip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 10px;font-weight:800}
+.equippedBadge{display:inline-block;margin-left:6px;background:var(--accent);color:#fff;border-radius:999px;padding:3px 7px;font-size:12px;font-weight:900}
+.previewStage{border:1px solid var(--line);border-radius:20px;padding:18px;text-align:center;margin:12px 0;background:#fff}
+.previewEmoji{font-size:58px;line-height:1.2}
+.previewText{margin-top:8px;font-weight:900}
 </style>
 </head>
 <body>
-<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.5.1</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.6</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
 <div class="brandbar">
-  <div class="brand">1×1 Quest <span class="muted">V0.5.1</span></div>
+  <div class="brand">1×1 Quest <span class="muted">V0.6</span></div>
   <div class="wallet">
     <button id="coinBag" class="coinbag" onclick="showRewards()" aria-label="Münzbeutel">🪙 <span id="coinCount">0</span></button>
     <button id="soundBtn" class="soundbtn" onclick="toggleSound()" aria-label="Ton an oder aus">🔊</button>
@@ -94,7 +103,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 <section id="learnSelect" class="hidden">
  <div class="card"><div class="topline"><h2>📚 Reihe lernen</h2><button class="btn back" onclick="goHome()">←</button></div>
- <p class="muted">In V0.5.1 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
+ <p class="muted">In V0.6 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
  <div id="lessonList"></div></div>
 </section>
 
@@ -141,7 +150,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 </section>
 
 <section id="rewards" class="hidden">
- <div class="card"><div class="topline"><h2>🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div class="explain"><b>Deine Münzen gehören dir.</b> Kleine Prämien kannst du direkt kaufen. Besondere Prämien brauchen zusätzlich echten Lernfortschritt.</div><div id="rewardList"></div></div>
+ <div class="card"><div class="topline"><h2>🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div class="explain"><b>Deine Münzen gehören dir.</b> Kleine Prämien kannst du direkt kaufen. Besondere Prämien brauchen zusätzlich echten Lernfortschritt.</div><div id="collectionBox"></div><div id="rewardList"></div></div>
 </section>
 </main>
 
@@ -165,14 +174,14 @@ Object.assign(P,{
    50:"Hälfte der 100er-Reihe"
   },
   rewards:[
-   {id:"bow",icon:"🎀",name:"Haarschleife",price:25,gate:0},
-   {id:"shoes",icon:"👟",name:"Neue Schuhe",price:45,gate:0},
-   {id:"bag",icon:"👜",name:"Japanische Tasche",price:60,gate:0},
-   {id:"pinkhair",icon:"🌸",name:"Rosa Frisur",price:100,gate:0},
-   {id:"street",icon:"🧥",name:"Japanisches Streetwear-Outfit",price:150,gate:2},
-   {id:"kimono",icon:"👘",name:"Kimono",price:280,gate:4},
-   {id:"mask",icon:"🎭",name:"Katzenmaske + Spezialaccessoire",price:360,gate:6},
-   {id:"legend",icon:"✨",name:"Legendäres Manga-Outfit",price:600,gate:9}
+   {id:"bow",icon:"🎀",name:"Haarschleife",price:25,gate:0,cat:"accessory"},
+   {id:"shoes",icon:"👟",name:"Neue Schuhe",price:45,gate:0,cat:"shoes"},
+   {id:"bag",icon:"👜",name:"Japanische Tasche",price:60,gate:0,cat:"accessory"},
+   {id:"pinkhair",icon:"🌸",name:"Rosa Frisur",price:100,gate:0,cat:"hair"},
+   {id:"street",icon:"🧥",name:"Japanisches Streetwear-Outfit",price:150,gate:2,cat:"outfit"},
+   {id:"kimono",icon:"👘",name:"Kimono",price:280,gate:4,cat:"outfit"},
+   {id:"mask",icon:"🎭",name:"Katzenmaske + Spezialaccessoire",price:360,gate:6,cat:"accessory"},
+   {id:"legend",icon:"✨",name:"Legendäres Manga-Outfit",price:600,gate:9,cat:"outfit"}
   ]
  },
  felix:{
@@ -189,14 +198,14 @@ Object.assign(P,{
    10:"Null anhängen"
   },
   rewards:[
-   {id:"rims",icon:"🛞",name:"Sportfelgen",price:30,gate:0},
-   {id:"paint",icon:"🎨",name:"Speziallack",price:50,gate:0},
-   {id:"lights",icon:"💡",name:"Dachscheinwerfer",price:70,gate:0},
-   {id:"spoiler",icon:"🏁",name:"Sport-Spoiler",price:90,gate:0},
-   {id:"offroad",icon:"🚙",name:"Offroader",price:180,gate:2},
-   {id:"camper",icon:"🚐",name:"Wohnmobil",price:300,gate:4},
-   {id:"rally",icon:"🏁",name:"Rallyefahrzeug",price:450,gate:6},
-   {id:"supercar",icon:"🏎️",name:"Supersportwagen",price:700,gate:9}
+   {id:"rims",icon:"🛞",name:"Sportfelgen",price:30,gate:0,cat:"rims"},
+   {id:"paint",icon:"🎨",name:"Speziallack",price:50,gate:0,cat:"paint"},
+   {id:"lights",icon:"💡",name:"Dachscheinwerfer",price:70,gate:0,cat:"addon"},
+   {id:"spoiler",icon:"🏁",name:"Sport-Spoiler",price:90,gate:0,cat:"addon"},
+   {id:"offroad",icon:"🚙",name:"Offroader",price:180,gate:2,cat:"vehicle"},
+   {id:"camper",icon:"🚐",name:"Wohnmobil",price:300,gate:4,cat:"vehicle"},
+   {id:"rally",icon:"🏁",name:"Rallyefahrzeug",price:450,gate:6,cat:"vehicle"},
+   {id:"supercar",icon:"🏎️",name:"Supersportwagen",price:700,gate:9,cat:"vehicle"}
   ]
  }
 });
@@ -206,7 +215,7 @@ const $=id=>document.getElementById(id);
 const allSections=["profiles","home","learnSelect","lesson","memorize","training","result","rewards"];
 
 function stateKey(){return "quest03_"+prof}
-function fresh(){return {learned:[],mastered:[],skill:{},sessions:0,coins:0,owned:[],sound:true}}
+function fresh(){return {learned:[],mastered:[],skill:{},sessions:0,coins:0,owned:[],equipped:{},sound:true}}
 function load(){try{return Object.assign(fresh(),JSON.parse(localStorage.getItem(stateKey())||"{}"))}catch(e){return fresh()}}
 function save(){localStorage.setItem(stateKey(),JSON.stringify(st))}
 
@@ -724,26 +733,59 @@ function finishRound(){
  show("result")
 }
 function buyReward(id){
+ normalizeRewardState();
  let item=P[prof].rewards.find(x=>x.id===id); if(!item)return;
- st.owned=st.owned||[];
  if(st.owned.includes(id))return;
  if(st.mastered.length<item.gate){alert(`Dafür musst du zuerst ${item.gate} Reihen meistern.`);return}
  if((st.coins||0)<item.price){alert(`Dir fehlen noch ${item.price-(st.coins||0)} Münzen.`);return}
- st.coins-=item.price;st.owned.push(id);save();updateWallet();playBuySound();
+ st.coins-=item.price;st.owned.push(id);
+ if(prof==="felix"&&item.cat==="addon"){
+  let arr=st.equipped.addon||[];st.equipped.addon=[...arr,id]
+ }else if(!st.equipped[item.cat])st.equipped[item.cat]=id;
+ save();updateWallet();playBuySound();
  const t=document.createElement("div");t.className="coinToast";t.textContent=`🎉 ${item.name} gekauft!`;
  document.body.appendChild(t);setTimeout(()=>t.remove(),1400);showRewards()
 }
+
+function normalizeRewardState(){
+ st.owned=st.owned||[];
+ st.equipped=st.equipped||{};
+}
+function isEquipped(item){
+ normalizeRewardState();
+ if(prof==="felix"&&item.cat==="addon")return (st.equipped.addon||[]).includes(item.id);
+ return st.equipped[item.cat]===item.id
+}
+function equipReward(id){
+ normalizeRewardState();
+ const item=P[prof].rewards.find(x=>x.id===id);
+ if(!item||!st.owned.includes(id))return;
+ if(prof==="felix"&&item.cat==="addon"){
+  let arr=st.equipped.addon||[];
+  st.equipped.addon=arr.includes(id)?arr.filter(x=>x!==id):[...arr,id]
+ }else{
+  st.equipped[item.cat]=isEquipped(item)?null:item.id
+ }
+ save();showRewards()
+}
+function collectionPreview(){
+ normalizeRewardState();
+ const owned=P[prof].rewards.filter(x=>st.owned.includes(x.id));
+ const equipped=owned.filter(x=>isEquipped(x));
+ if(!owned.length)return `<div class="collection"><div class="collectionTitle">🎒 Meine Sammlung</div><div class="muted">Noch keine Prämie gekauft. Such dir ein erstes Ziel aus!</div></div>`;
+ let visual=prof==="frieda"?(equipped.length?equipped.map(x=>x.icon).join(" "):"👧"):
+ ((equipped.find(x=>x.cat==="vehicle")||{icon:"🚗"}).icon+" "+equipped.filter(x=>x.cat!=="vehicle").map(x=>x.icon).join(" "));
+ return `<div class="collection"><div class="collectionTitle">🎒 Meine Sammlung</div><div class="previewStage"><div class="previewEmoji">${visual}</div><div class="previewText">${equipped.length?"Gerade ausgewählt":"Noch nichts ausgerüstet"}</div></div><div class="collectionItems">${owned.map(x=>`<span class="collectionChip">${x.icon} ${x.name}${isEquipped(x)?'<span class="equippedBadge">aktiv</span>':''}</span>`).join("")}</div></div>`
+}
 function showRewards(){
  if(!prof||!st)return;
- updateWallet();
- st.owned=st.owned||[];
+ normalizeRewardState();updateWallet();
+ $("collectionBox").innerHTML=collectionPreview();
  $("rewardList").innerHTML=P[prof].rewards.map(x=>{
-  let owned=st.owned.includes(x.id),gateOk=st.mastered.length>=x.gate,canBuy=gateOk&&(st.coins||0)>=x.price&&!owned;
-  let status=owned?"✅ Gekauft":!gateOk?`🔒 Erst ab ${x.gate} gemeisterten Reihen`:(st.coins||0)<x.price?`Noch ${x.price-(st.coins||0)} Münzen sparen`:"Jetzt kaufbar";
-  return `<div class="shopItem ${owned?"owned":!gateOk?"locked":""}">
-    <div class="shopTop"><div class="shopIcon">${x.icon}</div><div class="shopInfo"><b>${x.name}</b><div class="price">🪙 ${x.price}</div><div class="muted">${status}</div></div></div>
-    ${owned?"":`<button class="btn ${canBuy?"primary":""}" onclick="buyReward('${x.id}')" ${canBuy?"":"disabled"}>${gateOk?"Kaufen":"Noch gesperrt"}</button>`}
-   </div>`
+  let owned=st.owned.includes(x.id),equipped=isEquipped(x),gateOk=st.mastered.length>=x.gate,canBuy=gateOk&&(st.coins||0)>=x.price&&!owned;
+  let status=owned?(equipped?"✅ Ausgewählt":"✅ Gehört dir"):!gateOk?`🔒 Erst ab ${x.gate} gemeisterten Reihen`:(st.coins||0)<x.price?`Noch ${x.price-(st.coins||0)} Münzen sparen`:"Jetzt kaufbar";
+  let action=owned?`<button class="btn ${equipped?"":"primary"}" onclick="equipReward('${x.id}')">${equipped?"Ablegen / Abwählen":"Benutzen"}</button>`:`<button class="btn ${canBuy?"primary":""}" onclick="buyReward('${x.id}')" ${canBuy?"":"disabled"}>${gateOk?"Kaufen":"Noch gesperrt"}</button>`;
+  return `<div class="shopItem ${owned?"owned":!gateOk?"locked":""}"><div class="shopTop"><div class="shopIcon">${x.icon}</div><div class="shopInfo"><b>${x.name}</b><div class="price">🪙 ${x.price}</div><div class="muted">${status}</div></div></div>${action}</div>`
  }).join("");
  show("rewards")
 }
