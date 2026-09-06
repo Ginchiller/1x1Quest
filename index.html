@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#6e62d9">
-<title>1×1 Quest V0.10</title>
+<title>1×1 Quest V0.10.1</title>
 <style>
 :root{
  --ink:#27243a;--muted:#746f82;--accent:#6e62d9;--accent2:#9a8cf1;
@@ -116,10 +116,10 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 </style>
 </head>
 <body>
-<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.10</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.10.1</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
 <div class="brandbar">
-  <div class="brand">1×1 Quest <span class="muted">V0.10</span></div>
+  <div class="brand">1×1 Quest <span class="muted">V0.10.1</span></div>
   <div class="wallet">
     <button id="coinBag" class="coinbag" onclick="showRewards()" aria-label="Münzbeutel">🪙 <span id="coinCount">0</span></button>
     <button id="soundBtn" class="soundbtn" onclick="toggleSound()" aria-label="Ton an oder aus">🔊</button>
@@ -149,7 +149,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 <section id="learnSelect" class="hidden">
  <div class="card"><div class="topline"><h2>📚 Reihe lernen</h2><button class="btn back" onclick="goHome()">←</button></div>
- <p class="muted">In V0.10 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
+ <p class="muted">In V0.10.1 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
  <div class="card" style="margin:12px 0 18px">
  <div style="font-size:30px">🧠</div>
  <h3 style="margin:5px 0">Auswendig können</h3>
@@ -248,7 +248,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
     <div id="wardrobeItems" class="wardrobeItems"></div>
 
     <div class="wardrobeHint">
-      <b>V0.10 – echtes Ankleidesystem vorbereitet.</b><br>
+      <b>V0.10.1 – echtes Ankleidesystem vorbereitet.</b><br>
       Der Standardlook ist jetzt immer sichtbar. Bereits vorhandene Ganzkörper-Testgrafiken
       (Haarschleife / rosa Frisur) werden direkt angezeigt. Schuhe und Tasche können schon
       an- und abgelegt werden; ihre echten transparenten Layer erstellen wir als Nächstes.
@@ -257,7 +257,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 </section>
 
 <section id="rewards" class="hidden">
- <div class="card"><div class="topline"><h2>🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div class="explain"><b>Deine Münzen gehören dir.</b> Kleine Prämien kannst du direkt kaufen. Besondere Prämien brauchen zusätzlich echten Lernfortschritt.</div><div id="collectionBox"></div><button class="btn primary" style="margin:12px 0" onclick="showWardrobe()">👗 Frieda anziehen</button><div class="assetNote">V0.10 ist bereits für echte Bilddateien vorbereitet. Solange ein Bild noch fehlt, erscheint automatisch das bisherige Symbol.</div><div id="rewardList"></div></div>
+ <div class="card"><div class="topline"><h2>🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div class="explain"><b>Deine Münzen gehören dir.</b> Kleine Prämien kannst du direkt kaufen. Besondere Prämien brauchen zusätzlich echten Lernfortschritt.</div><div id="collectionBox"></div><button class="btn primary" style="margin:12px 0" onclick="showWardrobe()">👗 Frieda anziehen</button><div class="assetNote">V0.10.1 ist bereits für echte Bilddateien vorbereitet. Solange ein Bild noch fehlt, erscheint automatisch das bisherige Symbol.</div><div id="rewardList"></div></div>
 </section>
 </main>
 
@@ -1194,6 +1194,15 @@ function equipReward(id){
  normalizeRewardState();
  const item=P[prof].rewards.find(x=>x.id===id);
  if(!item||!st.owned.includes(id))return;
+ if(prof==="frieda"&&(id==="bow"||id==="pinkhair")){
+   if(st.equipped.hair==="pinkhair")st.equipped.hair=null;
+   if(st.equipped.accessory==="bow")st.equipped.accessory=null;
+   if(Array.isArray(st.equipped.accessory))st.equipped.accessory=st.equipped.accessory.filter(x=>x!=="bow");
+   save();
+   alert("Diese Prämie gehört dir weiterhin. Für die neue Masterfigur erstellen wir dafür noch einen passenden transparenten Layer.");
+   showRewards();
+   return
+ }
  if(prof==="felix"&&item.cat==="addon"){
   let arr=st.equipped.addon||[];
   st.equipped.addon=arr.includes(id)?arr.filter(x=>x!==id):[...arr,id]
@@ -1204,11 +1213,7 @@ function equipReward(id){
 }
 function friedAvatarVisual(){
  normalizeRewardState();
- // Full-image test assets: pink hair has priority. Bow uses the brown-hair bow image.
- let pink=P.frieda.rewards.find(x=>x.id==="pinkhair");
- let bow=P.frieda.rewards.find(x=>x.id==="bow");
- if(pink&&isEquipped(pink))return rewardVisual(pink,"large");
- if(bow&&isEquipped(bow))return rewardVisual(bow,"large");
+ // V0.10.1: obsolete whole-character reward renders are no longer used.
  return defaultFriedaVisual()
 }
 function wearVerb(item,equipped){
@@ -1252,24 +1257,17 @@ function defaultFriedaVisual(){
 }
 function wardrobeAvatarVisual(){
  normalizeRewardState();
- const pink=P.frieda.rewards.find(x=>x.id==="pinkhair");
- const bow=P.frieda.rewards.find(x=>x.id==="bow");
- // Existing test renders are full-body replacement previews.
- if(pink&&isEquipped(pink))return rewardVisual(pink,"large");
- if(bow&&isEquipped(bow))return rewardVisual(bow,"large");
+ // V0.10.1: always show the new standard look as the base.
+ // True transparent reward layers will be added on top in the next asset steps.
  return defaultFriedaVisual()
 }
 function currentLookLabels(){
  normalizeRewardState();
- const out=[];
- const pink=P.frieda.rewards.find(x=>x.id==="pinkhair");
- const bow=P.frieda.rewards.find(x=>x.id==="bow");
+ const out=["Braune Standardfrisur","Neues Standardoutfit"];
  const shoes=P.frieda.rewards.find(x=>x.id==="shoes");
  const bag=P.frieda.rewards.find(x=>x.id==="bag");
- out.push(pink&&isEquipped(pink)?"Rosa Frisur":"Braune Standardfrisur");
- if(bow&&isEquipped(bow))out.push("Haarschleife");
- if(shoes&&isEquipped(shoes))out.push("Neue Schuhe");
- if(bag&&isEquipped(bag))out.push("Japanische Tasche");
+ if(shoes&&isEquipped(shoes))out.push("Neue Schuhe – Layer folgt");
+ if(bag&&isEquipped(bag))out.push("Japanische Tasche – Layer folgt");
  return out.join(" · ")
 }
 function wardrobeTab(cat,btn){
@@ -1328,6 +1326,7 @@ function selectWardrobeItem(id){
  updateWallet()
 }
 function showWardrobe(){
+ migrateFriedaLegacyVisuals();
  if(prof!=="frieda"){showRewards();return}
  normalizeRewardState();
  activeWardrobeCat="hair";
@@ -1338,7 +1337,21 @@ function showWardrobe(){
  renderWardrobeItems()
 }
 
+
+function migrateFriedaLegacyVisuals(){
+ if(prof!=="frieda")return;
+ normalizeRewardState();
+ let changed=false;
+ if(st.equipped.hair==="pinkhair"){st.equipped.hair=null;changed=true}
+ if(st.equipped.accessory==="bow"){st.equipped.accessory=null;changed=true}
+ if(Array.isArray(st.equipped.accessory)&&st.equipped.accessory.includes("bow")){
+   st.equipped.accessory=st.equipped.accessory.filter(x=>x!=="bow");changed=true
+ }
+ if(changed)save()
+}
+
 function showRewards(){
+ migrateFriedaLegacyVisuals();
  if(!prof||!st)return;
  normalizeRewardState();updateWallet();
  $("collectionBox").innerHTML=collectionPreview();
