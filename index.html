@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#6e62d9">
-<title>1×1 Quest V0.9.5</title>
+<title>1×1 Quest V0.9.6</title>
 <style>
 :root{
  --ink:#27243a;--muted:#746f82;--accent:#6e62d9;--accent2:#9a8cf1;
@@ -103,10 +103,10 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 </style>
 </head>
 <body>
-<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.9.5</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.9.6</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
 <div class="brandbar">
-  <div class="brand">1×1 Quest <span class="muted">V0.9.5</span></div>
+  <div class="brand">1×1 Quest <span class="muted">V0.9.6</span></div>
   <div class="wallet">
     <button id="coinBag" class="coinbag" onclick="showRewards()" aria-label="Münzbeutel">🪙 <span id="coinCount">0</span></button>
     <button id="soundBtn" class="soundbtn" onclick="toggleSound()" aria-label="Ton an oder aus">🔊</button>
@@ -136,8 +136,14 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 <section id="learnSelect" class="hidden">
  <div class="card"><div class="topline"><h2>📚 Reihe lernen</h2><button class="btn back" onclick="goHome()">←</button></div>
- <p class="muted">In V0.9.5 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
- <div id="lessonList"></div></div>
+ <p class="muted">In V0.9.6 hat jede Reihe eine eigene interaktive Lernstrategie. Eine gelernte Reihe wird danach für Training und Challenge freigegeben.</p>
+ <div class="card" style="margin:12px 0 18px">
+ <div style="font-size:30px">🧠</div>
+ <h3 style="margin:5px 0">Auswendig können</h3>
+ <p class="muted">Schwierige Kernaufgaben wie 7×7, 7×8, 8×8, 8×9 und 9×9 gezielt aus dem Kopf abrufen.</p>
+ <button class="btn primary" onclick="startCoreFacts()">Kernaufgaben starten</button>
+</div>
+<div id="lessonList"></div></div>
 </section>
 
 <section id="lesson" class="hidden">
@@ -163,7 +169,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 <section id="training" class="hidden">
  <div class="topline"><button class="btn back" onclick="abortTraining()">← Zurück</button>
-  <div class="stats"><span id="qcount"></span><span id="combo"></span></div>
+  <div class="stats"><span id="qcount"></span><span id="combo"></span><span id="timer" class="hidden">⏱ 0:00</span></div>
  </div>
  <div class="progress"><i id="trainBar"></i></div>
  <div class="card">
@@ -204,7 +210,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 </section>
 
 <section id="rewards" class="hidden">
- <div class="card"><div class="topline"><h2>🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div class="explain"><b>Deine Münzen gehören dir.</b> Kleine Prämien kannst du direkt kaufen. Besondere Prämien brauchen zusätzlich echten Lernfortschritt.</div><div id="collectionBox"></div><div class="assetNote">V0.9.5 ist bereits für echte Bilddateien vorbereitet. Solange ein Bild noch fehlt, erscheint automatisch das bisherige Symbol.</div><div id="rewardList"></div></div>
+ <div class="card"><div class="topline"><h2>🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div class="explain"><b>Deine Münzen gehören dir.</b> Kleine Prämien kannst du direkt kaufen. Besondere Prämien brauchen zusätzlich echten Lernfortschritt.</div><div id="collectionBox"></div><div class="assetNote">V0.9.6 ist bereits für echte Bilddateien vorbereitet. Solange ein Bild noch fehlt, erscheint automatisch das bisherige Symbol.</div><div id="rewardList"></div></div>
 </section>
 </main>
 
@@ -302,7 +308,7 @@ function rewardVisual(item,size="large"){
  return `<img class="${cls}" src="${p}" alt="${item.name}" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div class=&quot;assetFallback&quot;>${item.icon}</div>')">`
 }
 
-const allSections=["profiles","home","learnSelect","lesson","memorize","training","result","rewards"];
+const allSections=["profiles","home","learnSelect","lesson","memorize","corefacts","training","result","rewards"];
 
 function stateKey(){return "quest03_"+prof}
 function fresh(){return {learned:[],mastered:[],skill:{},sessions:0,coins:0,owned:[],equipped:{},sound:true}}
@@ -838,10 +844,9 @@ function fmtTime(ms){
 function startChallengeTimer(){
  if(challengeTimerInterval)clearInterval(challengeTimerInterval);
  round.startedAt=Date.now();
- $("timer").classList.remove("hidden");
- $("timer").textContent="⏱ 0:00";
+ if($("timer")){$("timer").classList.remove("hidden");$("timer").textContent="⏱ 0:00"}
  challengeTimerInterval=setInterval(()=>{
-  if(round&&round.challenge&&round.startedAt)$("timer").textContent="⏱ "+fmtTime(Date.now()-round.startedAt)
+  if(round&&round.challenge&&round.startedAt&&$("timer"))$("timer").textContent="⏱ "+fmtTime(Date.now()-round.startedAt)
  },500)
 }
 function stopChallengeTimer(){
