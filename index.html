@@ -114,7 +114,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .wardThumb img{max-width:100%;max-height:78px;object-fit:contain}
 .wardrobeHint{margin-top:14px;padding:12px;border-radius:16px;background:#f7f2fb;color:#6f6680;font-size:13px;line-height:1.45}
 
-/* V0.23 reward presentation */
+/* V0.24 reward presentation */
 .wardrobeStage{min-height:560px;padding:12px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#f3f1ee,#ffffff 58%,#ece9e4)}
 .wardrobeStage.rarity-base,.previewStage.rarity-base{background:radial-gradient(circle at 50% 16%,#a97f6e 0 9%,transparent 34%),linear-gradient(180deg,#8f695b 0%,#bda89f 45%,#6f6b72 78%,#d9d2d1 100%)}
 .previewStage.rarity-common{background:radial-gradient(circle at 76% 18%,#d7f2e7 0 10%,transparent 32%),radial-gradient(circle at 15% 80%,#dceaf7 0 12%,transparent 34%),linear-gradient(145deg,#eef7f4,#f7fafc 55%,#eef1f7)}
@@ -139,7 +139,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 @media(max-height:750px){.wardrobeStage{min-height:480px}.wardrobeAvatar{height:420px}.wardrobeAvatar img{max-height:410px}.celebrateScene{min-height:56vh}.celebrateScene .assetPreview{min-height:46vh}.celebrateScene .assetPreview img{max-height:46vh}}
 
 
-/* V0.23 tier reveal upgrade */
+/* V0.24 tier reveal upgrade */
 .reveal-common .celebrateCard{animation:rc .35s ease-out}.reveal-common .celebrateScene .assetPreview{animation:rl .42s cubic-bezier(.2,.8,.25,1)}.reveal-common .confetti i:nth-child(n+13){display:none}
 .reveal-rare .celebrateCard{animation:rrc .58s cubic-bezier(.18,.82,.25,1)}.reveal-rare .celebrateScene:before{content:"";position:absolute;inset:-35%;z-index:1;background:conic-gradient(from 0deg,transparent,#ffffffc9,transparent 18%,transparent 55%,#dfe6ffcc,transparent 72%);animation:rrs 1.5s ease-out}.reveal-rare .celebrateScene .assetPreview{animation:rrl .75s cubic-bezier(.16,.84,.22,1)}
 .reveal-epic .celebrateCard{animation:rec .8s cubic-bezier(.16,.84,.2,1)}.reveal-epic .celebrateScene:before,.reveal-epic .celebrateScene:after{content:"";position:absolute;z-index:1;left:50%;top:48%;border-radius:50%;pointer-events:none}.reveal-epic .celebrateScene:before{width:330px;height:330px;margin:-165px;background:radial-gradient(circle,transparent 46%,#fff9 48% 50%,transparent 52%);animation:er 1.45s ease-out}.reveal-epic .celebrateScene:after{width:260px;height:260px;margin:-130px;background:conic-gradient(from 0deg,transparent,#fff9,transparent 18%,transparent 48%,#e5c9ffcc,transparent 60%);animation:es 2.2s ease-out}.reveal-epic .celebrateScene .assetPreview{animation:el .95s cubic-bezier(.13,.85,.18,1)}
@@ -150,7 +150,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 @keyframes lc{0%{transform:scale(.62);opacity:0}42%{transform:scale(1.045);opacity:1}70%{transform:scale(.99)}100%{transform:scale(1)}}@keyframes ll{0%{transform:scale(.38);opacity:0;filter:brightness(2.2) blur(9px)}45%{opacity:1;filter:brightness(1.45) blur(0)}72%{transform:scale(1.075)}100%{transform:scale(1);filter:brightness(1)}}@keyframes ls{0%{transform:rotate(-80deg) scale(.5);opacity:0}30%{opacity:1}100%{transform:rotate(105deg) scale(1.25);opacity:0}}@keyframes lst{0%{transform:scale(.3);opacity:0}45%{opacity:1}100%{transform:scale(1.35);opacity:0}}@keyframes lf{0%{opacity:.95}100%{opacity:0}}
 
 
-/* V0.23 – STUFE 1: Shop-Status klar machen */
+/* V0.24 – STUFE 1: Shop-Status klar machen */
 .shopItem.friedaShopOwned{
   border:2px solid rgba(159,79,181,.24);
   background:linear-gradient(180deg,#fffaff 0%,#f7ebfa 100%);
@@ -200,11 +200,11 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.23 – STUFE 3: Standardlook-Asset-Slot */
+/* V0.24 – STUFE 3: Standardlook-Asset-Slot */
 .friedaStandardAsset{object-fit:contain;object-position:center bottom}
 
 
-/* V0.23 – STUFE 4: Szenenmodus */
+/* V0.24 – STUFE 4: Szenenmodus */
 .scenePanel{display:none}
 .scenePanel.active{display:block}
 .sceneStage{
@@ -311,7 +311,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.23 – STUFE 5: Szenen als Fortschrittsbelohnung */
+/* V0.24 – STUFE 5: Szenen als Fortschrittsbelohnung */
 .sceneChoice.lockedScene{
   position:relative;
   opacity:.62;
@@ -345,7 +345,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.23 – STUFE 6: Zusammenmodus */
+/* V0.24 – STUFE 6: Zusammenmodus */
 .groupPanel{display:none}
 .groupPanel.active{display:block}
 .groupStage{
@@ -422,7 +422,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.23 – Mobile UX correction */
+/* V0.24 – Mobile UX correction */
 .looksCard{padding:16px}
 .lookTabs{display:grid!important;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0 12px}
 .lookTab{min-width:0!important;padding:8px 5px!important;font-size:14px!important;white-space:nowrap}
@@ -476,7 +476,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 @media(max-width:360px){#rewards.friedaRewards #rewardList{grid-template-columns:1fr}}
 
 
-/* V0.23 – Gruppenmodus iPhone-Stabilität + Szenen-Upgrade */
+/* V0.24 – Gruppenmodus iPhone-Stabilität + Szenen-Upgrade */
 .groupFigure{
   appearance:none!important;-webkit-appearance:none!important;
   border:0!important;background:transparent!important;
@@ -542,13 +542,71 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .scene-bg-wisteria:after{content:"✦   ✧   ✦";position:absolute;right:8%;top:11%;color:#fff7d4;font-size:15px;letter-spacing:9px}
 
 .groupSlotSelect{width:100%;padding:11px 10px;border:1px solid rgba(105,88,115,.22);border-radius:12px;background:#fff;font:inherit;font-size:13px;font-weight:750;color:var(--text)}
+
+/* V0.24 – gallery, scenes, group interaction & export */
+#lookGalleryGrid.lookGalleryGrid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:8px!important;
+}
+#lookGalleryGrid .lookGalleryCard{
+  width:auto!important;min-width:0!important;display:block!important;
+  padding:5px!important;margin:0!important;
+}
+#lookGalleryGrid .lookGalleryImage{height:118px!important;min-height:118px!important}
+@media(max-width:365px){
+  #lookGalleryGrid.lookGalleryGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+.sceneArt{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.sceneBackdrop,.groupBackdrop{z-index:1;background:transparent!important}
+.sceneCharacter{
+  z-index:2!important;appearance:none!important;-webkit-appearance:none!important;
+  border:0!important;background:transparent!important;margin:0!important;
+  cursor:pointer!important;pointer-events:auto!important;
+}
+.sceneCharacter:after{
+  content:"🔍";position:absolute;right:10px;top:10px;
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.82);font-size:17px;
+  box-shadow:0 3px 10px rgba(0,0,0,.12)
+}
+.sceneCaption,.groupCaption{
+  margin:8px 0 10px;padding:9px 12px;border-radius:14px;
+  background:#f7f1fa;text-align:center;font-weight:900;font-size:13px;
+}
+.sceneDownloadBtn{margin:0 0 14px!important}
+.groupActions{grid-template-columns:1fr 1fr!important;gap:8px!important}
+@media(max-width:390px){.groupActions{grid-template-columns:1fr!important}}
+
+/* 2x2 group layout: no figure is hidden behind another */
+.groupFigure.slot0{left:4%!important;top:4%!important;bottom:auto!important;width:42%!important;height:43%!important;z-index:3!important}
+.groupFigure.slot1{right:4%!important;top:4%!important;bottom:auto!important;width:42%!important;height:43%!important;z-index:3!important}
+.groupFigure.slot2{left:4%!important;bottom:4%!important;top:auto!important;width:42%!important;height:43%!important;z-index:3!important}
+.groupFigure.slot3{right:4%!important;bottom:4%!important;top:auto!important;width:42%!important;height:43%!important;z-index:3!important}
+.groupFigure{pointer-events:auto!important}
+.groupFigure img{pointer-events:none!important}
+.groupStage.focusMode .groupFigure{opacity:.16!important;transform:none!important}
+.groupStage.focusMode .groupFigure.focused{
+  opacity:1!important;left:15%!important;right:auto!important;top:5%!important;bottom:auto!important;
+  width:70%!important;height:88%!important;z-index:10!important;transform:none!important
+}
+
+/* Hide the opaque Standardlook artwork instead of presenting it as if it were transparent. */
+.lookGalleryCard[data-look-id="standard"] .lookGalleryImage{background:linear-gradient(145deg,#f5edf7,#fff)!important}
+.standardPending{
+  height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;
+  gap:6px;text-align:center;color:#766d7a;font-size:11px;font-weight:800
+}
+.standardPending b{font-size:26px}
+
 </style>
 </head>
 <body>
-<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.23</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.24</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
 <div class="brandbar">
-  <div class="brand">1×1 Quest <span class="muted">V0.23</span></div>
+  <div class="brand">1×1 Quest <span class="muted">V0.24</span></div>
   <div class="wallet">
     <button id="coinBag" class="coinbag" onclick="showRewards()" aria-label="Münzbeutel">🪙 <span id="coinCount">0</span></button>
     <button id="soundBtn" class="soundbtn" onclick="toggleSound()" aria-label="Ton an oder aus">🔊</button>
@@ -673,10 +731,12 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
       <div class="lookSectionHint">Wähle einen Look und eine freigeschaltete Szene.</div>
       <div id="sceneUnlockNotice" class="sceneUnlockNotice"></div>
       <div class="sceneStage" id="sceneStage">
+        <canvas id="sceneArt" class="sceneArt" aria-hidden="true"></canvas>
         <div id="sceneBackdrop" class="sceneBackdrop scene-bg-sakura"></div>
-        <div id="sceneCharacter" class="sceneCharacter"></div>
-        <div id="sceneName" class="sceneName"></div>
+        <button type="button" id="sceneCharacter" class="sceneCharacter" onclick="openSceneFigureLarge()" aria-label="Figur vergrößern"></button>
       </div>
+      <div id="sceneName" class="sceneCaption"></div>
+      <button type="button" class="btn sceneDownloadBtn" onclick="downloadSceneImage()">⬇️ Bild mit Hintergrund speichern</button>
       <div class="sceneControls">
         <div><div class="sceneControlTitle">1. Figur auswählen</div><div id="sceneLookChooser" class="sceneChooser"></div></div>
         <div><div class="sceneControlTitle">2. Hintergrund auswählen</div><div id="sceneBgChooser" class="sceneChooser"></div></div>
@@ -686,10 +746,14 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
     <div id="lookGroupView" class="groupPanel">
       <div class="lookSectionHint">Stelle dein Dream Team aus bis zu vier gesammelten Looks zusammen.</div>
       <div id="groupStage" class="groupStage">
+        <canvas id="groupArt" class="sceneArt" aria-hidden="true"></canvas>
         <div id="groupBackdrop" class="groupBackdrop scene-bg-sakura"></div>
-        <div id="groupInfo" class="groupInfo">Tippe eine Figur an, um sie hervorzuheben.</div>
       </div>
-      <div class="groupActions"><button type="button" class="btn" onclick="clearGroupFocus();return false">Gesamtgruppe anzeigen</button></div>
+      <div id="groupInfo" class="groupCaption">Tippe eine Figur an, um sie groß hervorzuheben.</div>
+      <div class="groupActions">
+        <button type="button" class="btn" onclick="clearGroupFocus();return false">Gesamtgruppe anzeigen</button>
+        <button type="button" class="btn primary" onclick="downloadGroupImage()">⬇️ Gruppenbild speichern</button>
+      </div>
       <div><div class="sceneControlTitle">Hintergrund</div><div id="groupSceneChooser" class="groupSceneChooser"></div></div>
       <div style="margin-top:14px"><div class="sceneControlTitle">Figurenplätze</div><div id="groupSlots" class="groupSlots"></div></div>
     </div>
@@ -1722,7 +1786,7 @@ function wardrobeAvatarVisual(){return friedAvatarVisual()}
 function currentLookLabels(){normalizeRewardState();const item=P.frieda.rewards.find(x=>x.id===st.equipped.look);return item?item.name:"Standardlook"}
 
 function standardGalleryVisual(){
- return defaultFriedaVisual()
+ return `<div class="standardPending"><b>👗</b><span>Standardlook<br>Freistellung wird ersetzt</span></div>`
 }
 
 function galleryCardVisual(item){
@@ -1745,9 +1809,9 @@ function renderWardrobeItems(){
    const name=isStandard?"Standardlook":item.name;
    const rarity=isStandard?"Basis":(item.rarity||"Gewöhnlich");
    const id=isStandard?"standard":item.id;
-   const visual=galleryCardVisual(item);
+   const visual=isStandard?standardGalleryVisual():galleryCardVisual(item);
 
-   return `<button class="lookGalleryCard ${active?"active":""}" onclick="openLookDetail('${id}')" aria-label="${name} öffnen">
+   return `<button type="button" data-look-id="${id}" class="lookGalleryCard ${active?"active":""}" onclick="openLookDetail('${id}')" aria-label="${name} öffnen">
       <div class="lookGalleryImage ${isStandard?"rarity-base":rarityClass(item)}">
         <div class="assetPreview">${visual}</div>
       </div>
@@ -1843,6 +1907,7 @@ function renderSceneMode(){
 
  const scene=FRIEDA_SCENES.find(x=>x.id===sceneState.bg)||FRIEDA_SCENES[0];
  if(back)back.className=`sceneBackdrop ${scene.cls}`;
+ requestAnimationFrame(()=>renderSceneArtCanvas("sceneArt",scene.id));
 
  const owned=P.frieda.rewards.filter(x=>st.owned.includes(x.id));
  const looks=owned.length?owned:[null];
@@ -1879,6 +1944,110 @@ function renderSceneMode(){
    const masteredCount=(st.mastered||[]).length;
    note.innerHTML=`🧪 <b>Testphase: Alle 5 Szenen sind freigeschaltet.</b><br>So kannst du die Hintergründe sofort vergleichen, ohne erst viele Aufgaben rechnen zu müssen.`;
  }
+}
+
+
+function renderSceneArtCanvas(canvasId,sceneId){
+ const c=$(canvasId);if(!c)return;
+ const rect=c.getBoundingClientRect();
+ const dpr=Math.min(window.devicePixelRatio||1,2);
+ const w=Math.max(320,Math.round(rect.width*dpr)),h=Math.max(400,Math.round(rect.height*dpr));
+ if(c.width!==w)c.width=w;if(c.height!==h)c.height=h;
+ const ctx=c.getContext("2d");
+ drawSceneArt(ctx,sceneId,w,h);
+}
+function drawSceneArt(ctx,id,w,h){
+ ctx.clearRect(0,0,w,h);
+ const g=ctx.createLinearGradient(0,0,0,h);
+ if(id==="neon"){g.addColorStop(0,"#10152d");g.addColorStop(.62,"#2a1745");g.addColorStop(1,"#111b2d")}
+ else if(id==="sunset"){g.addColorStop(0,"#f6a69b");g.addColorStop(.48,"#cf7f9c");g.addColorStop(.58,"#547fa6");g.addColorStop(1,"#315d82")}
+ else if(id==="wisteria"){g.addColorStop(0,"#17244b");g.addColorStop(.58,"#382b65");g.addColorStop(1,"#1b3640")}
+ else if(id==="shrine"){g.addColorStop(0,"#cfe8f2");g.addColorStop(.58,"#e8ddc7");g.addColorStop(1,"#718b65")}
+ else {g.addColorStop(0,"#bfe3ff");g.addColorStop(.55,"#eadfff");g.addColorStop(1,"#79a77b")}
+ ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+
+ if(id==="sakura"){
+   // distant Fuji
+   ctx.fillStyle="rgba(116,130,160,.46)";ctx.beginPath();ctx.moveTo(w*.18,h*.62);ctx.lineTo(w*.52,h*.28);ctx.lineTo(w*.86,h*.62);ctx.closePath();ctx.fill();
+   ctx.fillStyle="rgba(245,247,255,.88)";ctx.beginPath();ctx.moveTo(w*.41,h*.40);ctx.lineTo(w*.52,h*.28);ctx.lineTo(w*.63,h*.40);ctx.lineTo(w*.58,h*.38);ctx.lineTo(w*.52,h*.42);ctx.lineTo(w*.47,h*.38);ctx.closePath();ctx.fill();
+   // path + grass
+   ctx.fillStyle="#79a77b";ctx.fillRect(0,h*.66,w,h*.34);
+   ctx.fillStyle="rgba(234,210,177,.82)";ctx.beginPath();ctx.moveTo(w*.42,h);ctx.lineTo(w*.47,h*.63);ctx.lineTo(w*.58,h*.63);ctx.lineTo(w*.70,h);ctx.closePath();ctx.fill();
+   drawSakuraBranch(ctx,w*.04,h*.12,w*.35,h*.22,18);
+   drawSakuraBranch(ctx,w*.96,h*.18,w*.68,h*.30,14);
+ }else if(id==="shrine"){
+   // forest
+   ctx.fillStyle="#6f8b67";ctx.fillRect(0,h*.67,w,h*.33);
+   for(let i=0;i<6;i++){ctx.fillStyle=i%2?"#45684d":"#55785a";ctx.fillRect(i*w/6, h*.34+(i%2)*h*.06,w*.09,h*.48)}
+   // stone path
+   ctx.fillStyle="#b7aa91";ctx.beginPath();ctx.moveTo(w*.35,h);ctx.lineTo(w*.47,h*.54);ctx.lineTo(w*.55,h*.54);ctx.lineTo(w*.70,h);ctx.closePath();ctx.fill();
+   drawTorii(ctx,w*.5,h*.32,w*.42,h*.30);
+   drawTorii(ctx,w*.5,h*.53,w*.26,h*.20);
+   drawLantern(ctx,w*.18,h*.69,w*.07);drawLantern(ctx,w*.82,h*.69,w*.07);
+ }else if(id==="sunset"){
+   // sun, sea and coast
+   ctx.fillStyle="#ffe8a6";ctx.beginPath();ctx.arc(w*.72,h*.23,w*.09,0,Math.PI*2);ctx.fill();
+   ctx.fillStyle="#406f96";ctx.fillRect(0,h*.56,w,h*.44);
+   for(let y=h*.60;y<h*.88;y+=h*.06){ctx.strokeStyle="rgba(255,255,255,.38)";ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(w*.05,y);ctx.quadraticCurveTo(w*.5,y-h*.02,w*.95,y);ctx.stroke()}
+   ctx.fillStyle="#c8aa79";ctx.beginPath();ctx.moveTo(0,h*.78);ctx.quadraticCurveTo(w*.28,h*.67,w*.47,h);ctx.lineTo(0,h);ctx.closePath();ctx.fill();
+   ctx.fillStyle="#56704d";ctx.beginPath();ctx.moveTo(0,h*.70);ctx.lineTo(w*.18,h*.60);ctx.lineTo(w*.31,h*.72);ctx.lineTo(w*.11,h*.78);ctx.closePath();ctx.fill();
+ }else if(id==="neon"){
+   for(let i=0;i<7;i++){let x=i*w/7;ctx.fillStyle=i%2?"#171c38":"#20234a";ctx.fillRect(x,h*.36,w*.12,h*.64)}
+   ctx.font=`${Math.round(w*.055)}px sans-serif`;ctx.textAlign="center";
+   ["東京","GAME","RAMEN","NEON"].forEach((t,i)=>{ctx.fillStyle=i%2?"#ff65cf":"#5df5ff";ctx.shadowBlur=15;ctx.shadowColor=ctx.fillStyle;ctx.fillText(t,w*(.16+.23*i),h*(.25+.06*(i%2)));});ctx.shadowBlur=0;
+   ctx.fillStyle="#252042";ctx.beginPath();ctx.moveTo(w*.36,h);ctx.lineTo(w*.46,h*.53);ctx.lineTo(w*.57,h*.53);ctx.lineTo(w*.70,h);ctx.closePath();ctx.fill();
+ }else if(id==="wisteria"){
+   ctx.fillStyle="#172d38";ctx.fillRect(0,h*.72,w,h*.28);
+   ctx.fillStyle="#fff5c9";ctx.beginPath();ctx.arc(w*.74,h*.20,w*.075,0,Math.PI*2);ctx.fill();
+   for(let i=0;i<9;i++){let x=(i*.13%1)*w;drawWisteria(ctx,x,h*(.05+(i%3)*.03),w*.045,h*.22)}
+   ctx.fillStyle="#253f48";ctx.beginPath();ctx.moveTo(w*.30,h);ctx.lineTo(w*.45,h*.61);ctx.lineTo(w*.55,h*.61);ctx.lineTo(w*.72,h);ctx.closePath();ctx.fill();
+ }
+}
+function drawSakuraBranch(ctx,x1,y1,x2,y2,n){
+ ctx.strokeStyle="#694b43";ctx.lineWidth=8;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
+ for(let i=0;i<n;i++){let t=i/(n-1),x=x1+(x2-x1)*t+(Math.sin(i*2.7)*18),y=y1+(y2-y1)*t+(Math.cos(i*1.9)*24);ctx.fillStyle=i%3?"#f4a9c5":"#ffd5e3";ctx.beginPath();ctx.arc(x,y,8+(i%3)*2,0,Math.PI*2);ctx.fill();ctx.fillStyle="#f0ca5b";ctx.beginPath();ctx.arc(x,y,2.5,0,Math.PI*2);ctx.fill()}
+}
+function drawTorii(ctx,cx,cy,ww,hh){
+ ctx.fillStyle="#b83931";ctx.fillRect(cx-ww*.32,cy,ww*.07,hh);ctx.fillRect(cx+ww*.25,cy,ww*.07,hh);
+ ctx.fillRect(cx-ww*.48,cy,ww*.96,hh*.09);ctx.fillRect(cx-ww*.40,cy+hh*.12,ww*.80,hh*.06);
+ ctx.fillStyle="#222";ctx.fillRect(cx-ww*.50,cy-hh*.02,ww,hh*.035)
+}
+function drawLantern(ctx,cx,cy,s){ctx.fillStyle="#777268";ctx.fillRect(cx-s*.12,cy,s*.24,s*3.2);ctx.fillRect(cx-s*.5,cy-s*.35,s,s*.55);ctx.fillStyle="#e9ddb8";ctx.fillRect(cx-s*.32,cy-s*.24,s*.64,s*.28)}
+function drawWisteria(ctx,x,y,r,len){for(let i=0;i<7;i++){ctx.fillStyle=i%2?"#b79ae7":"#d2b9f3";ctx.beginPath();ctx.arc(x+Math.sin(i)*r*.5,y+i*len/8,r*(1-i*.07),0,Math.PI*2);ctx.fill()}}
+
+function openSceneFigureLarge(){
+ const item=sceneItemFromId(sceneState.look);
+ if(item)openLookDetail(item.id);
+}
+function loadImg(src){
+ return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=src})
+}
+function downloadCanvas(c,filename){
+ const a=document.createElement("a");a.download=filename;
+ a.href=c.toDataURL("image/png");document.body.appendChild(a);a.click();a.remove();
+}
+async function downloadSceneImage(){
+ const stage=$("sceneStage");if(!stage)return;
+ const c=document.createElement("canvas");c.width=1200;c.height=1500;const ctx=c.getContext("2d");
+ drawSceneArt(ctx,sceneState.bg,c.width,c.height);
+ const item=sceneItemFromId(sceneState.look);
+ if(item){
+   try{const im=await loadImg(assetPath(item.id));ctx.drawImage(im,90,60,1020,1380)}catch(e){}
+ }
+ downloadCanvas(c,`Frieda_${sceneState.bg}.png`);
+}
+async function downloadGroupImage(){
+ const c=document.createElement("canvas");c.width=1200;c.height=1500;const ctx=c.getContext("2d");
+ drawSceneArt(ctx,groupState.bg,c.width,c.height);
+ const slots=[
+   [45,55,500,630],[655,55,500,630],[45,815,500,630],[655,815,500,630]
+ ];
+ for(let i=0;i<4;i++){
+   const id=groupState.looks[i];if(!id)continue;
+   const item=P.frieda.rewards.find(x=>x.id===id);if(!item)continue;
+   try{const im=await loadImg(assetPath(item.id));let [x,y,w,h]=slots[i];ctx.drawImage(im,x,y,w,h)}catch(e){}
+ }
+ downloadCanvas(c,"Frieda_Dream_Team.png");
 }
 
 function chooseSceneLook(id){
@@ -1932,6 +2101,7 @@ function renderGroupMode(){
 
  const scene=FRIEDA_SCENES.find(x=>x.id===groupState.bg)||FRIEDA_SCENES[0];
  back.className=`groupBackdrop ${scene.cls}`;
+ requestAnimationFrame(()=>renderSceneArtCanvas("groupArt",scene.id));
 
  stage.querySelectorAll(".groupFigure").forEach(x=>x.remove());
  groupState.looks.forEach((id,i)=>{
