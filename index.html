@@ -114,7 +114,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .wardThumb img{max-width:100%;max-height:78px;object-fit:contain}
 .wardrobeHint{margin-top:14px;padding:12px;border-radius:16px;background:#f7f2fb;color:#6f6680;font-size:13px;line-height:1.45}
 
-/* V0.22 reward presentation */
+/* V0.23 reward presentation */
 .wardrobeStage{min-height:560px;padding:12px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#f3f1ee,#ffffff 58%,#ece9e4)}
 .wardrobeStage.rarity-base,.previewStage.rarity-base{background:radial-gradient(circle at 50% 16%,#a97f6e 0 9%,transparent 34%),linear-gradient(180deg,#8f695b 0%,#bda89f 45%,#6f6b72 78%,#d9d2d1 100%)}
 .previewStage.rarity-common{background:radial-gradient(circle at 76% 18%,#d7f2e7 0 10%,transparent 32%),radial-gradient(circle at 15% 80%,#dceaf7 0 12%,transparent 34%),linear-gradient(145deg,#eef7f4,#f7fafc 55%,#eef1f7)}
@@ -139,7 +139,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 @media(max-height:750px){.wardrobeStage{min-height:480px}.wardrobeAvatar{height:420px}.wardrobeAvatar img{max-height:410px}.celebrateScene{min-height:56vh}.celebrateScene .assetPreview{min-height:46vh}.celebrateScene .assetPreview img{max-height:46vh}}
 
 
-/* V0.22 tier reveal upgrade */
+/* V0.23 tier reveal upgrade */
 .reveal-common .celebrateCard{animation:rc .35s ease-out}.reveal-common .celebrateScene .assetPreview{animation:rl .42s cubic-bezier(.2,.8,.25,1)}.reveal-common .confetti i:nth-child(n+13){display:none}
 .reveal-rare .celebrateCard{animation:rrc .58s cubic-bezier(.18,.82,.25,1)}.reveal-rare .celebrateScene:before{content:"";position:absolute;inset:-35%;z-index:1;background:conic-gradient(from 0deg,transparent,#ffffffc9,transparent 18%,transparent 55%,#dfe6ffcc,transparent 72%);animation:rrs 1.5s ease-out}.reveal-rare .celebrateScene .assetPreview{animation:rrl .75s cubic-bezier(.16,.84,.22,1)}
 .reveal-epic .celebrateCard{animation:rec .8s cubic-bezier(.16,.84,.2,1)}.reveal-epic .celebrateScene:before,.reveal-epic .celebrateScene:after{content:"";position:absolute;z-index:1;left:50%;top:48%;border-radius:50%;pointer-events:none}.reveal-epic .celebrateScene:before{width:330px;height:330px;margin:-165px;background:radial-gradient(circle,transparent 46%,#fff9 48% 50%,transparent 52%);animation:er 1.45s ease-out}.reveal-epic .celebrateScene:after{width:260px;height:260px;margin:-130px;background:conic-gradient(from 0deg,transparent,#fff9,transparent 18%,transparent 48%,#e5c9ffcc,transparent 60%);animation:es 2.2s ease-out}.reveal-epic .celebrateScene .assetPreview{animation:el .95s cubic-bezier(.13,.85,.18,1)}
@@ -150,7 +150,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 @keyframes lc{0%{transform:scale(.62);opacity:0}42%{transform:scale(1.045);opacity:1}70%{transform:scale(.99)}100%{transform:scale(1)}}@keyframes ll{0%{transform:scale(.38);opacity:0;filter:brightness(2.2) blur(9px)}45%{opacity:1;filter:brightness(1.45) blur(0)}72%{transform:scale(1.075)}100%{transform:scale(1);filter:brightness(1)}}@keyframes ls{0%{transform:rotate(-80deg) scale(.5);opacity:0}30%{opacity:1}100%{transform:rotate(105deg) scale(1.25);opacity:0}}@keyframes lst{0%{transform:scale(.3);opacity:0}45%{opacity:1}100%{transform:scale(1.35);opacity:0}}@keyframes lf{0%{opacity:.95}100%{opacity:0}}
 
 
-/* V0.22 – STUFE 1: Shop-Status klar machen */
+/* V0.23 – STUFE 1: Shop-Status klar machen */
 .shopItem.friedaShopOwned{
   border:2px solid rgba(159,79,181,.24);
   background:linear-gradient(180deg,#fffaff 0%,#f7ebfa 100%);
@@ -200,11 +200,11 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.22 – STUFE 3: Standardlook-Asset-Slot */
+/* V0.23 – STUFE 3: Standardlook-Asset-Slot */
 .friedaStandardAsset{object-fit:contain;object-position:center bottom}
 
 
-/* V0.22 – STUFE 4: Szenenmodus */
+/* V0.23 – STUFE 4: Szenenmodus */
 .scenePanel{display:none}
 .scenePanel.active{display:block}
 .sceneStage{
@@ -311,7 +311,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.22 – STUFE 5: Szenen als Fortschrittsbelohnung */
+/* V0.23 – STUFE 5: Szenen als Fortschrittsbelohnung */
 .sceneChoice.lockedScene{
   position:relative;
   opacity:.62;
@@ -345,7 +345,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.22 – STUFE 6: Zusammenmodus */
+/* V0.23 – STUFE 6: Zusammenmodus */
 .groupPanel{display:none}
 .groupPanel.active{display:block}
 .groupStage{
@@ -422,7 +422,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.22 – Mobile UX correction */
+/* V0.23 – Mobile UX correction */
 .looksCard{padding:16px}
 .lookTabs{display:grid!important;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0 12px}
 .lookTab{min-width:0!important;padding:8px 5px!important;font-size:14px!important;white-space:nowrap}
@@ -475,13 +475,80 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 #rewards.friedaRewards .shopItem:not(.friedaShopOwned) .shopMystery{filter:grayscale(.25);opacity:.78}
 @media(max-width:360px){#rewards.friedaRewards #rewardList{grid-template-columns:1fr}}
 
+
+/* V0.23 – Gruppenmodus iPhone-Stabilität + Szenen-Upgrade */
+.groupFigure{
+  appearance:none!important;-webkit-appearance:none!important;
+  border:0!important;background:transparent!important;
+  padding:0!important;margin:0!important;
+  box-shadow:none!important;border-radius:0!important;
+}
+.groupFigure:focus,.groupFigure:active{background:transparent!important;outline:none!important}
+.groupFigure .assetPreview{background:transparent!important;border:0!important;box-shadow:none!important}
+
+/* richer CSS scenes: no flat three-band placeholder */
+.scene-bg-sakura{
+ background:
+  radial-gradient(circle at 78% 18%,#fff8d5 0 6%,rgba(255,230,202,.7) 7% 12%,transparent 13%),
+  radial-gradient(ellipse at 12% 16%,rgba(255,183,211,.95) 0 8%,transparent 9%),
+  radial-gradient(ellipse at 24% 9%,rgba(255,207,225,.9) 0 10%,transparent 11%),
+  linear-gradient(155deg,transparent 0 49%,rgba(116,142,173,.38) 50% 58%,transparent 59%),
+  linear-gradient(205deg,transparent 0 52%,rgba(93,122,152,.26) 53% 61%,transparent 62%),
+  linear-gradient(180deg,#bfe3ff 0%,#e9dfff 46%,#f7d9df 58%,#94bc93 82%,#6f9d76 100%)!important;
+}
+.scene-bg-sakura:before{
+ content:"🌸  🌸";position:absolute;left:-2%;top:5%;font-size:42px;letter-spacing:10px;
+ transform:rotate(-12deg);opacity:.9;text-shadow:0 4px 12px #fff
+}
+.scene-bg-sakura:after{
+ content:"富士";position:absolute;right:12%;top:34%;font-size:16px;font-weight:900;
+ color:rgba(255,255,255,.78);letter-spacing:.12em
+}
+.scene-bg-neon{
+ background:
+  repeating-linear-gradient(90deg,transparent 0 34px,rgba(76,238,255,.07) 35px 36px),
+  repeating-linear-gradient(0deg,transparent 0 42px,rgba(255,74,203,.06) 43px 44px),
+  radial-gradient(circle at 20% 24%,rgba(39,223,255,.28),transparent 22%),
+  radial-gradient(circle at 82% 28%,rgba(255,42,177,.30),transparent 24%),
+  linear-gradient(180deg,#10152b 0%,#1d163d 60%,#0f172d 100%)!important
+}
+.scene-bg-neon:before{content:"東京  •  NIGHT";position:absolute;left:8%;top:13%;font-weight:950;letter-spacing:.12em;color:#73f7ff;text-shadow:0 0 9px #3be2ff,0 0 20px #3be2ff;font-size:17px}
+.scene-bg-neon:after{content:"✦  ◇  ✦";position:absolute;right:8%;top:29%;color:#ff83db;text-shadow:0 0 10px #ff47c7;font-size:24px;transform:rotate(90deg)}
+.scene-bg-shrine{
+ background:
+  radial-gradient(circle at 70% 18%,rgba(255,250,218,.9) 0 8%,transparent 9%),
+  linear-gradient(160deg,transparent 0 52%,rgba(59,95,66,.25) 53% 65%,transparent 66%),
+  linear-gradient(200deg,transparent 0 53%,rgba(49,83,58,.22) 54% 67%,transparent 68%),
+  linear-gradient(180deg,#d8ecf4 0%,#e9dfcf 57%,#b99b73 72%,#718b65 100%)!important
+}
+.scene-bg-shrine:before{content:"⛩";position:absolute;left:50%;transform:translateX(-50%);top:8%;font-size:118px;filter:drop-shadow(0 8px 4px rgba(70,45,30,.16))}
+.scene-bg-shrine:after{content:"石　灯　籠";position:absolute;left:8%;right:8%;bottom:16%;text-align:center;color:rgba(88,76,61,.6);font-size:18px;letter-spacing:16px}
+.scene-bg-sunset{
+ background:
+  radial-gradient(circle at 74% 24%,#fff4be 0 7%,#ffbb83 8% 13%,transparent 14%),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.18) 0 2px,transparent 3px 18px),
+  linear-gradient(180deg,#ffb5a7 0%,#d78fa5 43%,#557fa5 58%,#3e6e95 75%,#d8b488 76%,#b28d63 100%)!important
+}
+.scene-bg-sunset:before{content:"⌁  ⌁  ⌁";position:absolute;left:6%;right:6%;top:60%;text-align:center;font-size:34px;letter-spacing:8px;color:rgba(255,255,255,.72)}
+.scene-bg-sunset:after{content:"夕暮れ";position:absolute;left:8%;top:15%;font-size:18px;color:rgba(255,255,255,.8);letter-spacing:.25em}
+.scene-bg-wisteria{
+ background:
+  radial-gradient(circle at 73% 18%,rgba(255,255,222,.96) 0 7%,rgba(232,224,255,.3) 8% 14%,transparent 15%),
+  radial-gradient(ellipse at 16% 18%,rgba(157,124,220,.35) 0 12%,transparent 13%),
+  radial-gradient(ellipse at 30% 8%,rgba(179,145,236,.28) 0 11%,transparent 12%),
+  linear-gradient(180deg,#17244b 0%,#30285a 58%,#273c48 78%,#172b36 100%)!important
+}
+.scene-bg-wisteria:before{content:"❀  ❀  ❀";position:absolute;left:2%;top:5%;font-size:31px;line-height:1.5;color:#c8adff;transform:rotate(-7deg);text-shadow:0 0 12px rgba(207,180,255,.55)}
+.scene-bg-wisteria:after{content:"✦   ✧   ✦";position:absolute;right:8%;top:11%;color:#fff7d4;font-size:15px;letter-spacing:9px}
+
+.groupSlotSelect{width:100%;padding:11px 10px;border:1px solid rgba(105,88,115,.22);border-radius:12px;background:#fff;font:inherit;font-size:13px;font-weight:750;color:var(--text)}
 </style>
 </head>
 <body>
-<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.22</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.23</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
 <div class="brandbar">
-  <div class="brand">1×1 Quest <span class="muted">V0.22</span></div>
+  <div class="brand">1×1 Quest <span class="muted">V0.23</span></div>
   <div class="wallet">
     <button id="coinBag" class="coinbag" onclick="showRewards()" aria-label="Münzbeutel">🪙 <span id="coinCount">0</span></button>
     <button id="soundBtn" class="soundbtn" onclick="toggleSound()" aria-label="Ton an oder aus">🔊</button>
@@ -622,7 +689,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
         <div id="groupBackdrop" class="groupBackdrop scene-bg-sakura"></div>
         <div id="groupInfo" class="groupInfo">Tippe eine Figur an, um sie hervorzuheben.</div>
       </div>
-      <div class="groupActions"><button class="btn" onclick="clearGroupFocus()">Gesamtgruppe anzeigen</button></div>
+      <div class="groupActions"><button type="button" class="btn" onclick="clearGroupFocus();return false">Gesamtgruppe anzeigen</button></div>
       <div><div class="sceneControlTitle">Hintergrund</div><div id="groupSceneChooser" class="groupSceneChooser"></div></div>
       <div style="margin-top:14px"><div class="sceneControlTitle">Figurenplätze</div><div id="groupSlots" class="groupSlots"></div></div>
     </div>
@@ -1267,8 +1334,8 @@ function checkCoreFact(){
  }
 }
 function finishCoreFacts(abort){
- if(!coreRound){show("learn");return}
- if(abort){coreRound=null;show("learn");return}
+ if(!coreRound){openLearn();show("learnSelect");return}
+ if(abort){coreRound=null;openLearn();show("learnSelect");return}
  // Requeue missed facts once at the end, if there were any and the round remains short.
  if(coreRound.wrong.length && !coreRound.didRetry){
   coreRound.didRetry=true;
@@ -1699,10 +1766,10 @@ function showLookGallery(){
 
 const FRIEDA_SCENES=[
  {id:"sakura",name:"🌸 Kirschblütengarten",cls:"scene-bg-sakura",need:0},
- {id:"neon",name:"🌃 Neo Tokyo bei Nacht",cls:"scene-bg-neon",need:1},
- {id:"shrine",name:"⛩ Japanischer Schrein",cls:"scene-bg-shrine",need:2},
- {id:"sunset",name:"🌅 Meeresküste bei Sonnenuntergang",cls:"scene-bg-sunset",need:3},
- {id:"wisteria",name:"🌙 Mondlicht & Blauregen",cls:"scene-bg-wisteria",need:4}
+ {id:"neon",name:"🌃 Neo Tokyo bei Nacht",cls:"scene-bg-neon",need:0},
+ {id:"shrine",name:"⛩ Japanischer Schrein",cls:"scene-bg-shrine",need:0},
+ {id:"sunset",name:"🌅 Meeresküste bei Sonnenuntergang",cls:"scene-bg-sunset",need:0},
+ {id:"wisteria",name:"🌙 Mondlicht & Blauregen",cls:"scene-bg-wisteria",need:0}
 ];
 
 let sceneState={look:"standard",bg:"sakura"};
@@ -1810,9 +1877,7 @@ function renderSceneMode(){
  if(note){
    const goal=nextSceneGoal();
    const masteredCount=(st.mastered||[]).length;
-   note.innerHTML=goal
-     ?`🌟 <b>${st.sceneUnlocks.length} von ${FRIEDA_SCENES.length} Szenen freigeschaltet.</b><br>Als Nächstes: ${goal.name} bei ${goal.need} gemeisterten ${goal.need===1?"Reihe":"Reihen"}. Aktuell: ${masteredCount}.`
-     :`👑 <b>Alle Szenen freigeschaltet!</b> Du kannst jeden Hintergrund mit jedem gekauften Look kombinieren.`;
+   note.innerHTML=`🧪 <b>Testphase: Alle 5 Szenen sind freigeschaltet.</b><br>So kannst du die Hintergründe sofort vergleichen, ohne erst viele Aufgaben rechnen zu müssen.`;
  }
 }
 
@@ -1910,23 +1975,15 @@ function renderGroupSceneChooser(){
 function renderGroupSlots(){
  const root=$("groupSlots");if(!root)return;
  const owned=P.frieda.rewards.filter(x=>st.owned.includes(x.id));
- const options=owned.map(x=>({id:x.id,name:x.name,rarity:x.rarity||"Gewöhnlich",item:x}));
+ const options=owned.map(x=>({id:x.id,name:x.name,rarity:x.rarity||"Gewöhnlich"}));
 
  root.innerHTML=groupState.looks.map((current,slot)=>{
+   const opts=[`<option value="">— Platz leer —</option>`]
+     .concat(options.map(opt=>`<option value="${opt.id}" ${current===opt.id?"selected":""}>${opt.name} · ${opt.rarity}</option>`))
+     .join("");
    return `<div class="groupSlotCard">
      <div class="groupSlotTitle">Platz ${slot+1}</div>
-     <div class="groupPicker">
-       <button class="groupPick ${current===null?"active":""}" onclick="setGroupSlot(${slot},null)">
-         <span>＋</span><span>Platz leer lassen</span>
-       </button>
-       ${options.map(opt=>{
-         const thumb=rewardVisual(opt.item,"thumb");
-         return `<button class="groupPick ${current===opt.id?"active":""}" onclick="setGroupSlot(${slot},'${opt.id}')">
-           <span class="groupPickThumb">${thumb}</span>
-           <span>${opt.name}<small style="display:block;color:#77717d">${opt.rarity}</small></span>
-         </button>`;
-       }).join("")}
-     </div>
+     <select class="groupSlotSelect" onchange="setGroupSlot(${slot},this.value||null)">${opts}</select>
    </div>`;
  }).join("");
 }
@@ -1952,15 +2009,28 @@ function chooseGroupBackground(id){
  renderGroupMode();
 }
 
+function updateGroupFocusOnly(){
+ const stage=$("groupStage"),info=$("groupInfo");if(!stage)return;
+ stage.classList.toggle("focusMode",groupState.focus!==null);
+ stage.querySelectorAll(".groupFigure").forEach((fig,i)=>fig.classList.toggle("focused",groupState.focus===i));
+ if(info){
+   if(groupState.focus===null){
+     const count=groupState.looks.filter(Boolean).length;
+     info.innerHTML=`👥 <b>Dream Team: ${count} ${count===1?"Figur":"Figuren"}</b><small>Tippe eine Figur an, um sie groß hervorzuheben.</small>`;
+   }else{
+     const label=groupLabelFor(groupState.looks[groupState.focus]);
+     info.innerHTML=`<b>${label.name}</b><small>${label.rarity} · Tippe „Gesamtgruppe anzeigen“, um zurückzugehen.</small>`;
+   }
+ }
+}
 function focusGroupFigure(slot){
  if(!groupState.looks[slot])return;
  groupState.focus=groupState.focus===slot?null:slot;
- renderGroupMode();
+ updateGroupFocusOnly();
 }
-
 function clearGroupFocus(){
  groupState.focus=null;
- renderGroupMode();
+ updateGroupFocusOnly();
 }
 
 function openLookDetail(id){
