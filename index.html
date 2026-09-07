@@ -114,7 +114,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .wardThumb img{max-width:100%;max-height:78px;object-fit:contain}
 .wardrobeHint{margin-top:14px;padding:12px;border-radius:16px;background:#f7f2fb;color:#6f6680;font-size:13px;line-height:1.45}
 
-/* V0.21 reward presentation */
+/* V0.22 reward presentation */
 .wardrobeStage{min-height:560px;padding:12px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#f3f1ee,#ffffff 58%,#ece9e4)}
 .wardrobeStage.rarity-base,.previewStage.rarity-base{background:radial-gradient(circle at 50% 16%,#a97f6e 0 9%,transparent 34%),linear-gradient(180deg,#8f695b 0%,#bda89f 45%,#6f6b72 78%,#d9d2d1 100%)}
 .previewStage.rarity-common{background:radial-gradient(circle at 76% 18%,#d7f2e7 0 10%,transparent 32%),radial-gradient(circle at 15% 80%,#dceaf7 0 12%,transparent 34%),linear-gradient(145deg,#eef7f4,#f7fafc 55%,#eef1f7)}
@@ -139,7 +139,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 @media(max-height:750px){.wardrobeStage{min-height:480px}.wardrobeAvatar{height:420px}.wardrobeAvatar img{max-height:410px}.celebrateScene{min-height:56vh}.celebrateScene .assetPreview{min-height:46vh}.celebrateScene .assetPreview img{max-height:46vh}}
 
 
-/* V0.21 tier reveal upgrade */
+/* V0.22 tier reveal upgrade */
 .reveal-common .celebrateCard{animation:rc .35s ease-out}.reveal-common .celebrateScene .assetPreview{animation:rl .42s cubic-bezier(.2,.8,.25,1)}.reveal-common .confetti i:nth-child(n+13){display:none}
 .reveal-rare .celebrateCard{animation:rrc .58s cubic-bezier(.18,.82,.25,1)}.reveal-rare .celebrateScene:before{content:"";position:absolute;inset:-35%;z-index:1;background:conic-gradient(from 0deg,transparent,#ffffffc9,transparent 18%,transparent 55%,#dfe6ffcc,transparent 72%);animation:rrs 1.5s ease-out}.reveal-rare .celebrateScene .assetPreview{animation:rrl .75s cubic-bezier(.16,.84,.22,1)}
 .reveal-epic .celebrateCard{animation:rec .8s cubic-bezier(.16,.84,.2,1)}.reveal-epic .celebrateScene:before,.reveal-epic .celebrateScene:after{content:"";position:absolute;z-index:1;left:50%;top:48%;border-radius:50%;pointer-events:none}.reveal-epic .celebrateScene:before{width:330px;height:330px;margin:-165px;background:radial-gradient(circle,transparent 46%,#fff9 48% 50%,transparent 52%);animation:er 1.45s ease-out}.reveal-epic .celebrateScene:after{width:260px;height:260px;margin:-130px;background:conic-gradient(from 0deg,transparent,#fff9,transparent 18%,transparent 48%,#e5c9ffcc,transparent 60%);animation:es 2.2s ease-out}.reveal-epic .celebrateScene .assetPreview{animation:el .95s cubic-bezier(.13,.85,.18,1)}
@@ -150,7 +150,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 @keyframes lc{0%{transform:scale(.62);opacity:0}42%{transform:scale(1.045);opacity:1}70%{transform:scale(.99)}100%{transform:scale(1)}}@keyframes ll{0%{transform:scale(.38);opacity:0;filter:brightness(2.2) blur(9px)}45%{opacity:1;filter:brightness(1.45) blur(0)}72%{transform:scale(1.075)}100%{transform:scale(1);filter:brightness(1)}}@keyframes ls{0%{transform:rotate(-80deg) scale(.5);opacity:0}30%{opacity:1}100%{transform:rotate(105deg) scale(1.25);opacity:0}}@keyframes lst{0%{transform:scale(.3);opacity:0}45%{opacity:1}100%{transform:scale(1.35);opacity:0}}@keyframes lf{0%{opacity:.95}100%{opacity:0}}
 
 
-/* V0.21 – STUFE 1: Shop-Status klar machen */
+/* V0.22 – STUFE 1: Shop-Status klar machen */
 .shopItem.friedaShopOwned{
   border:2px solid rgba(159,79,181,.24);
   background:linear-gradient(180deg,#fffaff 0%,#f7ebfa 100%);
@@ -200,11 +200,11 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.21 – STUFE 3: Standardlook-Asset-Slot */
+/* V0.22 – STUFE 3: Standardlook-Asset-Slot */
 .friedaStandardAsset{object-fit:contain;object-position:center bottom}
 
 
-/* V0.21 – STUFE 4: Szenenmodus */
+/* V0.22 – STUFE 4: Szenenmodus */
 .scenePanel{display:none}
 .scenePanel.active{display:block}
 .sceneStage{
@@ -311,7 +311,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.21 – STUFE 5: Szenen als Fortschrittsbelohnung */
+/* V0.22 – STUFE 5: Szenen als Fortschrittsbelohnung */
 .sceneChoice.lockedScene{
   position:relative;
   opacity:.62;
@@ -345,7 +345,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 
 
-/* V0.21 – STUFE 6: Zusammenmodus */
+/* V0.22 – STUFE 6: Zusammenmodus */
 .groupPanel{display:none}
 .groupPanel.active{display:block}
 .groupStage{
@@ -421,13 +421,67 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
   .groupFigure.slot2,.groupFigure.slot3{width:34%;height:52%}
 }
 
+
+/* V0.22 – Mobile UX correction */
+.looksCard{padding:16px}
+.lookTabs{display:grid!important;grid-template-columns:repeat(3,1fr);gap:6px;margin:8px 0 12px}
+.lookTab{min-width:0!important;padding:8px 5px!important;font-size:14px!important;white-space:nowrap}
+.lookGalleryGrid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px!important}
+.lookGalleryCard{padding:6px!important;border-radius:14px!important;min-width:0}
+.lookGalleryImage{height:128px!important;min-height:128px!important;border-radius:11px!important}
+.lookGalleryImage .assetPreview{min-height:0!important;height:100%!important;background:transparent!important;border-radius:0!important}
+.lookGalleryImage img{height:100%!important;max-height:none!important;width:100%!important;object-fit:contain!important}
+.lookGalleryName{font-size:11px!important;line-height:1.12!important;margin-top:5px!important;min-height:25px}
+.lookGalleryRarity{font-size:9px!important}
+.lookGalleryActive{font-size:8px!important;padding:3px 5px!important}
+@media(max-width:370px){.lookGalleryGrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+
+.sceneStage,.groupStage{background:#eaf0f4}
+.sceneCharacter{padding:2% 4% 0!important}
+.sceneCharacter .assetPreview,.groupFigure .assetPreview{background:transparent!important;min-height:0!important;border-radius:0!important;overflow:visible!important}
+.sceneCharacter img{max-height:none!important;max-width:none!important}
+.sceneName{bottom:8px!important}
+.sceneChooser{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+.sceneLookChoice{padding:6px!important;min-height:54px!important;font-size:12px}
+.sceneLookChoice .miniThumb{width:38px!important;height:48px!important}
+.sceneChoice{padding:8px!important;min-height:52px!important;font-size:12px}
+
+/* Frieda shop: compact, scannable, owned cards unmistakable */
+#rewards.friedaRewards #collectionBox{display:none}
+#rewards.friedaRewards #rewardList{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+#rewards.friedaRewards .shopItem{margin:0!important;padding:10px!important;border-radius:16px!important;min-width:0;position:relative;overflow:hidden}
+#rewards.friedaRewards .shopTop{gap:7px!important;align-items:flex-start}
+#rewards.friedaRewards .shopIcon{min-width:38px!important;font-size:29px!important}
+#rewards.friedaRewards .shopMystery{width:38px!important;height:38px!important;min-height:38px!important;font-size:24px!important}
+#rewards.friedaRewards .shopInfo{font-size:12px}
+#rewards.friedaRewards .shopInfo b{font-size:14px;line-height:1.1;display:block}
+#rewards.friedaRewards .shopItem .btn{padding:8px 6px!important;margin-top:7px!important;font-size:12px!important}
+#rewards.friedaRewards .friedaShopStatus{font-size:9px!important;padding:4px 6px!important;margin-top:5px!important}
+#rewards.friedaRewards .friedaShopSubstatus{font-size:10px!important;line-height:1.15;margin-top:4px!important}
+#rewards.friedaRewards .shopItem.friedaShopOwned{
+  border:3px solid #9f4fb5!important;
+  background:linear-gradient(145deg,#f2dafa,#fff 70%)!important;
+  box-shadow:0 6px 16px rgba(159,79,181,.18)!important;
+}
+#rewards.friedaRewards .shopItem.friedaShopOwned:before{
+  content:"✓ GEKAUFT";position:absolute;right:-25px;top:11px;transform:rotate(36deg);
+  background:#8f3da6;color:white;font-size:8px;font-weight:950;letter-spacing:.04em;
+  padding:4px 27px;z-index:3
+}
+#rewards.friedaRewards .shopItem.friedaShopActive{
+  border-color:#5f2471!important;box-shadow:0 0 0 3px rgba(159,79,181,.18),0 7px 18px rgba(95,36,113,.22)!important
+}
+#rewards.friedaRewards .shopItem:not(.friedaShopOwned){background:#fff!important;border:1px solid #ddd9e2!important}
+#rewards.friedaRewards .shopItem:not(.friedaShopOwned) .shopMystery{filter:grayscale(.25);opacity:.78}
+@media(max-width:360px){#rewards.friedaRewards #rewardList{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
-<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.21</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.22</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
 <div class="brandbar">
-  <div class="brand">1×1 Quest <span class="muted">V0.21</span></div>
+  <div class="brand">1×1 Quest <span class="muted">V0.22</span></div>
   <div class="wallet">
     <button id="coinBag" class="coinbag" onclick="showRewards()" aria-label="Münzbeutel">🪙 <span id="coinCount">0</span></button>
     <button id="soundBtn" class="soundbtn" onclick="toggleSound()" aria-label="Ton an oder aus">🔊</button>
@@ -532,15 +586,11 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 
 <section id="wardrobe" class="hidden">
-  <div class="card">
+  <div class="card looksCard">
     <div class="topline">
-      <div>
-        <h2 style="margin-bottom:2px">👗 Meine Looks</h2>
-        <div class="muted">Deine freigeschaltete Manga-Sammlung</div>
-      </div>
+      <div><h2 style="margin-bottom:2px">👗 Meine Looks</h2><div class="muted">Deine freigeschaltete Manga-Sammlung</div></div>
       <button class="btn back" onclick="showRewards()">←</button>
     </div>
-
     <div class="lookTabs" aria-label="Ansichten der Sammlung">
       <button class="lookTab active" id="lookTabGallery" onclick="showLookGallery()">▦ Galerie</button>
       <button class="lookTab" id="lookTabScene" onclick="showSceneMode()">🖼 Szene</button>
@@ -548,52 +598,33 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
     </div>
 
     <div id="lookGalleryView" class="scenePanel active">
-      <div class="lookSectionHint">Tippe eine Figur an, um sie groß anzusehen oder anzuziehen.</div>
+      <div class="lookSectionHint">Deine Looks auf einen Blick. Tippe zum Vergrößern.</div>
       <div id="lookGalleryGrid" class="lookGalleryGrid"></div>
     </div>
 
     <div id="lookSceneView" class="scenePanel">
-      <div class="lookSectionHint">Wähle einen gekauften Look und platziere ihn in einer Szene.</div>
+      <div class="lookSectionHint">Wähle einen Look und eine freigeschaltete Szene.</div>
       <div id="sceneUnlockNotice" class="sceneUnlockNotice"></div>
       <div class="sceneStage" id="sceneStage">
         <div id="sceneBackdrop" class="sceneBackdrop scene-bg-sakura"></div>
         <div id="sceneCharacter" class="sceneCharacter"></div>
         <div id="sceneName" class="sceneName"></div>
       </div>
-
       <div class="sceneControls">
-        <div>
-          <div class="sceneControlTitle">1. Figur auswählen</div>
-          <div id="sceneLookChooser" class="sceneChooser"></div>
-        </div>
-        <div>
-          <div class="sceneControlTitle">2. Hintergrund auswählen</div>
-          <div id="sceneBgChooser" class="sceneChooser"></div>
-        </div>
+        <div><div class="sceneControlTitle">1. Figur auswählen</div><div id="sceneLookChooser" class="sceneChooser"></div></div>
+        <div><div class="sceneControlTitle">2. Hintergrund auswählen</div><div id="sceneBgChooser" class="sceneChooser"></div></div>
+      </div>
+    </div>
 
     <div id="lookGroupView" class="groupPanel">
-      <div class="lookSectionHint">Stelle dein Frieda Dream Team aus bis zu vier gesammelten Looks zusammen.</div>
-
+      <div class="lookSectionHint">Stelle dein Dream Team aus bis zu vier gesammelten Looks zusammen.</div>
       <div id="groupStage" class="groupStage">
         <div id="groupBackdrop" class="groupBackdrop scene-bg-sakura"></div>
         <div id="groupInfo" class="groupInfo">Tippe eine Figur an, um sie hervorzuheben.</div>
       </div>
-
-      <div class="groupActions">
-        <button class="btn" onclick="clearGroupFocus()">Gesamtgruppe anzeigen</button>
-      </div>
-
-      <div>
-        <div class="sceneControlTitle">Hintergrund</div>
-        <div id="groupSceneChooser" class="groupSceneChooser"></div>
-      </div>
-
-      <div style="margin-top:14px">
-        <div class="sceneControlTitle">Figurenplätze</div>
-        <div id="groupSlots" class="groupSlots"></div>
-      </div>
-    </div>
-      </div>
+      <div class="groupActions"><button class="btn" onclick="clearGroupFocus()">Gesamtgruppe anzeigen</button></div>
+      <div><div class="sceneControlTitle">Hintergrund</div><div id="groupSceneChooser" class="groupSceneChooser"></div></div>
+      <div style="margin-top:14px"><div class="sceneControlTitle">Figurenplätze</div><div id="groupSlots" class="groupSlots"></div></div>
     </div>
   </div>
 </section>
@@ -1735,6 +1766,8 @@ function sceneItemFromId(id){
 
 function renderSceneMode(){
  const char=$("sceneCharacter"),name=$("sceneName"),back=$("sceneBackdrop");
+ const ownedSceneLooks=P.frieda.rewards.filter(x=>st.owned.includes(x.id));
+ if(sceneState.look==="standard"&&ownedSceneLooks.length)sceneState.look=ownedSceneLooks[0].id;
  const item=sceneItemFromId(sceneState.look);
  const visual=item?rewardVisual(item,"large"):standardGalleryVisual();
 
@@ -1745,7 +1778,7 @@ function renderSceneMode(){
  if(back)back.className=`sceneBackdrop ${scene.cls}`;
 
  const owned=P.frieda.rewards.filter(x=>st.owned.includes(x.id));
- const looks=[null,...owned];
+ const looks=owned.length?owned:[null];
  const chooser=$("sceneLookChooser");
  if(chooser){
    chooser.innerHTML=looks.map(x=>{
@@ -1797,7 +1830,7 @@ function chooseSceneBackground(id){
 }
 
 
-let groupState={looks:["standard",null,null,null],bg:"sakura",focus:null};
+let groupState={looks:[null,null,null,null],bg:"sakura",focus:null};
 
 function showGroupMode(){
  if(prof!=="frieda")return;
@@ -1806,7 +1839,10 @@ function showGroupMode(){
  activateLookTab("group");
  const validOwned=id=>id==="standard"||st.owned.includes(id);
  groupState.looks=groupState.looks.map(id=>id&&validOwned(id)?id:null);
- if(!groupState.looks.some(Boolean))groupState.looks[0]="standard";
+ if(!groupState.looks.some(Boolean)){
+   const first=P.frieda.rewards.find(x=>st.owned.includes(x.id));
+   if(first)groupState.looks[0]=first.id;
+ }
  if(!isSceneUnlocked(groupState.bg))groupState.bg="sakura";
  renderGroupMode();
 }
@@ -1874,7 +1910,7 @@ function renderGroupSceneChooser(){
 function renderGroupSlots(){
  const root=$("groupSlots");if(!root)return;
  const owned=P.frieda.rewards.filter(x=>st.owned.includes(x.id));
- const options=[{id:"standard",name:"Standardlook",rarity:"Basis"},...owned.map(x=>({id:x.id,name:x.name,rarity:x.rarity||"Gewöhnlich",item:x}))];
+ const options=owned.map(x=>({id:x.id,name:x.name,rarity:x.rarity||"Gewöhnlich",item:x}));
 
  root.innerHTML=groupState.looks.map((current,slot)=>{
    return `<div class="groupSlotCard">
@@ -1884,7 +1920,7 @@ function renderGroupSlots(){
          <span>＋</span><span>Platz leer lassen</span>
        </button>
        ${options.map(opt=>{
-         const thumb=opt.id==="standard"?standardGalleryVisual():rewardVisual(opt.item,"thumb");
+         const thumb=rewardVisual(opt.item,"thumb");
          return `<button class="groupPick ${current===opt.id?"active":""}" onclick="setGroupSlot(${slot},'${opt.id}')">
            <span class="groupPickThumb">${thumb}</span>
            <span>${opt.name}<small style="display:block;color:#77717d">${opt.rarity}</small></span>
@@ -2010,7 +2046,9 @@ function showRewards(){
  migrateFriedaLegacyVisuals();
  if(!prof||!st)return;
  normalizeRewardState();updateWallet();
- $("collectionBox").innerHTML=collectionPreview();
+ const rewardsSection=$("rewards");
+ if(rewardsSection)rewardsSection.classList.toggle("friedaRewards",prof==="frieda");
+ $("collectionBox").innerHTML=prof==="frieda"?"":collectionPreview();
 
  $("rewardList").innerHTML=P[prof].rewards.map(x=>{
   let owned=st.owned.includes(x.id),
@@ -2029,7 +2067,7 @@ function showRewards(){
     }else if(owned){
       statusHtml=`<div class="friedaShopStatus owned">✓ IN SAMMLUNG</div>`;
     }else{
-      statusHtml=`<div class="friedaShopStatus notOwned">Noch nicht in deiner Sammlung</div>`;
+      statusHtml=`<div class="friedaShopStatus notOwned">Noch nicht gekauft</div>`;
     }
 
     let substatus="";
