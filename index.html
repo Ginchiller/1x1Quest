@@ -114,7 +114,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .wardThumb img{max-width:100%;max-height:78px;object-fit:contain}
 .wardrobeHint{margin-top:14px;padding:12px;border-radius:16px;background:#f7f2fb;color:#6f6680;font-size:13px;line-height:1.45}
 
-/* V0.15.1 TEST reward presentation */
+/* V0.21 reward presentation */
 .wardrobeStage{min-height:560px;padding:12px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#f3f1ee,#ffffff 58%,#ece9e4)}
 .wardrobeStage.rarity-base,.previewStage.rarity-base{background:radial-gradient(circle at 50% 16%,#a97f6e 0 9%,transparent 34%),linear-gradient(180deg,#8f695b 0%,#bda89f 45%,#6f6b72 78%,#d9d2d1 100%)}
 .previewStage.rarity-common{background:radial-gradient(circle at 76% 18%,#d7f2e7 0 10%,transparent 32%),radial-gradient(circle at 15% 80%,#dceaf7 0 12%,transparent 34%),linear-gradient(145deg,#eef7f4,#f7fafc 55%,#eef1f7)}
@@ -139,7 +139,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 @media(max-height:750px){.wardrobeStage{min-height:480px}.wardrobeAvatar{height:420px}.wardrobeAvatar img{max-height:410px}.celebrateScene{min-height:56vh}.celebrateScene .assetPreview{min-height:46vh}.celebrateScene .assetPreview img{max-height:46vh}}
 
 
-/* V0.15.1 TEST tier reveal upgrade */
+/* V0.21 tier reveal upgrade */
 .reveal-common .celebrateCard{animation:rc .35s ease-out}.reveal-common .celebrateScene .assetPreview{animation:rl .42s cubic-bezier(.2,.8,.25,1)}.reveal-common .confetti i:nth-child(n+13){display:none}
 .reveal-rare .celebrateCard{animation:rrc .58s cubic-bezier(.18,.82,.25,1)}.reveal-rare .celebrateScene:before{content:"";position:absolute;inset:-35%;z-index:1;background:conic-gradient(from 0deg,transparent,#ffffffc9,transparent 18%,transparent 55%,#dfe6ffcc,transparent 72%);animation:rrs 1.5s ease-out}.reveal-rare .celebrateScene .assetPreview{animation:rrl .75s cubic-bezier(.16,.84,.22,1)}
 .reveal-epic .celebrateCard{animation:rec .8s cubic-bezier(.16,.84,.2,1)}.reveal-epic .celebrateScene:before,.reveal-epic .celebrateScene:after{content:"";position:absolute;z-index:1;left:50%;top:48%;border-radius:50%;pointer-events:none}.reveal-epic .celebrateScene:before{width:330px;height:330px;margin:-165px;background:radial-gradient(circle,transparent 46%,#fff9 48% 50%,transparent 52%);animation:er 1.45s ease-out}.reveal-epic .celebrateScene:after{width:260px;height:260px;margin:-130px;background:conic-gradient(from 0deg,transparent,#fff9,transparent 18%,transparent 48%,#e5c9ffcc,transparent 60%);animation:es 2.2s ease-out}.reveal-epic .celebrateScene .assetPreview{animation:el .95s cubic-bezier(.13,.85,.18,1)}
@@ -149,13 +149,285 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 @keyframes rec{0%{transform:scale(.78);opacity:0}55%{transform:scale(1.035)}100%{transform:scale(1);opacity:1}}@keyframes er{0%{transform:scale(.25);opacity:0}35%{opacity:1}100%{transform:scale(1.7);opacity:0}}@keyframes es{0%{transform:scale(.45) rotate(-80deg);opacity:0}40%{opacity:.9}100%{transform:scale(1.35) rotate(70deg);opacity:0}}@keyframes el{0%{transform:scale(.55) translateY(20px);opacity:0;filter:blur(7px)}55%{opacity:1;filter:blur(0)}75%{transform:scale(1.06)}100%{transform:scale(1)}}
 @keyframes lc{0%{transform:scale(.62);opacity:0}42%{transform:scale(1.045);opacity:1}70%{transform:scale(.99)}100%{transform:scale(1)}}@keyframes ll{0%{transform:scale(.38);opacity:0;filter:brightness(2.2) blur(9px)}45%{opacity:1;filter:brightness(1.45) blur(0)}72%{transform:scale(1.075)}100%{transform:scale(1);filter:brightness(1)}}@keyframes ls{0%{transform:rotate(-80deg) scale(.5);opacity:0}30%{opacity:1}100%{transform:rotate(105deg) scale(1.25);opacity:0}}@keyframes lst{0%{transform:scale(.3);opacity:0}45%{opacity:1}100%{transform:scale(1.35);opacity:0}}@keyframes lf{0%{opacity:.95}100%{opacity:0}}
 
+
+/* V0.21 – STUFE 1: Shop-Status klar machen */
+.shopItem.friedaShopOwned{
+  border:2px solid rgba(159,79,181,.24);
+  background:linear-gradient(180deg,#fffaff 0%,#f7ebfa 100%);
+}
+.shopItem.friedaShopOwned.rarity-rare{
+  border-color:rgba(87,132,199,.30);
+  background:linear-gradient(180deg,#fbfdff 0%,#edf4ff 100%);
+}
+.shopItem.friedaShopOwned.rarity-epic{
+  border-color:rgba(139,83,195,.38);
+  background:linear-gradient(180deg,#fdfaff 0%,#eee4fb 100%);
+}
+.shopItem.friedaShopOwned.rarity-legendary{
+  border-color:rgba(190,145,38,.52);
+  background:linear-gradient(180deg,#fffdf4 0%,#fff0c9 100%);
+  box-shadow:0 8px 26px rgba(178,132,24,.12);
+}
+.shopItem.friedaShopActive{
+  border:3px solid #9f4fb5 !important;
+  box-shadow:0 0 0 4px rgba(159,79,181,.11),0 10px 28px rgba(159,79,181,.17);
+}
+.friedaShopStatus{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  margin-top:7px;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  line-height:1;
+  font-weight:900;
+  letter-spacing:.045em;
+}
+.friedaShopStatus.owned{background:#ead9f0;color:#6f2e82}
+.friedaShopStatus.active{background:#9f4fb5;color:#fff}
+.friedaShopStatus.notOwned{background:#f0eef2;color:#66616a}
+.friedaShopSubstatus{font-size:13px;color:#77717d;margin-top:7px;line-height:1.28}
+.shopItem.friedaShopActive .btn.standardReturn{
+  background:#fff;
+  color:#78368b;
+  border:2px solid rgba(159,79,181,.32);
+}
+@media(max-width:520px){
+  .friedaShopStatus{font-size:11px;padding:6px 9px}
+  .friedaShopSubstatus{font-size:12px}
+  .shopItem .btn{min-height:48px}
+}
+
+
+/* V0.21 – STUFE 3: Standardlook-Asset-Slot */
+.friedaStandardAsset{object-fit:contain;object-position:center bottom}
+
+
+/* V0.21 – STUFE 4: Szenenmodus */
+.scenePanel{display:none}
+.scenePanel.active{display:block}
+.sceneStage{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
+  border-radius:22px;
+  overflow:hidden;
+  margin:10px 0 14px;
+  box-shadow:0 12px 30px rgba(40,28,50,.14);
+  background:#eee;
+}
+.sceneBackdrop{position:absolute;inset:0}
+.sceneCharacter{
+  position:absolute;inset:0;
+  display:flex;align-items:flex-end;justify-content:center;
+  pointer-events:none;
+  padding:4% 7% 1%;
+}
+.sceneCharacter .assetPreview{width:100%;height:100%;display:flex;align-items:flex-end;justify-content:center}
+.sceneCharacter img{
+  width:100%;height:100%;object-fit:contain;object-position:center bottom;
+  filter:drop-shadow(0 8px 12px rgba(0,0,0,.18));
+}
+.sceneName{
+  position:absolute;left:12px;right:12px;bottom:10px;
+  z-index:4;text-align:center;
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(7px);
+  border-radius:14px;padding:7px 10px;
+  font-size:13px;font-weight:900;
+}
+.sceneControls{display:grid;gap:14px}
+.sceneControlTitle{font-weight:900;margin-bottom:8px}
+.sceneChooser{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;
+}
+.sceneChoice,.sceneLookChoice{
+  border:1px solid rgba(105,88,115,.18);
+  border-radius:16px;background:#fff;
+  padding:10px;min-height:64px;
+  font-weight:800;text-align:left;
+}
+.sceneChoice.active,.sceneLookChoice.active{
+  border:2px solid #9f4fb5;
+  box-shadow:0 0 0 3px rgba(159,79,181,.10);
+}
+.sceneLookChoice{
+  display:flex;align-items:center;gap:9px;
+}
+.sceneLookChoice .miniThumb{
+  width:48px;height:58px;border-radius:11px;overflow:hidden;
+  display:flex;align-items:flex-end;justify-content:center;
+  background:#f6eff7;flex:0 0 auto;
+}
+.sceneLookChoice .miniThumb img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+
+/* temporary CSS scene art – stable asset slots can replace these later */
+.scene-bg-sakura{
+  background:
+   radial-gradient(circle at 18% 16%,rgba(255,255,255,.85) 0 5%,transparent 6%),
+   radial-gradient(circle at 78% 18%,rgba(255,231,239,.95) 0 7%,transparent 8%),
+   linear-gradient(180deg,#d9edff 0 45%,#f7d7e2 46% 66%,#8fc49a 67% 100%);
+}
+.scene-bg-sakura:before{content:"🌸";position:absolute;left:7%;top:8%;font-size:44px;opacity:.75}
+.scene-bg-sakura:after{content:"🌸  🌸";position:absolute;right:6%;top:22%;font-size:30px;opacity:.55}
+
+.scene-bg-neon{
+  background:
+    linear-gradient(90deg,transparent 0 12%,rgba(54,234,255,.17) 13% 14%,transparent 15% 39%,rgba(255,58,194,.18) 40% 42%,transparent 43%),
+    linear-gradient(180deg,#101226 0 62%,#232040 63% 100%);
+}
+.scene-bg-neon:before{content:"TOKYO  •  1×1";position:absolute;left:8%;top:16%;font-weight:900;letter-spacing:.12em;color:#72f5ff;text-shadow:0 0 12px #37d9ff;font-size:18px}
+.scene-bg-neon:after{content:"✦";position:absolute;right:12%;top:11%;font-size:42px;color:#ff8bdd;text-shadow:0 0 18px #ff47c7}
+
+.scene-bg-shrine{
+  background:linear-gradient(180deg,#dcefff 0 56%,#d8c69c 57% 68%,#8eae77 69% 100%);
+}
+.scene-bg-shrine:before{
+  content:"⛩";position:absolute;left:50%;transform:translateX(-50%);
+  top:6%;font-size:115px;opacity:.88
+}
+.scene-bg-shrine:after{content:"";position:absolute;left:49%;top:43%;width:2%;height:43%;background:rgba(172,132,75,.45)}
+
+.scene-bg-sunset{
+  background:
+    radial-gradient(circle at 72% 26%,#fff2b5 0 8%,#ffb781 9% 16%,transparent 17%),
+    linear-gradient(180deg,#ffb69c 0 40%,#e88ca0 41% 55%,#547fa7 56% 77%,#e6c79d 78% 100%);
+}
+.scene-bg-sunset:before{content:"≈  ≈  ≈";position:absolute;left:10%;right:10%;top:61%;text-align:center;font-size:34px;letter-spacing:10px;color:rgba(255,255,255,.68)}
+
+.scene-bg-wisteria{
+  background:
+   radial-gradient(circle at 70% 18%,rgba(255,255,222,.92) 0 8%,transparent 9%),
+   linear-gradient(180deg,#1a244d 0 58%,#322d59 59% 72%,#253849 73% 100%);
+}
+.scene-bg-wisteria:before{content:"✦  ✧  ✦";position:absolute;left:8%;top:8%;color:#fff9d8;font-size:18px;letter-spacing:12px}
+.scene-bg-wisteria:after{content:"❀ ❀ ❀";position:absolute;right:4%;top:17%;color:#cab1ff;font-size:34px;transform:rotate(90deg);opacity:.8}
+
+@media(max-width:430px){
+  .sceneChooser{grid-template-columns:1fr}
+  .sceneChoice,.sceneLookChoice{min-height:58px}
+  .sceneStage{aspect-ratio:4/5}
+}
+
+
+/* V0.21 – STUFE 5: Szenen als Fortschrittsbelohnung */
+.sceneChoice.lockedScene{
+  position:relative;
+  opacity:.62;
+  filter:saturate(.55);
+  background:#f3f1f4;
+}
+.sceneChoice.lockedScene::after{
+  content:"🔒";
+  position:absolute;
+  right:10px;
+  top:9px;
+  font-size:18px;
+}
+.sceneChoice .sceneReq{
+  display:block;
+  margin-top:5px;
+  font-size:11px;
+  line-height:1.2;
+  font-weight:700;
+  color:#77717d;
+}
+.sceneChoice.unlockedScene .sceneReq{color:#4f7a55}
+.sceneUnlockNotice{
+  margin:8px 0 12px;
+  padding:10px 12px;
+  border-radius:14px;
+  background:#f7f1fa;
+  color:#685d6d;
+  font-size:13px;
+  line-height:1.3;
+}
+
+
+/* V0.21 – STUFE 6: Zusammenmodus */
+.groupPanel{display:none}
+.groupPanel.active{display:block}
+.groupStage{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
+  border-radius:22px;
+  overflow:hidden;
+  margin:10px 0 14px;
+  box-shadow:0 12px 30px rgba(40,28,50,.14);
+  background:#eee;
+}
+.groupBackdrop{position:absolute;inset:0}
+.groupFigure{
+  position:absolute;
+  display:flex;align-items:flex-end;justify-content:center;
+  transition:transform .22s ease,opacity .22s ease,filter .22s ease;
+  transform-origin:center bottom;
+  pointer-events:auto;
+  cursor:pointer;
+}
+.groupFigure .assetPreview{width:100%;height:100%;display:flex;align-items:flex-end;justify-content:center}
+.groupFigure img{
+  width:100%;height:100%;
+  object-fit:contain;object-position:center bottom;
+  filter:drop-shadow(0 7px 10px rgba(0,0,0,.18));
+}
+.groupFigure.slot0{left:1%;bottom:2%;width:43%;height:68%;z-index:3}
+.groupFigure.slot1{right:1%;bottom:2%;width:43%;height:68%;z-index:3}
+.groupFigure.slot2{left:12%;bottom:22%;width:34%;height:55%;z-index:2}
+.groupFigure.slot3{right:12%;bottom:22%;width:34%;height:55%;z-index:2}
+.groupStage.focusMode .groupFigure{opacity:.28;filter:saturate(.55) blur(.3px)}
+.groupStage.focusMode .groupFigure.focused{
+  opacity:1;filter:none;z-index:9;
+  transform:scale(1.28);
+}
+.groupInfo{
+  position:absolute;left:10px;right:10px;bottom:10px;z-index:20;
+  background:rgba(255,255,255,.9);backdrop-filter:blur(7px);
+  border-radius:14px;padding:8px 10px;text-align:center;
+  font-size:13px;font-weight:900;
+}
+.groupInfo small{display:block;font-size:11px;color:#716b74;margin-top:2px}
+.groupSlots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:10px}
+.groupSlotCard{
+  border:1px solid rgba(105,88,115,.18);background:#fff;border-radius:16px;padding:10px;
+}
+.groupSlotTitle{font-weight:900;margin-bottom:7px}
+.groupPicker{
+  display:grid;grid-template-columns:1fr;gap:7px;max-height:240px;overflow:auto;
+}
+.groupPick{
+  display:flex;align-items:center;gap:8px;
+  border:1px solid rgba(110,90,120,.14);background:#fff;border-radius:12px;padding:7px;
+  text-align:left;font-weight:800;
+}
+.groupPick.active{border:2px solid #9f4fb5;background:#faf4fc}
+.groupPickThumb{
+  width:42px;height:50px;border-radius:9px;overflow:hidden;background:#f6eff7;flex:0 0 auto;
+}
+.groupPickThumb img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.groupActions{display:grid;grid-template-columns:1fr;gap:9px;margin:12px 0}
+.groupSceneChooser{display:grid;grid-template-columns:1fr;gap:8px}
+.groupSceneChoice{
+  border:1px solid rgba(105,88,115,.18);border-radius:14px;background:#fff;
+  padding:10px;text-align:left;font-weight:800;
+}
+.groupSceneChoice.active{border:2px solid #9f4fb5}
+.groupSceneChoice.lockedScene{opacity:.58;background:#f3f1f4}
+@media(max-width:430px){
+  .groupSlots{grid-template-columns:1fr}
+  .groupFigure.slot0,.groupFigure.slot1{width:45%;height:66%}
+  .groupFigure.slot2,.groupFigure.slot3{width:34%;height:52%}
+}
+
 </style>
 </head>
 <body>
-<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.15.1 TEST</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
+<noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>1×1 Quest V0.21</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
 <div class="brandbar">
-  <div class="brand">1×1 Quest <span class="muted">V0.15.1 TEST</span></div>
+  <div class="brand">1×1 Quest <span class="muted">V0.21</span></div>
   <div class="wallet">
     <button id="coinBag" class="coinbag" onclick="showRewards()" aria-label="Münzbeutel">🪙 <span id="coinCount">0</span></button>
     <button id="soundBtn" class="soundbtn" onclick="toggleSound()" aria-label="Ton an oder aus">🔊</button>
@@ -261,10 +533,68 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 <section id="wardrobe" class="hidden">
   <div class="card">
-    <div class="topline"><div><h2 style="margin-bottom:2px">👗 Meine Looks</h2><div class="muted">Wähle einen gekauften Komplett-Look</div></div><button class="btn back" onclick="showRewards()">←</button></div>
-    <div class="wardrobeStage"><div id="wardrobeAvatar" class="wardrobeAvatar"></div><div id="wardrobeLookText" class="muted center"></div></div>
-    <div id="wardrobeItems" class="wardrobeItems"></div>
-    <div class="wardrobeHint"><b>Komplett-Looks statt Kleidungsebenen.</b><br>Jeder gekaufte Look ist ein fertiger Frieda-Avatar. Mit „Standardlook“ wechselst du jederzeit zurück.</div>
+    <div class="topline">
+      <div>
+        <h2 style="margin-bottom:2px">👗 Meine Looks</h2>
+        <div class="muted">Deine freigeschaltete Manga-Sammlung</div>
+      </div>
+      <button class="btn back" onclick="showRewards()">←</button>
+    </div>
+
+    <div class="lookTabs" aria-label="Ansichten der Sammlung">
+      <button class="lookTab active" id="lookTabGallery" onclick="showLookGallery()">▦ Galerie</button>
+      <button class="lookTab" id="lookTabScene" onclick="showSceneMode()">🖼 Szene</button>
+      <button class="lookTab" id="lookTabGroup" onclick="showGroupMode()">👥 Zusammen</button>
+    </div>
+
+    <div id="lookGalleryView" class="scenePanel active">
+      <div class="lookSectionHint">Tippe eine Figur an, um sie groß anzusehen oder anzuziehen.</div>
+      <div id="lookGalleryGrid" class="lookGalleryGrid"></div>
+    </div>
+
+    <div id="lookSceneView" class="scenePanel">
+      <div class="lookSectionHint">Wähle einen gekauften Look und platziere ihn in einer Szene.</div>
+      <div id="sceneUnlockNotice" class="sceneUnlockNotice"></div>
+      <div class="sceneStage" id="sceneStage">
+        <div id="sceneBackdrop" class="sceneBackdrop scene-bg-sakura"></div>
+        <div id="sceneCharacter" class="sceneCharacter"></div>
+        <div id="sceneName" class="sceneName"></div>
+      </div>
+
+      <div class="sceneControls">
+        <div>
+          <div class="sceneControlTitle">1. Figur auswählen</div>
+          <div id="sceneLookChooser" class="sceneChooser"></div>
+        </div>
+        <div>
+          <div class="sceneControlTitle">2. Hintergrund auswählen</div>
+          <div id="sceneBgChooser" class="sceneChooser"></div>
+        </div>
+
+    <div id="lookGroupView" class="groupPanel">
+      <div class="lookSectionHint">Stelle dein Frieda Dream Team aus bis zu vier gesammelten Looks zusammen.</div>
+
+      <div id="groupStage" class="groupStage">
+        <div id="groupBackdrop" class="groupBackdrop scene-bg-sakura"></div>
+        <div id="groupInfo" class="groupInfo">Tippe eine Figur an, um sie hervorzuheben.</div>
+      </div>
+
+      <div class="groupActions">
+        <button class="btn" onclick="clearGroupFocus()">Gesamtgruppe anzeigen</button>
+      </div>
+
+      <div>
+        <div class="sceneControlTitle">Hintergrund</div>
+        <div id="groupSceneChooser" class="groupSceneChooser"></div>
+      </div>
+
+      <div style="margin-top:14px">
+        <div class="sceneControlTitle">Figurenplätze</div>
+        <div id="groupSlots" class="groupSlots"></div>
+      </div>
+    </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1284,26 +1614,396 @@ function collectionPreview(){
  let visual=hero?rewardVisual(hero,"large"):'<div class="assetFallback">🚗</div>';
  return `<div class="collection"><div class="collectionTitle">🎒 Meine Sammlung</div><div class="previewStage"><div class="assetPreview">${visual}</div><div class="previewText">${equipped.length?"Gerade ausgewählt":"Noch nichts ausgerüstet"}</div></div><div class="collectionItems">${owned.map(x=>`<span class="collectionChip">${x.icon} ${x.name}${isEquipped(x)?'<span class="equippedBadge">aktiv</span>':''}</span>`).join("")}</div></div>`
 }
-function defaultFriedaVisual(){return `<img src="${ASSETS.frieda.base}" alt="Friedas Standardavatar">`}
+function defaultFriedaVisual(){
+ // STUFE 3: zentraler Asset-Slot. Das vorhandene Masterbild hat einen eingebrannten Hintergrund.
+ // Nicht automatisch freigestellt, da dies Haar-/Körperkanten sichtbar beschädigen würde.
+ // Sobald ein echtes RGBA-PNG vorliegt, muss ausschließlich ASSETS.frieda.base ersetzt werden.
+ return `<img class="friedaStandardAsset" src="${ASSETS.frieda.base}" alt="Friedas Standardavatar">`
+}
 function wardrobeAvatarVisual(){return friedAvatarVisual()}
 function currentLookLabels(){normalizeRewardState();const item=P.frieda.rewards.find(x=>x.id===st.equipped.look);return item?item.name:"Standardlook"}
+
+function standardGalleryVisual(){
+ return defaultFriedaVisual()
+}
+
+function galleryCardVisual(item){
+ return item?rewardVisual(item,"large"):standardGalleryVisual()
+}
+
 function renderWardrobeItems(){
- normalizeRewardState();if(prof!=="frieda")return;
- const items=P.frieda.rewards.filter(x=>st.owned.includes(x.id));
- $("wardrobeItems").innerHTML=`<button class="wardItem ${!st.equipped.look?'active':''}" onclick="selectWardrobeItem('standard')"><div class="wardThumb">🌸</div><b>Standardlook</b><div class="lookRarity">Basis</div><div class="muted" style="font-size:12px">${!st.equipped.look?'✓ ausgewählt':'anzeigen'}</div></button>`+items.map(x=>`<button class="wardItem ${isEquipped(x)?'active':''}" onclick="selectWardrobeItem('${x.id}')"><div class="wardThumb">${x.icon||'👗'}</div><b>${x.name}</b><div class="lookRarity">${x.rarity||'Gewöhnlich'}</div><div class="muted" style="font-size:12px">${isEquipped(x)?'✓ ausgewählt':'anzeigen'}</div></button>`).join("")
-}
-function selectWardrobeItem(id){
  normalizeRewardState();
- if(id==="standard")st.equipped.look=null;else if(st.owned.includes(id))st.equipped.look=id;else return;
- save();$("wardrobeAvatar").innerHTML=wardrobeAvatarVisual();$("wardrobeLookText").textContent=currentLookLabels();const active=id==="standard"?null:P.frieda.rewards.find(x=>x.id===id);applyWardrobeBackground(active);renderWardrobeItems();updateWallet()
+ if(prof!=="frieda")return;
+
+ const grid=$("lookGalleryGrid");
+ if(!grid)return;
+
+ const owned=P.frieda.rewards.filter(x=>st.owned.includes(x.id));
+ const entries=[null,...owned];
+
+ grid.innerHTML=entries.map(item=>{
+   const isStandard=!item;
+   const active=isStandard?!st.equipped.look:isEquipped(item);
+   const name=isStandard?"Standardlook":item.name;
+   const rarity=isStandard?"Basis":(item.rarity||"Gewöhnlich");
+   const id=isStandard?"standard":item.id;
+   const visual=galleryCardVisual(item);
+
+   return `<button class="lookGalleryCard ${active?"active":""}" onclick="openLookDetail('${id}')" aria-label="${name} öffnen">
+      <div class="lookGalleryImage ${isStandard?"rarity-base":rarityClass(item)}">
+        <div class="assetPreview">${visual}</div>
+      </div>
+      <div class="lookGalleryName">${name}</div>
+      <div class="lookGalleryRarity">${rarity}</div>
+      ${active?'<div style="text-align:center"><span class="lookGalleryActive">✓ ANGEZOGEN</span></div>':""}
+   </button>`;
+ }).join("");
 }
+
+function showLookGallery(){
+ if(prof!=="frieda")return;
+ activateLookTab("gallery");
+ renderWardrobeItems();
+}
+
+const FRIEDA_SCENES=[
+ {id:"sakura",name:"🌸 Kirschblütengarten",cls:"scene-bg-sakura",need:0},
+ {id:"neon",name:"🌃 Neo Tokyo bei Nacht",cls:"scene-bg-neon",need:1},
+ {id:"shrine",name:"⛩ Japanischer Schrein",cls:"scene-bg-shrine",need:2},
+ {id:"sunset",name:"🌅 Meeresküste bei Sonnenuntergang",cls:"scene-bg-sunset",need:3},
+ {id:"wisteria",name:"🌙 Mondlicht & Blauregen",cls:"scene-bg-wisteria",need:4}
+];
+
+let sceneState={look:"standard",bg:"sakura"};
+
+function ensureSceneUnlocks(){
+ normalizeRewardState();
+ if(!Array.isArray(st.sceneUnlocks))st.sceneUnlocks=["sakura"];
+ const masteredCount=(st.mastered||[]).length;
+ let changed=false;
+ FRIEDA_SCENES.forEach(scene=>{
+   if(masteredCount>=scene.need&&!st.sceneUnlocks.includes(scene.id)){
+     st.sceneUnlocks.push(scene.id);
+     changed=true;
+   }
+ });
+ if(!st.sceneUnlocks.includes("sakura")){
+   st.sceneUnlocks.push("sakura");
+   changed=true;
+ }
+ if(changed)save();
+}
+
+function isSceneUnlocked(id){
+ ensureSceneUnlocks();
+ return st.sceneUnlocks.includes(id);
+}
+
+function nextSceneGoal(){
+ ensureSceneUnlocks();
+ return FRIEDA_SCENES.find(x=>!st.sceneUnlocks.includes(x.id))||null;
+}
+
+
+function activateLookTab(which){
+ const g=$("lookTabGallery"),s=$("lookTabScene"),p=$("lookTabGroup");
+ const gv=$("lookGalleryView"),sv=$("lookSceneView"),pv=$("lookGroupView");
+ if(g)g.classList.toggle("active",which==="gallery");
+ if(s)s.classList.toggle("active",which==="scene");
+ if(p)p.classList.toggle("active",which==="group");
+ if(gv)gv.classList.toggle("active",which==="gallery");
+ if(sv)sv.classList.toggle("active",which==="scene");
+ if(pv)pv.classList.toggle("active",which==="group");
+}
+
+function showSceneMode(){
+ if(prof!=="frieda")return;
+ normalizeRewardState();
+ ensureSceneUnlocks();
+ activateLookTab("scene");
+ const current=st.equipped.look;
+ if(current&&st.owned.includes(current))sceneState.look=current;
+ else if(sceneState.look!=="standard"&&!st.owned.includes(sceneState.look))sceneState.look="standard";
+ if(!isSceneUnlocked(sceneState.bg))sceneState.bg="sakura";
+ renderSceneMode();
+}
+
+function sceneItemFromId(id){
+ if(id==="standard")return null;
+ return P.frieda.rewards.find(x=>x.id===id)||null;
+}
+
+function renderSceneMode(){
+ const char=$("sceneCharacter"),name=$("sceneName"),back=$("sceneBackdrop");
+ const item=sceneItemFromId(sceneState.look);
+ const visual=item?rewardVisual(item,"large"):standardGalleryVisual();
+
+ if(char)char.innerHTML=`<div class="assetPreview">${visual}</div>`;
+ if(name)name.textContent=item?item.name:"Standardlook";
+
+ const scene=FRIEDA_SCENES.find(x=>x.id===sceneState.bg)||FRIEDA_SCENES[0];
+ if(back)back.className=`sceneBackdrop ${scene.cls}`;
+
+ const owned=P.frieda.rewards.filter(x=>st.owned.includes(x.id));
+ const looks=[null,...owned];
+ const chooser=$("sceneLookChooser");
+ if(chooser){
+   chooser.innerHTML=looks.map(x=>{
+     const id=x?x.id:"standard";
+     const active=sceneState.look===id;
+     const nm=x?x.name:"Standardlook";
+     const thumb=x?rewardVisual(x,"thumb"):standardGalleryVisual();
+     return `<button class="sceneLookChoice ${active?"active":""}" onclick="chooseSceneLook('${id}')">
+       <span class="miniThumb">${thumb}</span>
+       <span>${nm}</span>
+     </button>`;
+   }).join("");
+ }
+
+ const bgc=$("sceneBgChooser");
+ if(bgc){
+   ensureSceneUnlocks();
+   bgc.innerHTML=FRIEDA_SCENES.map(x=>{
+     const unlocked=isSceneUnlocked(x.id);
+     const active=sceneState.bg===x.id;
+     const req=x.need===0?"Von Anfang an verfügbar":`${x.need} gemeisterte ${x.need===1?"Reihe":"Reihen"}`;
+     return `<button class="sceneChoice ${active?"active":""} ${unlocked?"unlockedScene":"lockedScene"}" onclick="chooseSceneBackground('${x.id}')" ${unlocked?"":"disabled"}>
+       ${x.name}
+       <span class="sceneReq">${unlocked?"✓ Freigeschaltet":`Noch benötigt: ${req}`}</span>
+     </button>`;
+   }).join("");
+ }
+ const note=$("sceneUnlockNotice");
+ if(note){
+   const goal=nextSceneGoal();
+   const masteredCount=(st.mastered||[]).length;
+   note.innerHTML=goal
+     ?`🌟 <b>${st.sceneUnlocks.length} von ${FRIEDA_SCENES.length} Szenen freigeschaltet.</b><br>Als Nächstes: ${goal.name} bei ${goal.need} gemeisterten ${goal.need===1?"Reihe":"Reihen"}. Aktuell: ${masteredCount}.`
+     :`👑 <b>Alle Szenen freigeschaltet!</b> Du kannst jeden Hintergrund mit jedem gekauften Look kombinieren.`;
+ }
+}
+
+function chooseSceneLook(id){
+ if(id!=="standard"&&!st.owned.includes(id))return;
+ sceneState.look=id;
+ renderSceneMode();
+}
+
+function chooseSceneBackground(id){
+ const scene=FRIEDA_SCENES.find(x=>x.id===id);
+ if(!scene||!isSceneUnlocked(id))return;
+ sceneState.bg=id;
+ renderSceneMode();
+}
+
+
+let groupState={looks:["standard",null,null,null],bg:"sakura",focus:null};
+
+function showGroupMode(){
+ if(prof!=="frieda")return;
+ normalizeRewardState();
+ ensureSceneUnlocks();
+ activateLookTab("group");
+ const validOwned=id=>id==="standard"||st.owned.includes(id);
+ groupState.looks=groupState.looks.map(id=>id&&validOwned(id)?id:null);
+ if(!groupState.looks.some(Boolean))groupState.looks[0]="standard";
+ if(!isSceneUnlocked(groupState.bg))groupState.bg="sakura";
+ renderGroupMode();
+}
+
+function groupVisualFor(id){
+ if(!id)return "";
+ if(id==="standard")return standardGalleryVisual();
+ const item=P.frieda.rewards.find(x=>x.id===id);
+ return item?rewardVisual(item,"large"):"";
+}
+
+function groupLabelFor(id){
+ if(!id)return {name:"Leer",rarity:""};
+ if(id==="standard")return {name:"Standardlook",rarity:"Basis"};
+ const item=P.frieda.rewards.find(x=>x.id===id);
+ return item?{name:item.name,rarity:item.rarity||"Gewöhnlich"}:{name:"Unbekannt",rarity:""};
+}
+
+function renderGroupMode(){
+ const stage=$("groupStage"),back=$("groupBackdrop"),info=$("groupInfo");
+ if(!stage||!back)return;
+
+ const scene=FRIEDA_SCENES.find(x=>x.id===groupState.bg)||FRIEDA_SCENES[0];
+ back.className=`groupBackdrop ${scene.cls}`;
+
+ stage.querySelectorAll(".groupFigure").forEach(x=>x.remove());
+ groupState.looks.forEach((id,i)=>{
+   if(!id)return;
+   const fig=document.createElement("button");
+   fig.type="button";
+   fig.className=`groupFigure slot${i}${groupState.focus===i?" focused":""}`;
+   fig.onclick=()=>focusGroupFigure(i);
+   fig.setAttribute("aria-label",`${groupLabelFor(id).name} hervorheben`);
+   fig.innerHTML=`<div class="assetPreview">${groupVisualFor(id)}</div>`;
+   stage.appendChild(fig);
+ });
+ stage.classList.toggle("focusMode",groupState.focus!==null);
+
+ if(info){
+   if(groupState.focus===null){
+     const count=groupState.looks.filter(Boolean).length;
+     info.innerHTML=`👥 <b>Dream Team: ${count} ${count===1?"Figur":"Figuren"}</b><small>Tippe eine Figur an, um sie groß hervorzuheben.</small>`;
+   }else{
+     const label=groupLabelFor(groupState.looks[groupState.focus]);
+     info.innerHTML=`<b>${label.name}</b><small>${label.rarity} · Tippe „Gesamtgruppe anzeigen“, um zurückzugehen.</small>`;
+   }
+ }
+
+ renderGroupSceneChooser();
+ renderGroupSlots();
+}
+
+function renderGroupSceneChooser(){
+ const root=$("groupSceneChooser");if(!root)return;
+ ensureSceneUnlocks();
+ root.innerHTML=FRIEDA_SCENES.map(scene=>{
+   const unlocked=isSceneUnlocked(scene.id);
+   return `<button class="groupSceneChoice ${groupState.bg===scene.id?"active":""} ${unlocked?"":"lockedScene"}"
+      onclick="chooseGroupBackground('${scene.id}')" ${unlocked?"":"disabled"}>
+      ${scene.name}${unlocked?"":` · 🔒 ab ${scene.need} gemeisterten ${scene.need===1?"Reihe":"Reihen"}`}
+   </button>`;
+ }).join("");
+}
+
+function renderGroupSlots(){
+ const root=$("groupSlots");if(!root)return;
+ const owned=P.frieda.rewards.filter(x=>st.owned.includes(x.id));
+ const options=[{id:"standard",name:"Standardlook",rarity:"Basis"},...owned.map(x=>({id:x.id,name:x.name,rarity:x.rarity||"Gewöhnlich",item:x}))];
+
+ root.innerHTML=groupState.looks.map((current,slot)=>{
+   return `<div class="groupSlotCard">
+     <div class="groupSlotTitle">Platz ${slot+1}</div>
+     <div class="groupPicker">
+       <button class="groupPick ${current===null?"active":""}" onclick="setGroupSlot(${slot},null)">
+         <span>＋</span><span>Platz leer lassen</span>
+       </button>
+       ${options.map(opt=>{
+         const thumb=opt.id==="standard"?standardGalleryVisual():rewardVisual(opt.item,"thumb");
+         return `<button class="groupPick ${current===opt.id?"active":""}" onclick="setGroupSlot(${slot},'${opt.id}')">
+           <span class="groupPickThumb">${thumb}</span>
+           <span>${opt.name}<small style="display:block;color:#77717d">${opt.rarity}</small></span>
+         </button>`;
+       }).join("")}
+     </div>
+   </div>`;
+ }).join("");
+}
+
+function setGroupSlot(slot,id){
+ if(slot<0||slot>3)return;
+ if(id!==null&&id!=="standard"&&!st.owned.includes(id))return;
+
+ // Prevent accidental duplicates in the same Dream Team.
+ if(id!==null){
+   const existing=groupState.looks.findIndex((x,i)=>i!==slot&&x===id);
+   if(existing!==-1)groupState.looks[existing]=null;
+ }
+
+ groupState.looks[slot]=id;
+ if(groupState.focus===slot&&id===null)groupState.focus=null;
+ renderGroupMode();
+}
+
+function chooseGroupBackground(id){
+ if(!isSceneUnlocked(id))return;
+ groupState.bg=id;
+ renderGroupMode();
+}
+
+function focusGroupFigure(slot){
+ if(!groupState.looks[slot])return;
+ groupState.focus=groupState.focus===slot?null:slot;
+ renderGroupMode();
+}
+
+function clearGroupFocus(){
+ groupState.focus=null;
+ renderGroupMode();
+}
+
+function openLookDetail(id){
+ normalizeRewardState();
+ if(prof!=="frieda")return;
+
+ const isStandard=id==="standard";
+ const item=isStandard?null:P.frieda.rewards.find(x=>x.id===id);
+ if(!isStandard&&(!item||!st.owned.includes(id)))return;
+
+ const active=isStandard?!st.equipped.look:isEquipped(item);
+ const name=isStandard?"Standardlook":item.name;
+ const rarity=isStandard?"Basis":(item.rarity||"Gewöhnlich");
+ const visual=galleryCardVisual(item);
+ const rarityCls=isStandard?"rarity-base":rarityClass(item);
+
+ const old=document.querySelector(".lookDetailOverlay");
+ if(old)old.remove();
+
+ const overlay=document.createElement("div");
+ overlay.className="lookDetailOverlay";
+ overlay.innerHTML=`<div class="lookDetailCard">
+   <div class="lookDetailVisual ${rarityCls}"><div class="assetPreview">${visual}</div></div>
+   <div class="lookDetailName">${name}</div>
+   <div class="lookDetailRarity">${rarity}</div>
+   <div class="lookDetailActions">
+     ${active
+       ?`<button class="btn" disabled>✓ ANGEZOGEN</button>`
+       :`<button class="btn primary" onclick="wearFromGallery('${id}')">Anziehen</button>`}
+     <button class="btn" onclick="closeLookDetail()">Zurück zur Galerie</button>
+   </div>
+ </div>`;
+ overlay.addEventListener("click",e=>{if(e.target===overlay)closeLookDetail()});
+ document.body.appendChild(overlay);
+}
+
+function closeLookDetail(){
+ const overlay=document.querySelector(".lookDetailOverlay");
+ if(overlay)overlay.remove();
+}
+
+function wearFromGallery(id){
+ normalizeRewardState();
+ if(prof!=="frieda")return;
+ if(id==="standard")st.equipped.look=null;
+ else{
+   const item=P.frieda.rewards.find(x=>x.id===id);
+   if(!item||!st.owned.includes(id))return;
+   st.equipped.look=id;
+ }
+ save();
+ closeLookDetail();
+ renderWardrobeItems();
+ updateWallet();
+}
+
+function selectWardrobeItem(id){
+ // Legacy entry point retained for compatibility with older saved UI flows.
+ wearFromGallery(id)
+}
+
 function showWardrobe(){
- if(prof!=="frieda"){showRewards();return}normalizeRewardState();show("wardrobe");$("wardrobeAvatar").innerHTML=wardrobeAvatarVisual();$("wardrobeLookText").textContent=currentLookLabels();applyWardrobeBackground(st.equipped.look?P.frieda.rewards.find(x=>x.id===st.equipped.look):null);renderWardrobeItems()
+ if(prof!=="frieda"){showRewards();return}
+ normalizeRewardState();
+ show("wardrobe");
+ showLookGallery()
 }
+
 function migrateFriedaLegacyVisuals(){
  if(prof!=="frieda")return;normalizeRewardState();
  // Old layer selections are ignored, but coins, learning progress and purchases remain untouched.
- if(st.equipped.look===undefined){st.equipped.look=null;save()}
+ let changed=false;
+ if(st.equipped.look===undefined){st.equipped.look=null;changed=true}
+ if(!Array.isArray(st.sceneUnlocks)){st.sceneUnlocks=["sakura"];changed=true}
+ const masteredCount=(st.mastered||[]).length;
+ FRIEDA_SCENES.forEach(scene=>{
+   if(masteredCount>=scene.need&&!st.sceneUnlocks.includes(scene.id)){st.sceneUnlocks.push(scene.id);changed=true}
+ });
+ if(changed)save()
 }
 
 function showRewards(){
@@ -1311,12 +2011,65 @@ function showRewards(){
  if(!prof||!st)return;
  normalizeRewardState();updateWallet();
  $("collectionBox").innerHTML=collectionPreview();
+
  $("rewardList").innerHTML=P[prof].rewards.map(x=>{
-  let owned=st.owned.includes(x.id),equipped=isEquipped(x),gateOk=st.mastered.length>=x.gate,canBuy=gateOk&&(st.coins||0)>=x.price&&!owned;
+  let owned=st.owned.includes(x.id),
+      equipped=isEquipped(x),
+      gateOk=st.mastered.length>=x.gate,
+      canBuy=gateOk&&(st.coins||0)>=x.price&&!owned;
+
+  if(prof==="frieda"){
+    let rarity=rarityClass(x);
+    let cardClass=owned?`friedaShopOwned ${rarity}`:(!gateOk?"locked":"");
+    if(equipped)cardClass+=` friedaShopActive`;
+
+    let statusHtml="";
+    if(equipped){
+      statusHtml=`<div class="friedaShopStatus active">✓ ANGEZOGEN</div>`;
+    }else if(owned){
+      statusHtml=`<div class="friedaShopStatus owned">✓ IN SAMMLUNG</div>`;
+    }else{
+      statusHtml=`<div class="friedaShopStatus notOwned">Noch nicht in deiner Sammlung</div>`;
+    }
+
+    let substatus="";
+    if(!owned){
+      if(!gateOk)substatus=`🔒 Erst ab ${x.gate} gemeisterten Reihen`;
+      else if((st.coins||0)<x.price)substatus=`Noch ${x.price-(st.coins||0)} Münzen bis zum Kauf`;
+      else substatus=`Jetzt freischaltbar`;
+    }
+
+    let action="";
+    if(owned){
+      action=equipped
+        ?`<button class="btn standardReturn" onclick="equipReward('${x.id}')">Standardlook anziehen</button>`
+        :`<button class="btn primary" onclick="equipReward('${x.id}')">Anziehen</button>`;
+    }else{
+      action=`<button class="btn ${canBuy?"primary":""}" onclick="buyReward('${x.id}')" ${canBuy?"":"disabled"}>${gateOk?"Kaufen":"Noch gesperrt"}</button>`;
+    }
+
+    let shopVisual=`<div class="shopMystery">${owned?(x.icon||"👗"):"🎁"}</div>`;
+    return `<div class="shopItem ${cardClass}">
+      <div class="shopTop">
+        <div class="shopIcon">${shopVisual}</div>
+        <div class="shopInfo">
+          <b>${x.name}</b>
+          <div class="lookRarity">${x.rarity||""}</div>
+          <div class="price">🪙 ${x.price}</div>
+          ${statusHtml}
+          ${substatus?`<div class="friedaShopSubstatus">${substatus}</div>`:""}
+        </div>
+      </div>
+      ${action}
+    </div>`;
+  }
+
   let status=owned?(equipped?"✅ Aktiv":"✅ Gehört dir – noch nicht angezogen"):!gateOk?`🔒 Erst ab ${x.gate} gemeisterten Reihen`:(st.coins||0)<x.price?`Noch ${x.price-(st.coins||0)} Münzen sparen`:"Jetzt kaufbar";
   let action=owned?`<button class="btn ${equipped?"":"primary"}" onclick="equipReward('${x.id}')">${wearVerb(x,equipped)}</button>`:`<button class="btn ${canBuy?"primary":""}" onclick="buyReward('${x.id}')" ${canBuy?"":"disabled"}>${gateOk?"Kaufen":"Noch gesperrt"}</button>`;
-  let shopVisual=prof==="frieda"?`<div class="shopMystery">${owned?(x.icon||"👗"):"🎁"}</div>`:rewardVisual(x,"thumb"); return `<div class="shopItem ${owned?"owned":!gateOk?"locked":""}"><div class="shopTop"><div class="shopIcon">${shopVisual}</div><div class="shopInfo"><b>${x.name}</b><div class="lookRarity">${x.rarity||""}</div><div class="price">🪙 ${x.price}</div><div class="muted">${status}</div></div></div>${action}</div>`
+  let shopVisual=rewardVisual(x,"thumb");
+  return `<div class="shopItem ${owned?"owned":!gateOk?"locked":""}"><div class="shopTop"><div class="shopIcon">${shopVisual}</div><div class="shopInfo"><b>${x.name}</b><div class="lookRarity">${x.rarity||""}</div><div class="price">🪙 ${x.price}</div><div class="muted">${status}</div></div></div>${action}</div>`;
  }).join("");
+
  show("rewards")
 }
 
