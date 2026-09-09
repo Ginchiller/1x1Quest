@@ -107,6 +107,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .corePulse{animation:corePulse .35s ease}
 @keyframes corePulse{0%{transform:scale(.96)}100%{transform:scale(1)}}
 .coreGood{font-weight:900}
+#coreFeedback{min-height:82px;padding:0 8px;display:flex;align-items:center;justify-content:center}
 
 .wardrobeStage{background:linear-gradient(180deg,#fff,#fbf5ff);border:1px solid var(--line);border-radius:24px;padding:14px;margin:14px 0;text-align:center}
 .wardrobeAvatar{height:430px;display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -653,6 +654,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 #rewards.friedaRewards .shopItem.friedaShopOwned.rarity-epic:before{background:#7546aa!important}
 #rewards.friedaRewards .shopItem.friedaShopOwned.rarity-legendary:before{background:#b68a17!important;color:#fffdf3!important}
 #rewards.friedaRewards .shopItem.friedaShopActive{box-shadow:0 0 0 3px rgba(68,58,75,.14),0 8px 20px rgba(55,45,65,.18)!important}
+/* V0.44: economy and final UI polish */
 </style>
 </head>
 <body>
@@ -845,7 +847,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 </section>
 
 <section id="rewards" class="hidden">
- <div class="card"><div class="topline"><h2>🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div class="explain"><b>Deine Münzen gehören dir.</b> Gewöhnliche Looks kosten 25, seltene 45, epische 70 und legendäre 100 Münzen. Besondere Prämien brauchen zusätzlich echten Lernfortschritt.</div><div id="collectionBox"></div><div class="modeHint muted"><b>Preise:</b> Gewöhnlich 25 🪙 · Selten 45 🪙 · Episch 70 🪙 · Legendär 100 🪙</div><button class="btn primary" style="margin:12px 0" onclick="showWardrobe()">👗 Meine Looks & Szenen</button><div id="rewardList"></div></div>
+ <div class="card"><div class="topline"><h2>🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div id="collectionBox"></div><div class="modeHint muted"><b>Preise:</b> Gewöhnlich 25 🪙 · Selten 45 🪙 · Episch 70 🪙 · Legendär 100 🪙</div><button class="btn primary" style="margin:12px 0" onclick="showWardrobe()">👗 Meine Looks & Szenen</button><div id="rewardList"></div></div>
 </section>
 </main>
 
@@ -1578,7 +1580,7 @@ function checkCoreFact(){
   if(coreRound.attempts===1){
    coreRound.first++;coreRound.streak++;coreRound.maxStreak=Math.max(coreRound.maxStreak,coreRound.streak);
    state[c.key]=(state[c.key]||0)+1;
-   addCoins(1,"🧠 Auswendig gewusst: +1 Münze")
+   addCoins(4,"🧠 Kernaufgabe: +4 Münzen")
   }else{
    state[c.key]=Math.max(0,(state[c.key]||0))
   }
@@ -1857,7 +1859,7 @@ function finishRound(){
   const masteryBonus=Math.min(10,strong.length*3);
   if(masteryBonus)addCoins(masteryBonus,`👑 Meisterschafts-Bonus: +${masteryBonus} Münzen`);
 
-  newly.forEach(r=>addCoins(25,`👑 ${r}er-Reihe gemeistert: +25 Münzen`));
+  newly.forEach(r=>addCoins(5,`👑 ${r}er-Reihe gemeistert: +5 Münzen`));
 
   const rec=loadChallengeRecord();
   const newCombo=round.maxCombo>rec.bestCombo;
@@ -1905,7 +1907,7 @@ function finishRound(){
  }
 
  addCoins(5,"🎯 Training abgeschlossen: +5 Münzen");
- newly.forEach(r=>addCoins(25,`👑 ${r}er-Reihe gemeistert: +25 Münzen`));
+ newly.forEach(r=>addCoins(5,`👑 ${r}er-Reihe gemeistert: +5 Münzen`));
  st.sessions++;save();
  $("summary").innerHTML=`<p><b>${round.first}/${round.total}</b> beim ersten Versuch</p><p>Beste Serie: <b>🔥 ${round.maxCombo}</b></p><p>Hilfen genutzt: <b>${round.helped}</b></p><p class="coinEarn">🪙 In dieser Runde gesammelt: <b>${round.coinsEarned}</b></p><p class="muted">Training hilft dir: Unsichere Aufgaben werden häufiger gezeigt und Fehler später wiederholt.</p>`;
  $("rewardIcon").textContent="🪙";
