@@ -659,7 +659,106 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 /* Felix Fahrzeugquartett */
 .felixShopCard{border:2px solid #aeb7c2;border-radius:18px;padding:10px;background:#fff;display:grid;grid-template-columns:42% 1fr;gap:10px;align-items:center;margin:10px 0;overflow:hidden}
 .felixShopCard.owned{box-shadow:0 0 0 2px #d8dde3 inset}.felixShopImage{height:112px;border-radius:13px;background:linear-gradient(#dceaf3,#f4f7f9);overflow:hidden;display:flex;align-items:center;justify-content:center}.felixShopImage img{width:100%;height:100%;object-fit:contain}.felixShopName{font-size:19px;font-weight:950;line-height:1.05}.felixMaker{font-size:10px;letter-spacing:.16em;color:#69727c;font-weight:850}.felixType{font-size:11px;letter-spacing:.13em;font-weight:900;margin-top:4px;color:#3475a8}.felixBuy{margin-top:8px;padding:9px 11px;border-radius:12px}.garageEmpty{padding:22px;border:1px dashed #cfd6de;border-radius:16px;text-align:center;color:var(--muted)}
-.quartetCard{border-radius:24px;background:linear-gradient(155deg,#f9fbfc,#e4e9ee);border:2px solid #aeb8c2;overflow:hidden;box-shadow:0 12px 28px #1a2b3c20;margin-top:12px}.qHeader{padding:14px 15px 10px;position:relative;background:linear-gradient(135deg,#fbfcfd,#e9edf0)}.qTop{display:flex;justify-content:space-between;align-items:center;gap:10px}.qMaker{font-size:10px;letter-spacing:.18em;font-weight:900;color:#606a72}.qNum{font-weight:900;font-size:12px}.qName{font-size:30px;line-height:1;font-weight:1000;margin-top:8px;letter-spacing:.01em}.qMeta{display:flex;justify-content:space-between;align-items:center;margin-top:8px}.qType{font-size:13px;letter-spacing:.22em;font-weight:900}.qRarity{font-size:11px;font-weight:950;padding:5px 9px;border-radius:999px;background:#e1e5e8;color:#47515b}.qPhoto{height:330px;position:relative;overflow:hidden;background:#dbe7ee}.qPhotoBg{position:absolute;inset:0;background-size:cover;background-position:center 58%;filter:saturate(.92) contrast(.96)}.qPhotoBg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(0,0,0,.05))}.qVehicle{position:absolute;left:3%;right:3%;bottom:2%;height:75%;display:flex;align-items:flex-end;justify-content:center}.qVehicle img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 12px 10px rgba(0,0,0,.22))}.qStats{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px}.qStat{background:rgba(255,255,255,.82);border:1px solid #c9d0d6;border-radius:13px;padding:9px 10px;min-height:68px}.qStat small{display:block;font-size:9px;font-weight:900;color:#626c75;line-height:1.1}.qStat b{font-size:22px;display:block;margin-top:4px}.qNote{font-size:11px;color:#7a838b;text-align:center;padding:2px 10px 12px}
+
+.quartetCard{
+  border-radius:22px;
+  background:#f5f7f9;
+  border:2px solid #aeb8c2;
+  overflow:hidden;
+  box-shadow:0 10px 24px #1a2b3c1f;
+  margin:10px auto 0;
+  max-width:390px;
+}
+.qHeader{
+  padding:11px 13px 9px;
+  position:relative;
+  background:linear-gradient(135deg,#ffffff 0%,#eef2f5 100%);
+  border-bottom:1px solid #c9d2d9;
+}
+.qHeader:before{
+  content:"";
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:6px;
+  background:#7b8c7a;
+}
+.qTop{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-left:4px}
+.qMaker{font-size:9px;letter-spacing:.17em;font-weight:900;color:#6a737a}
+.qNum{font-weight:900;font-size:11px;color:#2c3140}
+.qName{font-size:25px;line-height:1;font-weight:1000;margin-top:6px;letter-spacing:.005em;padding-left:4px}
+.qMeta{display:flex;justify-content:space-between;align-items:center;margin-top:7px;padding-left:4px}
+.qType{font-size:12px;letter-spacing:.22em;font-weight:900}
+.qRarity{
+  font-size:10px;font-weight:950;padding:4px 8px;border-radius:999px;
+  background:#e2e7e4;color:#46524a;border:1px solid #c6d0ca
+}
+.qPhoto{
+  height:215px;
+  position:relative;
+  overflow:hidden;
+  background:#dbe7ee;
+  border-bottom:1px solid #c7d0d6;
+}
+.qPhotoBg{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center 47%;
+  filter:saturate(.94) contrast(.96) brightness(1.02);
+  transform:scale(1.02)
+}
+.qPhotoBg:after{
+  content:"";
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.03) 0%,rgba(0,0,0,.04) 70%,rgba(15,25,20,.16) 100%)
+}
+.qVehicle{
+  position:absolute;
+  left:10%;
+  right:7%;
+  bottom:5%;
+  height:62%;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+}
+.qVehicle img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 7px 7px rgba(0,0,0,.28))
+}
+.qStats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
+  padding:9px;
+  background:linear-gradient(180deg,#edf1f4 0%,#e5eaee 100%);
+}
+.qStat{
+  background:rgba(255,255,255,.92);
+  border:1px solid #c4cdd4;
+  border-radius:12px;
+  padding:7px 9px;
+  min-height:54px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9)
+}
+.qStat small{
+  display:block;
+  font-size:8px;
+  font-weight:950;
+  color:#626c75;
+  line-height:1.08;
+  letter-spacing:.01em
+}
+.qStat b{
+  font-size:19px;
+  line-height:1.05;
+  display:block;
+  margin-top:4px;
+  color:#202532
+}
+.qNote{display:none}
+
 </style>
 </head>
 <body>
@@ -731,7 +830,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.49</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.50</div>
 </section>
 
 <section id="learnSelect" class="hidden">
@@ -2731,7 +2830,7 @@ function renderFelixVehicleCard(item){
     <div class="qStat"><small>⚡ LEISTUNG</small><b>${stt.power}</b></div><div class="qStat"><small>🏁 HÖCHSTGESCHWINDIGKEIT</small><b>${stt.speed}</b></div>
     <div class="qStat"><small>🚀 0–100 km/h</small><b>${stt.accel}</b></div><div class="qStat"><small>⛽ REICHWEITE</small><b>${stt.range}</b></div>
     <div class="qStat"><small>⛰️ GELÄNDE</small><b>${stt.terrain}</b></div><div class="qStat"><small>🧰 NUTZWERT</small><b>${stt.utility}</b></div>
-   </div><div class="qNote">Musterkarte · Kartendesign wird für alle Fahrzeuge gleich aufgebaut.</div>
+   </div>
  </div>`
 }
 function showFelixGarage(){
