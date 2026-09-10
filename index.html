@@ -661,45 +661,147 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .felixShopCard.owned{box-shadow:0 0 0 2px #d8dde3 inset}.felixShopImage{height:112px;border-radius:13px;background:linear-gradient(#dceaf3,#f4f7f9);overflow:hidden;display:flex;align-items:center;justify-content:center}.felixShopImage img{width:100%;height:100%;object-fit:contain}.felixShopName{font-size:19px;font-weight:950;line-height:1.05}.felixMaker{font-size:10px;letter-spacing:.16em;color:#69727c;font-weight:850}.felixType{font-size:11px;letter-spacing:.13em;font-weight:900;margin-top:4px;color:#3475a8}.felixBuy{margin-top:8px;padding:9px 11px;border-radius:12px}.garageEmpty{padding:22px;border:1px dashed #cfd6de;border-radius:16px;text-align:center;color:var(--muted)}
 
 
+
 .quartetCard{
-  width:min(78vw,330px);
+  width:min(68vw,292px);
   aspect-ratio:2/3;
   border-radius:18px;
-  background:#f3f6f8;
-  border:2px solid #aeb8c2;
+  background:#eef2f5;
+  border:2px solid #98a4ae;
   overflow:hidden;
-  box-shadow:0 9px 22px #1a2b3c20;
-  margin:10px auto 18px;
+  box-shadow:0 10px 24px rgba(30,45,55,.18), inset 0 0 0 1px rgba(255,255,255,.9);
+  margin:8px auto 18px;
   display:grid;
-  grid-template-rows:18% 47% 35%;
+  grid-template-rows:17% 48% 35%;
+  position:relative;
+}
+.quartetCard:before{
+  content:"";
+  position:absolute;
+  inset:5px;
+  border:1px solid rgba(116,130,142,.26);
+  border-radius:13px;
+  pointer-events:none;
+  z-index:5;
 }
 .qHeader{
-  padding:9px 11px 7px;
+  padding:8px 10px 7px;
   position:relative;
-  background:linear-gradient(135deg,#fff 0%,#edf2f5 100%);
-  border-bottom:1px solid #c7d0d7;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.98),rgba(236,241,244,.98)),
+    repeating-linear-gradient(90deg,rgba(70,80,90,.03) 0 1px,transparent 1px 6px);
+  border-bottom:1px solid #aeb9c2;
   min-height:0;
 }
 .qHeader:before{
-  content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#758879
+  content:"";
+  position:absolute;left:0;top:0;bottom:0;width:5px;background:#6f806f;
 }
-.qTop{display:flex;justify-content:space-between;align-items:center;gap:8px;padding-left:3px}
-.qMaker{font-size:8px;letter-spacing:.16em;font-weight:900;color:#69737b}
-.qNum{font-weight:950;font-size:9px;color:#2c3140}
-.qName{font-size:21px;line-height:1;font-weight:1000;margin-top:5px;padding-left:3px;white-space:nowrap}
-.qMeta{display:flex;justify-content:space-between;align-items:center;margin-top:5px;padding-left:3px}
-.qType{font-size:9px;letter-spacing:.20em;font-weight:950}
-.qRarity{font-size:8px;font-weight:950;padding:3px 6px;border-radius:999px;background:#e2e7e4;color:#46524a;border:1px solid #c6d0ca}
-.qPhoto{position:relative;overflow:hidden;background:#dce8ee;border-bottom:1px solid #c7d0d6;min-height:0}
-.qPhotoBg{position:absolute;inset:0;background-size:cover;background-position:center 53%;filter:saturate(.96) contrast(.97) brightness(1.02)}
-.qPhotoBg:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(15,25,20,.10))}
-.qVehicle{position:absolute;left:9%;right:8%;bottom:8%;height:58%;display:flex;align-items:flex-end;justify-content:center}
-.qVehicle img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 5px 5px rgba(0,0,0,.25))}
-.qStats{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);gap:5px;padding:7px;background:linear-gradient(180deg,#edf1f4,#e4e9ed);min-height:0}
-.qStat{background:rgba(255,255,255,.94);border:1px solid #c3ccd3;border-radius:9px;padding:5px 7px;min-height:0;overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
-.qStat small{display:block;font-size:7px;font-weight:950;color:#626c75;line-height:1.05;white-space:normal}
-.qStat b{font-size:16px;line-height:1;display:block;margin-top:3px;color:#202532}
+.qTop{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;padding-left:4px
+}
+.qMaker{
+  font-size:7px;letter-spacing:.18em;font-weight:900;color:#7b848b
+}
+.qNum{
+  font-weight:950;font-size:8px;color:#2b3040;
+  padding:2px 5px;border:1px solid #c2cbd1;border-radius:999px;background:#fff
+}
+.qName{
+  font-size:20px;line-height:1;font-weight:1000;margin-top:4px;padding-left:4px;
+  white-space:nowrap;letter-spacing:.01em
+}
+.qMeta{
+  display:flex;justify-content:space-between;align-items:center;margin-top:5px;padding-left:4px
+}
+.qType{
+  font-size:9px;letter-spacing:.22em;font-weight:950;color:#303643
+}
+.qRarity{
+  font-size:7px;font-weight:950;padding:3px 6px;border-radius:999px;
+  background:#dfe5e1;color:#46524a;border:1px solid #bdc8c0;
+  letter-spacing:.03em
+}
+.qPhoto{
+  position:relative;overflow:hidden;background:#dce8ee;border-bottom:1px solid #aeb9c2;min-height:0
+}
+.qPhotoBg{
+  position:absolute;inset:0;background-size:cover;background-position:center 53%;
+  filter:saturate(.98) contrast(.98) brightness(1.01)
+}
+.qPhotoBg:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.01) 0%,rgba(255,255,255,0) 55%,rgba(20,30,25,.10) 100%)
+}
+.qVehicle{
+  position:absolute;
+  left:4%;
+  right:3%;
+  bottom:5%;
+  height:67%;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+}
+.qVehicle img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  filter:drop-shadow(0 5px 6px rgba(0,0,0,.28))
+}
+.qStats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:repeat(3,1fr);
+  gap:4px;
+  padding:6px;
+  background:
+    linear-gradient(180deg,#e7ecef 0%,#dfe5e9 100%);
+  min-height:0;
+}
+.qStat{
+  position:relative;
+  background:linear-gradient(180deg,#f9fbfc,#eef2f4);
+  border:1px solid #b9c3cb;
+  border-radius:8px;
+  padding:5px 6px 4px 24px;
+  min-height:0;
+  overflow:hidden;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95);
+}
+.qStat:before{
+  position:absolute;
+  left:6px;top:50%;transform:translateY(-50%);
+  width:14px;height:14px;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:900;
+  background:#d8dee3;
+}
+.qStat:nth-child(1):before{content:"⚡"}
+.qStat:nth-child(2):before{content:"🏁"}
+.qStat:nth-child(3):before{content:"🚀"}
+.qStat:nth-child(4):before{content:"⛽"}
+.qStat:nth-child(5):before{content:"⛰️"}
+.qStat:nth-child(6):before{content:"🧰"}
+.qStat small{
+  display:block;
+  font-size:6px;
+  font-weight:950;
+  color:#5f6870;
+  line-height:1.02;
+  text-transform:uppercase;
+  letter-spacing:.01em;
+  white-space:normal
+}
+.qStat b{
+  font-size:15px;
+  line-height:1;
+  display:block;
+  margin-top:2px;
+  color:#1f2430
+}
 .qNote{display:none}
+
 
 
 </style>
@@ -773,7 +875,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.51</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.52</div>
 </section>
 
 <section id="learnSelect" class="hidden">
