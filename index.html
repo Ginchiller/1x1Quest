@@ -720,6 +720,8 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 }
 .qVehicle img{max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 5px 6px rgba(0,0,0,.30))}
 .qVehicleCompactTest img{transform:scale(.88);transform-origin:center bottom}
+.qVehicleScale90 img{transform:scale(.90);transform-origin:center bottom}
+.qVehicleScale82 img{transform:scale(.82);transform-origin:center bottom}
 .qStats{
   display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,1fr);
   gap:0;padding:7px 8px;
@@ -841,7 +843,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.62</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.63</div>
 </section>
 
 <section id="learnSelect" class="hidden">
@@ -2938,9 +2940,10 @@ function selectWardrobeItem(id){
 function renderFelixVehicleCard(item){
  const v=ASSETS.felix[item.id], bg=ASSETS.felix.offroadBg, stt=item.stats||{};
  const compactTest=["cityflitzer","streetcoupe","rallyrocket","trail4x4","adventurepickup","surfcamper"].includes(item.id);
+ const scaleClass=item.id==="electricgt"?" qVehicleScale90":["superbike","lemansprototype","futureconcept","electrichypercar"].includes(item.id)?" qVehicleScale82":"";
  return `<div class="quartetCard">
    <div class="qHeader"><div class="qTop"><div class="qMaker">△ ${item.maker}</div><div class="qNum">${item.number}</div></div><div class="qName">${item.name.toUpperCase()}</div><div class="qMeta"><div class="qType">${item.vehicleType}</div><div class="qRarity">${item.rarity.toUpperCase()}</div></div></div>
-   <div class="qPhoto"><div class="qPhotoBg" style="background-image:url('${bg}')"></div><div class="qVehicle${compactTest?' qVehicleCompactTest':''}"><img src="${v}" alt="${item.name}"></div></div>
+   <div class="qPhoto"><div class="qPhotoBg" style="background-image:url('${bg}')"></div><div class="qVehicle${compactTest?' qVehicleCompactTest':''}${scaleClass}"><img src="${v}" alt="${item.name}"></div></div>
    <div class="qStats">
     <div class="qStat"><small>⚡ LEISTUNG</small><b>${stt.power}</b></div><div class="qStat"><small>🏁 HÖCHSTGESCHWINDIGKEIT</small><b>${stt.speed}</b></div>
     <div class="qStat"><small>🚀 0–100 km/h</small><b>${stt.accel}</b></div><div class="qStat"><small>⛽ REICHWEITE</small><b>${stt.range}</b></div>
