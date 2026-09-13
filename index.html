@@ -843,7 +843,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.70</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.71</div>
 </section>
 
 <section id="learnSelect" class="hidden">
@@ -2967,7 +2967,7 @@ function selectWardrobeItem(id){
 function renderFelixVehicleCard(item){
  const v=ASSETS.felix[item.id], bg=felixBackgroundForVehicle(item.id), stt=item.stats||{};
  const compactTest=["cityflitzer","streetcoupe","rallyrocket","trail4x4","adventurepickup","surfcamper"].includes(item.id);
- const scaleClass=["electricgt","electrichypercar"].includes(item.id)?" qVehicleScale90":["superbike","lemansprototype","futureconcept"].includes(item.id)?" qVehicleScale82":"";
+ const scaleClass=["electricgt","electrichypercar"].includes(item.id)?" qVehicleScale90":["superbike","lemansprototype","futureconcept","retrocoupe"].includes(item.id)?" qVehicleScale82":"";
  return `<div class="quartetCard">
    <div class="qHeader"><div class="qTop"><div class="qMaker">△ ${item.maker}</div><div class="qNum">${item.number}</div></div><div class="qName">${item.name.toUpperCase()}</div><div class="qMeta"><div class="qType">${item.vehicleType}</div><div class="qRarity">${item.rarity.toUpperCase()}</div></div></div>
    <div class="qPhoto"><div class="qPhotoBg" style="background-image:url('${bg}')"></div><div class="qVehicle${compactTest?' qVehicleCompactTest':''}${scaleClass}"><img src="${v}" alt="${item.name}"></div></div>
