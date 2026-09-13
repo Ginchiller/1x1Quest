@@ -874,11 +874,11 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 .qNote{display:none}
 
-/* V0.74 – Felix Garage as a real card deck */
+/* V0.75 – Felix Garage: swipe deck, arrows, fullscreen card and overview */
 .felixGarageCard{overflow:visible}
 .garageDeckSummary{
   display:flex;align-items:center;justify-content:space-between;gap:10px;
-  margin:8px 0 4px;padding:10px 12px;border:1px solid #d5dce2;border-radius:14px;
+  margin:8px 0 8px;padding:10px 12px;border:1px solid #d5dce2;border-radius:14px;
   background:linear-gradient(180deg,#f7fafc,#eef4f8)
 }
 .garageDeckSummary b{font-size:15px}
@@ -886,42 +886,104 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
   flex:0 0 auto;padding:5px 9px;border-radius:999px;background:#fff;
   border:1px solid #c7d0d7;font-size:12px;font-weight:950;color:#394650
 }
+.garageViewBtn{
+  width:100%;margin:0 0 10px;padding:11px 13px;border-radius:14px;
+  border:1px solid #b9cad7;background:#edf6fc;color:#285d7e;
+  font-weight:950;font-size:14px
+}
 .garageDeckWrap{padding:2px 0 8px;text-align:center}
 .garageDeck{
   width:min(72vw,300px);aspect-ratio:2/3;position:relative;
-  margin:12px auto 38px;touch-action:pan-y;user-select:none;-webkit-user-select:none
+  margin:12px auto 40px;touch-action:pan-y;user-select:none;-webkit-user-select:none;
+  -webkit-touch-callout:none
 }
 .garageDeckCard{
   position:absolute;inset:0;transform-origin:center bottom;
-  transition:transform .24s cubic-bezier(.22,.8,.3,1),opacity .22s ease,filter .22s ease;
+  transition:transform .32s cubic-bezier(.22,.82,.28,1),opacity .28s ease,filter .28s ease;
   will-change:transform,opacity;pointer-events:none
 }
 .garageDeckCard .quartetCard{width:100%;height:100%;margin:0}
 .garageDeckCard.depth0{z-index:8;transform:translate3d(0,0,0) scale(1);pointer-events:auto}
-.garageDeckCard.depth1{z-index:7;transform:translate3d(5px,10px,0) scale(.982);filter:brightness(.985)}
-.garageDeckCard.depth2{z-index:6;transform:translate3d(-4px,20px,0) scale(.964);filter:brightness(.97)}
-.garageDeckCard.depth3{z-index:5;transform:translate3d(3px,30px,0) scale(.946);filter:brightness(.955)}
+.garageDeckCard.depth1{z-index:7;transform:translate3d(6px,11px,0) scale(.981);filter:brightness(.985)}
+.garageDeckCard.depth2{z-index:6;transform:translate3d(-5px,22px,0) scale(.961);filter:brightness(.97)}
+.garageDeckCard.depth3{z-index:5;transform:translate3d(4px,33px,0) scale(.941);filter:brightness(.955)}
+.garageDeckCard.dragging{transition:none!important}
+.garageDeck.is-advancing .depth1{transform:translate3d(0,0,0) scale(1)}
+.garageDeck.is-advancing .depth2{transform:translate3d(6px,11px,0) scale(.981)}
+.garageDeck.is-advancing .depth3{transform:translate3d(-5px,22px,0) scale(.961)}
 .garageDeckCard.swipe-left{
-  transform:translate3d(-125%,8px,0) rotate(-8deg) scale(.985)!important;opacity:0
+  transform:translate3d(-135%,10px,0) rotate(-10deg) scale(.985)!important;opacity:0
 }
 .garageDeckCard.swipe-right{
-  transform:translate3d(125%,8px,0) rotate(8deg) scale(.985)!important;opacity:0
+  transform:translate3d(135%,10px,0) rotate(10deg) scale(.985)!important;opacity:0
 }
 .garageDeckFooter{
-  display:flex;align-items:center;justify-content:center;gap:12px;
-  margin-top:2px;color:#6a747d;font-size:12px;font-weight:800
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin-top:3px;color:#6a747d;font-size:12px;font-weight:800
 }
+.garageArrow{
+  width:48px;height:48px;border-radius:50%;border:1px solid #b9c8d2;
+  background:#fff;color:#2f5f7d;font-size:26px;line-height:1;font-weight:950;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 10px rgba(38,55,67,.10)
+}
+.garageArrow:active{transform:scale(.94);background:#eaf5fb}
 .garageDeckPosition{
-  min-width:68px;padding:5px 9px;border:1px solid #d0d7dc;border-radius:999px;
+  min-width:82px;padding:7px 11px;border:1px solid #d0d7dc;border-radius:999px;
   background:#fff;color:#33414b;font-weight:950
 }
-.garageDeckHint{font-size:11px;color:#7a858e;margin-top:7px}
+.garageDeckHint{font-size:11px;color:#7a858e;margin-top:8px;line-height:1.35}
 
+/* Two-column overview */
+.garageGrid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;margin:4px 0 8px
+}
+.garageGridCard{
+  display:block;width:100%;padding:0;border:0;background:transparent;
+  border-radius:12px;text-align:initial;cursor:pointer
+}
+.garageGridCard:active{transform:scale(.985)}
+.garageGridCard .quartetCard{
+  width:100%;height:auto;margin:0;border-radius:11px;box-shadow:0 5px 12px rgba(31,42,49,.16)
+}
+.garageGridCard .quartetCard:before{inset:3px;border-radius:8px}
+.garageGridCard .quartetCard:after{border-radius:10px}
+.garageGridCard .qHeader{padding:4px 5px 3px}
+.garageGridCard .qMaker{font-size:4.5px}
+.garageGridCard .qNum{font-size:5px;padding:1px 4px}
+.garageGridCard .qName{
+  font-size:9px;margin-top:2px;padding-left:1px;overflow:hidden;text-overflow:ellipsis
+}
+.garageGridCard .qMeta{margin-top:2px;padding-left:1px;gap:3px}
+.garageGridCard .qType{
+  font-size:4.5px;letter-spacing:.12em;overflow:hidden;text-overflow:ellipsis
+}
+.garageGridCard .qRarity{font-size:4px;padding:2px 4px;border-width:1px}
+.garageGridCard .qStats{padding:3px 4px}
+.garageGridCard .qStat{grid-template-columns:11px 1fr;column-gap:2px;padding:2px 2px}
+.garageGridCard .qIcon{width:11px;height:11px;font-size:8px}
+.garageGridCard .qStat small{font-size:3.6px}
+.garageGridCard .qStat b{font-size:8px;margin-top:1px}
 
-
-
-
-
+/* Large-card viewer */
+.garageCardModal{
+  position:fixed;inset:0;z-index:12000;background:rgba(18,23,29,.82);
+  display:flex;align-items:center;justify-content:center;padding:54px 12px 24px;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)
+}
+.garageCardModalPanel{
+  position:relative;width:min(92vw,360px);max-height:calc(100vh - 78px)
+}
+.garageCardModalPanel .quartetCard{width:100%;margin:0}
+.garageCardModalClose{
+  position:absolute;right:-4px;top:-46px;width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.45);background:rgba(255,255,255,.94);
+  color:#24313a;font-size:22px;font-weight:950;z-index:4
+}
+.garageCardModalHint{
+  color:#fff;text-align:center;font-size:11px;font-weight:750;margin-top:9px;opacity:.85
+}
 .scaleTestPanel{margin:12px 0 20px;padding:14px 10px;border-radius:18px;background:#f5f7f8;border:1px solid #d4dbe0}
 .scaleTestTitle{font-weight:950;font-size:18px;margin:0 0 4px}
 .scaleTestText{font-size:12px;color:#6b7280;margin:0 0 12px;line-height:1.35}
@@ -1008,7 +1070,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.74</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.75</div>
 </section>
 
 <section id="learnSelect" class="hidden">
@@ -3152,8 +3214,14 @@ function renderFelixVehicleCard(item){
  </div>`
 }
 let felixGarageDeckIndex=0;
+let felixGarageMode="deck";
 let felixGarageSwipeStartX=0;
 let felixGarageSwipeStartY=0;
+let felixGarageDragging=false;
+let felixGarageAnimating=false;
+let felixGarageLongPressTimer=null;
+let felixGarageLongPressTriggered=false;
+let felixModalPrevOverflow="";
 
 function felixOwnedVehicles(){
  return P.felix.rewards.filter(x=>st.owned.includes(x.id));
@@ -3177,6 +3245,19 @@ function renderFelixGarageDeck(){
  }
 
  felixGarageDeckIndex=((felixGarageDeckIndex%owned.length)+owned.length)%owned.length;
+
+ if(felixGarageMode==="grid"){
+   host.innerHTML=`<div class="garageDeckSummary">
+      <b>🏁 Deine Fahrzeugkarten</b>
+      <span class="garageDeckCount">${owned.length} / ${total} gesammelt</span>
+     </div>
+     <button class="garageViewBtn" onclick="setFelixGarageMode('deck')">🃏 Zurück zum Kartenstapel</button>
+     <div class="garageGrid">
+       ${owned.map(item=>`<button type="button" class="garageGridCard" onclick="openFelixCardModalById('${item.id}')" aria-label="${item.name} groß anzeigen">${renderFelixVehicleCard(item)}</button>`).join("")}
+     </div>`;
+   return;
+ }
+
  const visibleCount=Math.min(4,owned.length);
  let stack="";
  for(let depth=visibleCount-1;depth>=0;depth--){
@@ -3188,52 +3269,172 @@ function renderFelixGarageDeck(){
     <b>🏁 Deine Fahrzeugkarten</b>
     <span class="garageDeckCount">${owned.length} / ${total} gesammelt</span>
    </div>
+   <button class="garageViewBtn" onclick="setFelixGarageMode('grid')">▦ Alle Karten anzeigen</button>
    <div class="garageDeckWrap">
     <div id="felixGarageDeck" class="garageDeck" aria-label="Fahrzeugkarten durch Wischen ansehen">${stack}</div>
-    <div class="garageDeckFooter"><span>←</span><span class="garageDeckPosition">${felixGarageDeckIndex+1} von ${owned.length}</span><span>→</span></div>
-    <div class="garageDeckHint">Wische die oberste Karte nach links oder rechts.</div>
+    <div class="garageDeckFooter">
+      <button type="button" class="garageArrow" onclick="swipeFelixGarage(-1)" aria-label="Vorherige Karte">‹</button>
+      <span class="garageDeckPosition">${felixGarageDeckIndex+1} von ${owned.length}</span>
+      <button type="button" class="garageArrow" onclick="swipeFelixGarage(1)" aria-label="Nächste Karte">›</button>
+    </div>
+    <div class="garageDeckHint">Wische links/rechts oder nutze die Pfeile.<br>Halte die oberste Karte länger gedrückt, um sie groß anzusehen.</div>
    </div>`;
 
  bindFelixGarageSwipe();
+}
+
+function setFelixGarageMode(mode){
+ felixGarageMode=mode==="grid"?"grid":"deck";
+ renderFelixGarageDeck();
+}
+
+function resetFelixGarageDragVisuals(){
+ const deck=$("felixGarageDeck");
+ if(!deck)return;
+ const active=deck.querySelector(".garageDeckCard.depth0");
+ const next=deck.querySelector(".garageDeckCard.depth1");
+ const third=deck.querySelector(".garageDeckCard.depth2");
+ if(active){
+  active.classList.remove("dragging");
+  active.style.transform="";
+  active.style.opacity="";
+ }
+ if(next)next.style.transform="";
+ if(third)third.style.transform="";
+}
+
+function cancelFelixGarageLongPress(){
+ if(felixGarageLongPressTimer){
+  clearTimeout(felixGarageLongPressTimer);
+  felixGarageLongPressTimer=null;
+ }
 }
 
 function bindFelixGarageSwipe(){
  const deck=$("felixGarageDeck");
  if(!deck)return;
 
+ deck.addEventListener("contextmenu",e=>e.preventDefault());
+
  deck.addEventListener("pointerdown",e=>{
+  if(felixGarageAnimating)return;
   felixGarageSwipeStartX=e.clientX;
   felixGarageSwipeStartY=e.clientY;
+  felixGarageDragging=false;
+  felixGarageLongPressTriggered=false;
+  const active=deck.querySelector(".garageDeckCard.depth0");
+  if(active)active.classList.add("dragging");
+  try{deck.setPointerCapture(e.pointerId)}catch(err){}
+
+  cancelFelixGarageLongPress();
+  felixGarageLongPressTimer=setTimeout(()=>{
+   felixGarageLongPressTriggered=true;
+   felixGarageDragging=false;
+   resetFelixGarageDragVisuals();
+   const owned=felixOwnedVehicles();
+   const item=owned[felixGarageDeckIndex];
+   if(item)openFelixCardModal(item);
+  },560);
  });
 
- deck.addEventListener("pointerup",e=>{
+ deck.addEventListener("pointermove",e=>{
+  if(felixGarageAnimating||felixGarageLongPressTriggered)return;
   const dx=e.clientX-felixGarageSwipeStartX;
   const dy=e.clientY-felixGarageSwipeStartY;
-  if(Math.abs(dx)<45 || Math.abs(dx)<Math.abs(dy)*1.15)return;
-  swipeFelixGarage(dx<0?1:-1);
+  if(Math.abs(dx)>10||Math.abs(dy)>10)cancelFelixGarageLongPress();
+
+  if(Math.abs(dx)>6 && Math.abs(dx)>Math.abs(dy)*1.05){
+   felixGarageDragging=true;
+   e.preventDefault();
+   const active=deck.querySelector(".garageDeckCard.depth0");
+   const next=deck.querySelector(".garageDeckCard.depth1");
+   const third=deck.querySelector(".garageDeckCard.depth2");
+   const p=Math.min(Math.abs(dx)/125,1);
+   if(active){
+    active.style.transform=`translate3d(${dx}px,${Math.min(Math.abs(dx)*.045,8)}px,0) rotate(${dx*.027}deg) scale(.995)`;
+    active.style.opacity=String(1-Math.min(Math.abs(dx)/520,.20));
+   }
+   if(next)next.style.transform=`translate3d(${6*(1-p)}px,${11*(1-p)}px,0) scale(${.981+.019*p})`;
+   if(third)third.style.transform=`translate3d(${-5+11*p}px,${22-11*p}px,0) scale(${.961+.020*p})`;
+  }
+ },{passive:false});
+
+ deck.addEventListener("pointerup",e=>{
+  cancelFelixGarageLongPress();
+  if(felixGarageLongPressTriggered){
+   felixGarageLongPressTriggered=false;
+   return;
+  }
+  const dx=e.clientX-felixGarageSwipeStartX;
+  const dy=e.clientY-felixGarageSwipeStartY;
+  if(felixGarageDragging && Math.abs(dx)>=58 && Math.abs(dx)>Math.abs(dy)*1.05){
+   resetFelixGarageDragVisuals();
+   swipeFelixGarage(dx<0?1:-1);
+  }else{
+   resetFelixGarageDragVisuals();
+  }
+  felixGarageDragging=false;
  });
 
  deck.addEventListener("pointercancel",()=>{
-  felixGarageSwipeStartX=0;felixGarageSwipeStartY=0;
+  cancelFelixGarageLongPress();
+  resetFelixGarageDragVisuals();
+  felixGarageDragging=false;
+  felixGarageLongPressTriggered=false;
  });
 }
 
 function swipeFelixGarage(direction){
  const owned=felixOwnedVehicles();
- if(owned.length<2)return;
- const active=document.querySelector("#felixGarageDeck .garageDeckCard.depth0");
+ if(owned.length<2||felixGarageAnimating)return;
+ const deck=$("felixGarageDeck");
+ const active=deck&&deck.querySelector(".garageDeckCard.depth0");
  if(!active)return;
 
- active.classList.add(direction>0?"swipe-left":"swipe-right");
+ felixGarageAnimating=true;
+ resetFelixGarageDragVisuals();
+ deck.classList.add("is-advancing");
+ requestAnimationFrame(()=>{
+  active.classList.add(direction>0?"swipe-left":"swipe-right");
+ });
+
  setTimeout(()=>{
   felixGarageDeckIndex=(felixGarageDeckIndex+direction+owned.length)%owned.length;
+  felixGarageAnimating=false;
   renderFelixGarageDeck();
- },220);
+ },330);
+}
+
+function openFelixCardModalById(id){
+ const item=P.felix.rewards.find(x=>x.id===id);
+ if(item&&st.owned.includes(id))openFelixCardModal(item);
+}
+
+function openFelixCardModal(item){
+ closeFelixCardModal();
+ felixModalPrevOverflow=document.body.style.overflow||"";
+ document.body.style.overflow="hidden";
+ document.body.insertAdjacentHTML("beforeend",`<div class="garageCardModal" id="garageCardModal" role="dialog" aria-modal="true" aria-label="${item.name}">
+   <div class="garageCardModalPanel">
+    <button type="button" class="garageCardModalClose" onclick="closeFelixCardModal()" aria-label="Großansicht schließen">×</button>
+    ${renderFelixVehicleCard(item)}
+    <div class="garageCardModalHint">Tippe außerhalb der Karte, um sie zu schließen.</div>
+   </div>
+  </div>`);
+ const modal=$("garageCardModal");
+ if(modal)modal.addEventListener("click",e=>{if(e.target===modal)closeFelixCardModal()});
+}
+
+function closeFelixCardModal(){
+ const modal=$("garageCardModal");
+ if(modal)modal.remove();
+ document.body.style.overflow=felixModalPrevOverflow;
 }
 
 function showFelixGarage(){
  if(prof!=="felix"){showRewards();return}
  normalizeRewardState();
+ felixGarageMode="deck";
  show("felixGarage");
  renderFelixGarageDeck();
 }
