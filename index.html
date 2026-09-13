@@ -1004,7 +1004,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .scaleRatio{display:block;font-weight:600;color:#69727a;font-size:8px;margin-top:1px}
 
 
-/* V0.80 – full uncropped integrated premium profile splash */
+/* V0.81 – full uncropped integrated premium profile splash */
 #profiles{padding-bottom:18px}
 body:not(.frieda):not(.felix) .brandbar{display:none}
 body:not(.frieda):not(.felix) #app{padding-top:7px}
@@ -1091,7 +1091,7 @@ body:not(.frieda):not(.felix) #app{padding-top:7px}
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.80</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.81</div>
 </section>
 
 <section id="learnSelect" class="hidden">
@@ -1213,7 +1213,7 @@ body:not(.frieda):not(.felix) #app{padding-top:7px}
 </section>
 
 <section id="rewards" class="hidden">
- <div class="card"><div class="topline"><h2 id="rewardTitle">🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div id="collectionBox"></div><div class="modeHint muted"><b>Preise:</b> Gewöhnlich 25 🪙 · Selten 45 🪙 · Episch 70 🪙 · Legendär 100 🪙</div><button id="collectionActionBtn" class="btn primary" style="margin:12px 0" onclick="showWardrobe()">👗 Meine Looks & Szenen</button><div id="rewardList"></div></div>
+ <div class="card"><div class="topline"><h2 id="rewardTitle">🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div id="collectionBox"></div><div class="modeHint muted"><b>Preise:</b> Gewöhnlich 50 🪙 · Selten 90 🪙 · Episch 140 🪙 · Legendär 200 🪙</div><button id="collectionActionBtn" class="btn primary" style="margin:12px 0" onclick="showWardrobe()">👗 Meine Looks & Szenen</button><div id="rewardList"></div></div>
 </section>
 
 <section id="felixGarage" class="hidden">
@@ -1298,36 +1298,36 @@ Object.assign(P,{
    50:"Hälfte der 100er-Reihe"
   },
   rewards:[
-   {id:"look1",icon:"👗",name:"Lavendel Hoodie & Rock",price:25,gate:0,cat:"look",rarity:"Gewöhnlich"},
-   {id:"look2",icon:"👖",name:"Pastell Jeans Casual",price:25,gate:0,cat:"look",rarity:"Gewöhnlich"},
-   {id:"look3",icon:"🏃",name:"Sporty Lavender",price:25,gate:0,cat:"look",rarity:"Gewöhnlich"},
-   {id:"look4",icon:"🌸",name:"Japanese Everyday",price:25,gate:0,cat:"look",rarity:"Gewöhnlich"},
-   {id:"look5",icon:"👖",name:"Denim Overall",price:25,gate:0,cat:"look",rarity:"Gewöhnlich"},
-   {id:"look6",icon:"🖤",name:"Urban Cargo",price:25,gate:0,cat:"look",rarity:"Gewöhnlich"},
-   {id:"look7",icon:"🗼",name:"Tokyo Streetwear",price:25,gate:0,cat:"look",rarity:"Gewöhnlich"},
-   {id:"look8",icon:"🐈",name:"Cat Casual",price:25,gate:0,cat:"look",rarity:"Gewöhnlich"},
-   {id:"rare1",icon:"💎",name:"Tokyo Denim",price:45,gate:0,cat:"look",rarity:"Selten"},
-   {id:"rare2",icon:"💎",name:"Harajuku Light",price:45,gate:0,cat:"look",rarity:"Selten"},
-   {id:"rare3",icon:"💎",name:"School-Day Casual",price:45,gate:0,cat:"look",rarity:"Selten"},
-   {id:"rare4",icon:"💎",name:"Urban Pastel",price:45,gate:0,cat:"look",rarity:"Selten"},
-   {id:"rare5",icon:"💎",name:"Tokyo Rain Girl",price:45,gate:0,cat:"look",rarity:"Selten"},
-   {id:"rare6",icon:"💎",name:"Sakura Street",price:45,gate:0,cat:"look",rarity:"Selten"},
-   {id:"rare7",icon:"💎",name:"Tokyo Sport Mix",price:45,gate:0,cat:"look",rarity:"Selten"},
-   {id:"rare8",icon:"💎",name:"Cat Street",price:45,gate:0,cat:"look",rarity:"Selten"},
-   {id:"rare9",icon:"💎",name:"Night City Casual",price:45,gate:0,cat:"look",rarity:"Selten"},
-   {id:"rare10",icon:"🎮",name:"Arcade Champion",price:45,gate:0,cat:"look",rarity:"Selten"},
-   {id:"epic1",icon:"🌙",name:"Moonlight Kimono",price:70,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic2",icon:"⚔️",name:"Wisteria Warrior",price:70,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic3",icon:"📚",name:"Tokyo Academy",price:70,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic4",icon:"🌸",name:"Sakura Sailor",price:70,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic5",icon:"🐉",name:"Dragon Guardian",price:70,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic6",icon:"🪐",name:"Hoshi Science Club",price:70,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic7",icon:"🦊",name:"Matsuri Dream",price:70,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic8",icon:"🐈⚡",name:"Neon Cat Guardian",price:70,gate:0,cat:"look",rarity:"Episch"},
-   {id:"legend1",icon:"⚔️💜",name:"Wisteria Slayer",price:100,gate:5,cat:"look",rarity:"Legendär"},
-   {id:"legend2",icon:"🦊",name:"Emerald Spirit Slayer",price:100,gate:5,cat:"look",rarity:"Legendär"},
-   {id:"legend3",icon:"🌌",name:"Celestial Shrine Guardian",price:100,gate:5,cat:"look",rarity:"Legendär"},
-   {id:"legend4",icon:"🐉",name:"Jade Spirit Dragon",price:100,gate:5,cat:"look",rarity:"Legendär"}
+   {id:"look1",icon:"👗",name:"Lavendel Hoodie & Rock",price:50,gate:0,cat:"look",rarity:"Gewöhnlich"},
+   {id:"look2",icon:"👖",name:"Pastell Jeans Casual",price:50,gate:0,cat:"look",rarity:"Gewöhnlich"},
+   {id:"look3",icon:"🏃",name:"Sporty Lavender",price:50,gate:0,cat:"look",rarity:"Gewöhnlich"},
+   {id:"look4",icon:"🌸",name:"Japanese Everyday",price:50,gate:0,cat:"look",rarity:"Gewöhnlich"},
+   {id:"look5",icon:"👖",name:"Denim Overall",price:50,gate:0,cat:"look",rarity:"Gewöhnlich"},
+   {id:"look6",icon:"🖤",name:"Urban Cargo",price:50,gate:0,cat:"look",rarity:"Gewöhnlich"},
+   {id:"look7",icon:"🗼",name:"Tokyo Streetwear",price:50,gate:0,cat:"look",rarity:"Gewöhnlich"},
+   {id:"look8",icon:"🐈",name:"Cat Casual",price:50,gate:0,cat:"look",rarity:"Gewöhnlich"},
+   {id:"rare1",icon:"💎",name:"Tokyo Denim",price:90,gate:0,cat:"look",rarity:"Selten"},
+   {id:"rare2",icon:"💎",name:"Harajuku Light",price:90,gate:0,cat:"look",rarity:"Selten"},
+   {id:"rare3",icon:"💎",name:"School-Day Casual",price:90,gate:0,cat:"look",rarity:"Selten"},
+   {id:"rare4",icon:"💎",name:"Urban Pastel",price:90,gate:0,cat:"look",rarity:"Selten"},
+   {id:"rare5",icon:"💎",name:"Tokyo Rain Girl",price:90,gate:0,cat:"look",rarity:"Selten"},
+   {id:"rare6",icon:"💎",name:"Sakura Street",price:90,gate:0,cat:"look",rarity:"Selten"},
+   {id:"rare7",icon:"💎",name:"Tokyo Sport Mix",price:90,gate:0,cat:"look",rarity:"Selten"},
+   {id:"rare8",icon:"💎",name:"Cat Street",price:90,gate:0,cat:"look",rarity:"Selten"},
+   {id:"rare9",icon:"💎",name:"Night City Casual",price:90,gate:0,cat:"look",rarity:"Selten"},
+   {id:"rare10",icon:"🎮",name:"Arcade Champion",price:90,gate:0,cat:"look",rarity:"Selten"},
+   {id:"epic1",icon:"🌙",name:"Moonlight Kimono",price:140,gate:0,cat:"look",rarity:"Episch"},
+   {id:"epic2",icon:"⚔️",name:"Wisteria Warrior",price:140,gate:0,cat:"look",rarity:"Episch"},
+   {id:"epic3",icon:"📚",name:"Tokyo Academy",price:140,gate:0,cat:"look",rarity:"Episch"},
+   {id:"epic4",icon:"🌸",name:"Sakura Sailor",price:140,gate:0,cat:"look",rarity:"Episch"},
+   {id:"epic5",icon:"🐉",name:"Dragon Guardian",price:140,gate:0,cat:"look",rarity:"Episch"},
+   {id:"epic6",icon:"🪐",name:"Hoshi Science Club",price:140,gate:0,cat:"look",rarity:"Episch"},
+   {id:"epic7",icon:"🦊",name:"Matsuri Dream",price:140,gate:0,cat:"look",rarity:"Episch"},
+   {id:"epic8",icon:"🐈⚡",name:"Neon Cat Guardian",price:140,gate:0,cat:"look",rarity:"Episch"},
+   {id:"legend1",icon:"⚔️💜",name:"Wisteria Slayer",price:200,gate:5,cat:"look",rarity:"Legendär"},
+   {id:"legend2",icon:"🦊",name:"Emerald Spirit Slayer",price:200,gate:5,cat:"look",rarity:"Legendär"},
+   {id:"legend3",icon:"🌌",name:"Celestial Shrine Guardian",price:200,gate:5,cat:"look",rarity:"Legendär"},
+   {id:"legend4",icon:"🐉",name:"Jade Spirit Dragon",price:200,gate:5,cat:"look",rarity:"Legendär"}
   ] },
  felix:{
   name:"Felix",icon:"🏎️",rows:[2,3,4,5,6,7,8,9,10],
@@ -1364,9 +1364,9 @@ Object.assign(P,{
    {id:"grandmotorhome",icon:"🚌",name:"Empire Liner",maker:"MORELO",number:"19/24",vehicleType:"GRAND MOTORHOME",price:350,gate:0,cat:"vehicle",rarity:"Episch",lengthM:10.00,stats:{power:"400 PS",speed:"120 km/h",accel:"19,0 s",range:"900 km",terrain:"1/10",utility:"10/10"}},
    {id:"electricgt",icon:"⚡",name:"RS e-tron GT",maker:"AUDI",number:"20/24",vehicleType:"ELECTRIC GT",price:350,gate:0,cat:"vehicle",rarity:"Episch",lengthM:4.99,stats:{power:"646 PS",speed:"250 km/h",accel:"3,3 s",range:"488 km",terrain:"1/10",utility:"6/10"}},
    {id:"superbike",icon:"🏍️",name:"Panigale V4 R",maker:"DUCATI",number:"21/24",vehicleType:"SUPERBIKE",price:350,gate:0,cat:"vehicle",rarity:"Episch",lengthM:2.09,stats:{power:"218 PS",speed:"299 km/h",accel:"3,0 s",range:"250 km",terrain:"1/10",utility:"2/10"}},
-   {id:"lemansprototype",icon:"🏎️",name:"Le-Mans Prototype",maker:"VELOXIS",number:"22/24",vehicleType:"LE MANS",price:600,gate:0,cat:"vehicle",rarity:"Legendär",lengthM:5.00,stats:{power:"680 PS",speed:"340 km/h",accel:"2,8 s",range:"600 km",terrain:"1/10",utility:"1/10"}},
-   {id:"futureconcept",icon:"🚀",name:"Future Concept",maker:"AUDI",number:"23/24",vehicleType:"FUTURE CONCEPT",price:600,gate:0,cat:"vehicle",rarity:"Legendär",lengthM:4.90,stats:{power:"1200 PS",speed:"360 km/h",accel:"2,1 s",range:"700 km",terrain:"1/10",utility:"2/10"}},
-   {id:"electrichypercar",icon:"⚡",name:"FIA Electric GT",maker:"FIA",number:"24/24",vehicleType:"ELECTRIC HYPERCAR",price:600,gate:0,cat:"vehicle",rarity:"Legendär",lengthM:4.95,stats:{power:"1000 PS",speed:"320 km/h",accel:"2,3 s",range:"500 km",terrain:"1/10",utility:"1/10"}}
+   {id:"lemansprototype",icon:"🏎️",name:"Le-Mans Prototype",maker:"VELOXIS",number:"22/24",vehicleType:"LE MANS",price:600,gate:5,cat:"vehicle",rarity:"Legendär",lengthM:5.00,stats:{power:"680 PS",speed:"340 km/h",accel:"2,8 s",range:"600 km",terrain:"1/10",utility:"1/10"}},
+   {id:"futureconcept",icon:"🚀",name:"Future Concept",maker:"AUDI",number:"23/24",vehicleType:"FUTURE CONCEPT",price:600,gate:5,cat:"vehicle",rarity:"Legendär",lengthM:4.90,stats:{power:"1200 PS",speed:"360 km/h",accel:"2,1 s",range:"700 km",terrain:"1/10",utility:"2/10"}},
+   {id:"electrichypercar",icon:"⚡",name:"FIA Electric GT",maker:"FIA",number:"24/24",vehicleType:"ELECTRIC HYPERCAR",price:600,gate:5,cat:"vehicle",rarity:"Legendär",lengthM:4.95,stats:{power:"1000 PS",speed:"320 km/h",accel:"2,3 s",range:"500 km",terrain:"1/10",utility:"1/10"}}
   ] }
 });
 
@@ -2480,7 +2480,8 @@ function buyReward(id){
  let item=P[prof].rewards.find(x=>x.id===id); if(!item)return;
  if(st.owned.includes(id))return;
  if(prof==="frieda"&&rarityClass(item)==="rarity-legendary"&&safeRowCount()<item.gate){alert(`Legendäre Looks werden ab ${item.gate} Reihen auf ⭐ Sicher freigeschaltet.`);return}
- if(prof!=="frieda"&&st.mastered.length<item.gate){alert(`Dafür musst du zuerst ${item.gate} Reihen meistern.`);return}
+ if(prof==="felix"&&rarityClass(item)==="rarity-legendary"&&safeRowCount()<item.gate){alert(`Legendäre Fahrzeuge werden ab ${item.gate} Reihen auf ⭐ Sicher freigeschaltet.`);return}
+ if(prof!=="frieda"&&rarityClass(item)!=="rarity-legendary"&&st.mastered.length<item.gate){alert(`Dafür musst du zuerst ${item.gate} Reihen meistern.`);return}
  if((st.coins||0)<item.price){alert(`Dir fehlen noch ${item.price-(st.coins||0)} Münzen.`);return}
  st.coins-=item.price;st.owned.push(id);
  if(prof==="frieda"&&item.cat==="look")st.equipped.look=id;
@@ -3505,7 +3506,7 @@ function showRewards(){
  if(rewardsSection)rewardsSection.classList.toggle("friedaRewards",prof==="frieda");
  if($("rewardTitle"))$("rewardTitle").textContent=prof==="felix"?"🚗 Fahrzeug-Shop":"🛍️ Prämien-Shop";
  const priceHint=document.querySelector("#rewards .modeHint");
- if(priceHint)priceHint.innerHTML=prof==="felix"?"<b>Preise:</b> Gewöhnlich 100 🪙 · Selten 200 🪙 · Episch 350 🪙 · Legendär 600 🪙":"<b>Preise:</b> Gewöhnlich 25 🪙 · Selten 45 🪙 · Episch 70 🪙 · Legendär 100 🪙";
+ if(priceHint)priceHint.innerHTML=prof==="felix"?"<b>Preise:</b> Gewöhnlich 100 🪙 · Selten 200 🪙 · Episch 350 🪙 · Legendär 600 🪙":"<b>Preise:</b> Gewöhnlich 50 🪙 · Selten 90 🪙 · Episch 140 🪙 · Legendär 200 🪙";
  if($("collectionActionBtn")){
   $("collectionActionBtn").textContent=prof==="felix"?"🏁 Garage öffnen":"👗 Meine Looks & Szenen";
 }
@@ -3513,8 +3514,9 @@ function showRewards(){
 
  if(prof==="felix"){
    $("rewardList").innerHTML=P.felix.rewards.map(x=>{
-     const owned=st.owned.includes(x.id), enough=(st.coins||0)>=x.price;
-     return `<div class="felixShopCard ${owned?"owned":""}"><div class="felixShopImage ${owned?"":"isLocked"}"><img class="${owned?"":"vehicleSilhouette"}" src="${ASSETS.felix[x.id]}" alt="${owned?x.name:"Noch nicht gekauftes Fahrzeug"}"></div><div><div class="felixMaker">${x.maker}</div><div class="felixShopName">${x.name}</div><div class="felixType">${x.vehicleType} · ${x.rarity}</div><div class="muted" style="margin-top:4px">🪙 ${x.price}</div>${owned?'<button class="btn felixBuy" onclick="showFelixGarage()">✓ In Garage</button>':`<button class="btn primary felixBuy" ${enough?`onclick="buyReward('${x.id}')"`:"disabled"}>${enough?"Kaufen":"Noch sparen"}</button>`}</div></div>`
+     const owned=st.owned.includes(x.id), enough=(st.coins||0)>=x.price, gateOk=rarityClass(x)!=="rarity-legendary"||safeRowCount()>=x.gate;
+     const buyLabel=!gateOk?`🔒 ${safeRowCount()}/${x.gate} Reihen ⭐ Sicher`:enough?"Kaufen":"Noch sparen";
+     return `<div class="felixShopCard ${owned?"owned":""}"><div class="felixShopImage ${owned?"":"isLocked"}"><img class="${owned?"":"vehicleSilhouette"}" src="${ASSETS.felix[x.id]}" alt="${owned?x.name:"Noch nicht gekauftes Fahrzeug"}"></div><div><div class="felixMaker">${x.maker}</div><div class="felixShopName">${x.name}</div><div class="felixType">${x.vehicleType} · ${x.rarity}</div><div class="muted" style="margin-top:4px">🪙 ${x.price}</div>${owned?'<button class="btn felixBuy" onclick="showFelixGarage()">✓ In Garage</button>':`<button class="btn primary felixBuy" ${(enough&&gateOk)?`onclick="buyReward('${x.id}')"`:"disabled"}>${buyLabel}</button>`}</div></div>`
    }).join("");
    show("rewards");return;
  }
