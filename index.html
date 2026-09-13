@@ -871,7 +871,52 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
   margin-top:2px;
   color:#1c222b;
 }
+
 .qNote{display:none}
+
+/* V0.74 – Felix Garage as a real card deck */
+.felixGarageCard{overflow:visible}
+.garageDeckSummary{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  margin:8px 0 4px;padding:10px 12px;border:1px solid #d5dce2;border-radius:14px;
+  background:linear-gradient(180deg,#f7fafc,#eef4f8)
+}
+.garageDeckSummary b{font-size:15px}
+.garageDeckCount{
+  flex:0 0 auto;padding:5px 9px;border-radius:999px;background:#fff;
+  border:1px solid #c7d0d7;font-size:12px;font-weight:950;color:#394650
+}
+.garageDeckWrap{padding:2px 0 8px;text-align:center}
+.garageDeck{
+  width:min(72vw,300px);aspect-ratio:2/3;position:relative;
+  margin:12px auto 38px;touch-action:pan-y;user-select:none;-webkit-user-select:none
+}
+.garageDeckCard{
+  position:absolute;inset:0;transform-origin:center bottom;
+  transition:transform .24s cubic-bezier(.22,.8,.3,1),opacity .22s ease,filter .22s ease;
+  will-change:transform,opacity;pointer-events:none
+}
+.garageDeckCard .quartetCard{width:100%;height:100%;margin:0}
+.garageDeckCard.depth0{z-index:8;transform:translate3d(0,0,0) scale(1);pointer-events:auto}
+.garageDeckCard.depth1{z-index:7;transform:translate3d(5px,10px,0) scale(.982);filter:brightness(.985)}
+.garageDeckCard.depth2{z-index:6;transform:translate3d(-4px,20px,0) scale(.964);filter:brightness(.97)}
+.garageDeckCard.depth3{z-index:5;transform:translate3d(3px,30px,0) scale(.946);filter:brightness(.955)}
+.garageDeckCard.swipe-left{
+  transform:translate3d(-125%,8px,0) rotate(-8deg) scale(.985)!important;opacity:0
+}
+.garageDeckCard.swipe-right{
+  transform:translate3d(125%,8px,0) rotate(8deg) scale(.985)!important;opacity:0
+}
+.garageDeckFooter{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  margin-top:2px;color:#6a747d;font-size:12px;font-weight:800
+}
+.garageDeckPosition{
+  min-width:68px;padding:5px 9px;border:1px solid #d0d7dc;border-radius:999px;
+  background:#fff;color:#33414b;font-weight:950
+}
+.garageDeckHint{font-size:11px;color:#7a858e;margin-top:7px}
+
 
 
 
@@ -963,7 +1008,7 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.73</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.74</div>
 </section>
 
 <section id="learnSelect" class="hidden">
@@ -3106,25 +3151,91 @@ function renderFelixVehicleCard(item){
    </div>
  </div>`
 }
+let felixGarageDeckIndex=0;
+let felixGarageSwipeStartX=0;
+let felixGarageSwipeStartY=0;
+
+function felixOwnedVehicles(){
+ return P.felix.rewards.filter(x=>st.owned.includes(x.id));
+}
+
+function garageDeckCardHTML(item,depth){
+ return `<div class="garageDeckCard depth${depth}" data-depth="${depth}">${renderFelixVehicleCard(item)}</div>`
+}
+
+function renderFelixGarageDeck(){
+ const host=$("felixGarageContent");
+ if(!host)return;
+ const owned=felixOwnedVehicles();
+ const total=P.felix.rewards.length;
+
+ if(!owned.length){
+  felixGarageDeckIndex=0;
+  host.innerHTML=`<div class="garageDeckSummary"><b>🏁 Sammlung</b><span class="garageDeckCount">0 / ${total}</span></div>
+   <div class="garageEmpty">Noch keine Fahrzeugkarte gesammelt.<br>Such dir im Shop dein erstes Fahrzeug aus.</div>`;
+  return;
+ }
+
+ felixGarageDeckIndex=((felixGarageDeckIndex%owned.length)+owned.length)%owned.length;
+ const visibleCount=Math.min(4,owned.length);
+ let stack="";
+ for(let depth=visibleCount-1;depth>=0;depth--){
+   const idx=(felixGarageDeckIndex+depth)%owned.length;
+   stack+=garageDeckCardHTML(owned[idx],depth);
+ }
+
+ host.innerHTML=`<div class="garageDeckSummary">
+    <b>🏁 Deine Fahrzeugkarten</b>
+    <span class="garageDeckCount">${owned.length} / ${total} gesammelt</span>
+   </div>
+   <div class="garageDeckWrap">
+    <div id="felixGarageDeck" class="garageDeck" aria-label="Fahrzeugkarten durch Wischen ansehen">${stack}</div>
+    <div class="garageDeckFooter"><span>←</span><span class="garageDeckPosition">${felixGarageDeckIndex+1} von ${owned.length}</span><span>→</span></div>
+    <div class="garageDeckHint">Wische die oberste Karte nach links oder rechts.</div>
+   </div>`;
+
+ bindFelixGarageSwipe();
+}
+
+function bindFelixGarageSwipe(){
+ const deck=$("felixGarageDeck");
+ if(!deck)return;
+
+ deck.addEventListener("pointerdown",e=>{
+  felixGarageSwipeStartX=e.clientX;
+  felixGarageSwipeStartY=e.clientY;
+ });
+
+ deck.addEventListener("pointerup",e=>{
+  const dx=e.clientX-felixGarageSwipeStartX;
+  const dy=e.clientY-felixGarageSwipeStartY;
+  if(Math.abs(dx)<45 || Math.abs(dx)<Math.abs(dy)*1.15)return;
+  swipeFelixGarage(dx<0?1:-1);
+ });
+
+ deck.addEventListener("pointercancel",()=>{
+  felixGarageSwipeStartX=0;felixGarageSwipeStartY=0;
+ });
+}
+
+function swipeFelixGarage(direction){
+ const owned=felixOwnedVehicles();
+ if(owned.length<2)return;
+ const active=document.querySelector("#felixGarageDeck .garageDeckCard.depth0");
+ if(!active)return;
+
+ active.classList.add(direction>0?"swipe-left":"swipe-right");
+ setTimeout(()=>{
+  felixGarageDeckIndex=(felixGarageDeckIndex+direction+owned.length)%owned.length;
+  renderFelixGarageDeck();
+ },220);
+}
+
 function showFelixGarage(){
  if(prof!=="felix"){showRewards();return}
- normalizeRewardState();show("felixGarage");
- const owned=P.felix.rewards.filter(x=>st.owned.includes(x.id));
- const scaleTest=`<div class="scaleTestPanel">
-  <div class="scaleTestTitle">📏 Größenvergleich</div>
-  <div class="scaleTestText">Test der realen Fahrzeuglängen auf einer gemeinsamen Bodenlinie.</div>
-  <div class="scaleStage">
-    <div class="scaleVehicle city"><img src="${ASSETS.felix.cityflitzer}" alt="City Flitzer"></div>
-    <div class="scaleVehicle trail"><img src="${ASSETS.felix.trail4x4}" alt="Trail 4x4"></div>
-    <div class="scaleVehicle lemans"><img src="${ASSETS.felix.lemansprototype}" alt="Le-Mans Prototype"></div>
-    <div class="scaleVehicle truck"><img src="${ASSETS.felix.expeditiontruck}" alt="Expedition Truck"></div>
-    <div class="scaleLabel city">City<span class="scaleRatio">3,70 m</span></div>
-    <div class="scaleLabel trail">Trail<span class="scaleRatio">4,60 m</span></div>
-    <div class="scaleLabel lemans">Le-Mans<span class="scaleRatio">5,00 m</span></div>
-    <div class="scaleLabel truck">Truck<span class="scaleRatio">7,20 m</span></div>
-  </div>
- </div>`;
- $("felixGarageContent").innerHTML=scaleTest+(owned.length?owned.map(renderFelixVehicleCard).join(""):'<div class="garageEmpty">Noch keine Fahrzeugkarte gesammelt.<br>Dein erstes Ziel: Trail 4x4.</div>');
+ normalizeRewardState();
+ show("felixGarage");
+ renderFelixGarageDeck();
 }
 function showWardrobe(){
  if(prof!=="frieda"){showFelixGarage();return}
@@ -3151,8 +3262,10 @@ function showRewards(){
  if($("rewardTitle"))$("rewardTitle").textContent=prof==="felix"?"🚗 Fahrzeug-Shop":"🛍️ Prämien-Shop";
  const priceHint=document.querySelector("#rewards .modeHint");
  if(priceHint)priceHint.innerHTML=prof==="felix"?"<b>Preise:</b> Gewöhnlich 5 🪙 · Selten 9 🪙 · Episch 14 🪙 · Legendär 20 🪙":"<b>Preise:</b> Gewöhnlich 25 🪙 · Selten 45 🪙 · Episch 70 🪙 · Legendär 100 🪙";
- if($("collectionActionBtn"))$("collectionActionBtn").textContent=prof==="felix"?"🏁 Meine Garage":"👗 Meine Looks & Szenen";
- $("collectionBox").innerHTML=prof==="frieda"?"":collectionPreview();
+ if($("collectionActionBtn")){
+  $("collectionActionBtn").textContent=prof==="felix"?"🏁 Garage öffnen":"👗 Meine Looks & Szenen";
+}
+ $("collectionBox").innerHTML="";
 
  if(prof==="felix"){
    $("rewardList").innerHTML=P.felix.rewards.map(x=>{
