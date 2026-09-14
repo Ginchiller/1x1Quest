@@ -1004,26 +1004,27 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 .scaleRatio{display:block;font-weight:600;color:#69727a;font-size:8px;margin-top:1px}
 
 
-/* V0.81 – full uncropped integrated premium profile splash */
-#profiles{padding-bottom:18px}
+/* V0.82 – true full-screen integrated profile splash */
+body:not(.frieda):not(.felix){background:#0d1830;overflow:hidden}
 body:not(.frieda):not(.felix) .brandbar{display:none}
-body:not(.frieda):not(.felix) #app{padding-top:7px}
-.profileSplash{position:relative;overflow:hidden;border-radius:28px;margin:0;background:#0d1830;box-shadow:0 18px 46px rgba(10,23,48,.28)}
-.profileSplash img{display:block;width:100%;height:auto;object-fit:contain;object-position:center center}
-.profileHotspot{position:absolute;z-index:4;bottom:11.3%;height:19.3%;border:0;border-radius:22px;background:transparent;color:transparent;-webkit-tap-highlight-color:transparent;cursor:pointer}
-.profileHotspot.friedaHotspot{left:8.3%;width:40.7%}
-.profileHotspot.felixHotspot{right:7.4%;width:40.7%}
+body:not(.frieda):not(.felix) #app{max-width:none;width:100vw;height:100dvh;min-height:100svh;margin:0;padding:0}
+#profiles{position:fixed;inset:0;width:100vw;height:100dvh;min-height:100svh;padding:0;margin:0;background:#0d1830;overflow:hidden}
+.profileSplash{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;border-radius:0;margin:0;background:#0d1830;box-shadow:none}
+.profileSplash img{display:block;width:100%;height:100%;object-fit:cover;object-position:center center}
+.profileHotspot{position:absolute;z-index:4;top:69.0%;height:20.0%;border:0;border-radius:22px;background:transparent;color:transparent;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.profileHotspot.friedaHotspot{left:5.2%;width:43.0%}
+.profileHotspot.felixHotspot{right:5.2%;width:43.0%}
 .profileHotspot:active{background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 2px rgba(255,255,255,.35)}
 .profileHotspot:focus-visible{outline:3px solid #fff;outline-offset:-4px;background:rgba(255,255,255,.08)}
 .profileTapHint{display:none}
-@media(max-width:390px){.profileSplash{border-radius:24px}.profileHotspot{border-radius:18px}}
+@supports(padding:max(0px)){#profiles{height:100dvh}}
 
 </style>
 </head>
 <body>
 <noscript><div style="max-width:540px;margin:40px auto;padding:24px;font-family:sans-serif"><h1>Number Clash</h1><p>Bitte JavaScript aktivieren.</p></div></noscript>
 <main id="app">
-<!-- Number Clash V0.78 -->
+<!-- Number Clash V0.82 -->
 <div class="brandbar">
   <div class="brand">Number Clash</div>
   <div class="wallet">
@@ -1034,7 +1035,7 @@ body:not(.frieda):not(.felix) #app{padding-top:7px}
 
 <section id="profiles">
  <div class="profileSplash" aria-label="Number Clash – Profil auswählen">
-  <img src="number-clash-start-v080.webp" alt="Number Clash mit Manga-Mädchen, Rennwagen und Profilauswahl für Frieda und Felix">
+  <img src="number-clash-start-v082.png" alt="Number Clash mit Manga-Mädchen, Rennwagen und Profilauswahl für Frieda und Felix">
   <button class="profileHotspot friedaHotspot" onclick="selectProfile('frieda')" aria-label="Frieda auswählen – Manga und Anime, Reihen 6 bis 50">Frieda starten</button>
   <button class="profileHotspot felixHotspot" onclick="selectProfile('felix')" aria-label="Felix auswählen – Fahrzeuge und Garage, Reihen 2 bis 10">Felix starten</button>
   <div class="profileTapHint">Tippe auf Frieda oder Felix</div>
@@ -1091,7 +1092,7 @@ body:not(.frieda):not(.felix) #app{padding-top:7px}
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.81</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.82</div>
 </section>
 
 <section id="learnSelect" class="hidden">
