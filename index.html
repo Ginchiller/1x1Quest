@@ -1092,7 +1092,7 @@ body:not(.frieda):not(.felix) #app{max-width:none;width:100vw;height:100dvh;min-
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.82</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.83</div>
 </section>
 
 <section id="learnSelect" class="hidden">
@@ -1498,9 +1498,25 @@ function rewardVisual(item,size="large"){
 const allSections=["profiles","home","parents","learnSelect","lesson","memorize","corefacts","training","result","wardrobe","rewards","felixGarage"];
 
 function stateKey(){return "quest03_"+prof}
-function fresh(){return {learned:[],mastered:[],skill:{},rowStats:{},sessions:0,coins:0,owned:[],equipped:{},sound:true}}
+function backupStateKey(){return stateKey()+"_safe"}
+function fresh(){return {learned:[],mastered:[],skill:{},rowStats:{},sessions:0,coins:0,owned:[],equipped:{},sound:true,_saveRev:0,_savedAt:0}}
+function parseSavedState(raw){
+ try{
+  if(!raw)return null;
+  const x=JSON.parse(raw);
+  return x&&typeof x==="object"?x:null;
+ }catch(e){return null}
+}
 function load(){try{
- let x=Object.assign(fresh(),JSON.parse(localStorage.getItem(stateKey())||"{}"));
+ const primary=parseSavedState(localStorage.getItem(stateKey()));
+ const safe=parseSavedState(localStorage.getItem(backupStateKey()));
+ let chosen=null;
+ if(primary&&safe){
+  const pr=Number(primary._saveRev||0),sr=Number(safe._saveRev||0);
+  const pt=Number(primary._savedAt||0),stt=Number(safe._savedAt||0);
+  chosen=(sr>pr||(sr===pr&&stt>pt))?safe:primary;
+ }else chosen=primary||safe||{};
+ let x=Object.assign(fresh(),chosen);
  if(!x.rowStats||typeof x.rowStats!=="object")x.rowStats={};
  const rows=(P[prof]&&P[prof].rows)||[];
  rows.forEach(r=>{
@@ -1512,7 +1528,23 @@ function load(){try{
  });
  return x
  }catch(e){return fresh()}}
-function save(){localStorage.setItem(stateKey(),JSON.stringify(st))}
+function save(){
+ if(!st||!prof)return;
+ try{
+  const key=stateKey(),safeKey=backupStateKey();
+  const currentRaw=localStorage.getItem(key);
+  const current=parseSavedState(currentRaw);
+  const safe=parseSavedState(localStorage.getItem(safeKey));
+  const maxRev=Math.max(Number(st._saveRev||0),Number(current&&current._saveRev||0),Number(safe&&safe._saveRev||0));
+  if(currentRaw)localStorage.setItem(safeKey,currentRaw);
+  st._saveRev=maxRev+1;
+  st._savedAt=Date.now();
+  localStorage.setItem(key,JSON.stringify(st));
+ }catch(e){console.warn("Number Clash: Spielstand konnte nicht gespeichert werden",e)}
+}
+function safeSaveOnExit(){if(prof&&st)save()}
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")safeSaveOnExit()});
+window.addEventListener("pagehide",safeSaveOnExit);
 
 function updateWallet(){
  if(!$("coinCount")||!st)return;
