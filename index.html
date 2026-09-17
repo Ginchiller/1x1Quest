@@ -1005,6 +1005,10 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 
 /* V0.82 – true full-screen integrated profile splash */
+
+/* V0.84 – Felix Karten-Duell */
+.duelScore{display:flex;justify-content:center;gap:14px;align-items:center;margin:8px 0 14px;font-weight:950}.duelScore span{padding:8px 13px;border-radius:999px;background:#eef5f9}.duelLead{background:#dff4e7!important}.duelIntro{text-align:center}.duelPicker{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.duelPick{border:2px solid #d7e0e7;border-radius:14px;background:#fff;padding:6px;min-width:0}.duelPick:active{transform:scale(.97)}.duelPick img{width:100%;height:62px;object-fit:contain;display:block}.duelPick b{display:block;font-size:10px;line-height:1.1;margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.duelMath{font-size:31px;font-weight:950;text-align:center;margin:12px 0}.duelAnswer{max-width:180px;margin:8px auto}.duelKeys{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-width:280px;margin:12px auto}.duelKeys button{padding:13px 5px;border-radius:12px;border:1px solid #ccd8e0;background:#fff;font-size:19px;font-weight:900}.duelKeys .ok{background:#3475a8;color:white}.duelArena{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:start;margin:10px 0}.duelMiniCard{min-width:0}.duelMiniCard .quartetCard{width:100%;margin:0}.duelMiniCard .qHeader{padding:5px}.duelMiniCard .qMaker{font-size:6px}.duelMiniCard .qNum{font-size:6px}.duelMiniCard .qName{font-size:12px}.duelMiniCard .qType{font-size:6px}.duelMiniCard .qRarity{font-size:5px}.duelMiniCard .qStats{padding:5px;gap:3px}.duelMiniCard .qStat{grid-template-columns:15px 1fr;padding:3px}.duelMiniCard .qIcon{width:14px;height:14px;font-size:10px}.duelMiniCard .qStat small{font-size:5px}.duelMiniCard .qStat b{font-size:9px}.duelCategoryGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.duelCat{padding:11px 7px;border:1px solid #cbd8e1;border-radius:13px;background:#fff;font-weight:850;font-size:12px}.duelCat:disabled{opacity:.35}.duelResult{text-align:center;padding:12px;border-radius:14px;background:#eef5f9;margin-top:12px;font-weight:850}.duelResult.win{background:#e3f5e8}.duelResult.lose{background:#fff0ed}.duelResult.tie{background:#fff7dc}
+
 body:not(.frieda):not(.felix){background:#0d1830;overflow:hidden}
 body:not(.frieda):not(.felix) .brandbar{display:none}
 body:not(.frieda):not(.felix) #app{max-width:none;width:100vw;height:100dvh;min-height:100svh;margin:0;padding:0}
@@ -1051,6 +1055,7 @@ body:not(.frieda):not(.felix) #app{max-width:none;width:100vw;height:100dvh;min-
   <button class="btn mode" onclick="startTraining(false)">🎯<b>Trainieren</b><span class="muted">Passt sich an • Tipps • Fehler kommen wieder</span></button>
   <button class="btn mode" onclick="startTraining(true)">⚡<b>Challenge</b><span class="muted">Combo • Tempo • Meisterschaft</span></button>
   <button class="btn mode" onclick="showRewards()">🛍️<b>Prämien-Shop</b><span class="muted">Münzen ausgeben & sparen</span></button>
+  <button id="felixDuelHome" class="btn mode hidden" onclick="openFelixDuel()">🏁<b>Karten-Duell</b><span class="muted">Rechnen · Kategorie wählen · Quartett spielen</span></button>
  </div>
  <div class="card"><h3>Lernpfad</h3><div id="rowStatus" class="rows"></div><p class="muted">🌱 Neu · 📖 Gelernt · 💪 In Übung · ⭐ Sicher · 👑 Gemeistert</p><p class="muted" style="font-size:12px">⭐ Sicher ab etwa 8 passenden Aufgaben mit guter Trefferquote. 👑 Gemeistert ab etwa 15 Aufgaben, mindestens 90 % im Erstversuch und ausreichend verschiedenen Rechnungen.</p></div>
  <button class="btn parentEntry" onclick="openParentArea()">⚙️ Elternbereich</button>
@@ -1092,7 +1097,7 @@ body:not(.frieda):not(.felix) #app{max-width:none;width:100vw;height:100dvh;min-
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.83</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.84</div>
 </section>
 
 <section id="learnSelect" class="hidden">
@@ -1215,6 +1220,14 @@ body:not(.frieda):not(.felix) #app{max-width:none;width:100vw;height:100dvh;min-
 
 <section id="rewards" class="hidden">
  <div class="card"><div class="topline"><h2 id="rewardTitle">🛍️ Prämien-Shop</h2><button class="btn back" onclick="goHome()">←</button></div><div id="collectionBox"></div><div class="modeHint muted"><b>Preise:</b> Gewöhnlich 50 🪙 · Selten 90 🪙 · Episch 140 🪙 · Legendär 200 🪙</div><button id="collectionActionBtn" class="btn primary" style="margin:12px 0" onclick="showWardrobe()">👗 Meine Looks & Szenen</button><div id="rewardList"></div></div>
+</section>
+
+<section id="felixDuel" class="hidden">
+ <div class="card">
+  <div class="topline"><div><span class="tag">🏁 QUARTETT</span><h2>Karten-Duell</h2></div><button class="btn back" onclick="leaveFelixDuel()">←</button></div>
+  <div id="felixDuelScore" class="duelScore"></div>
+  <div id="felixDuelContent"></div>
+ </div>
 </section>
 
 <section id="felixGarage" class="hidden">
@@ -1495,7 +1508,7 @@ function rewardVisual(item,size="large"){
  return `<img class="${cls}" src="${p}" alt="${item.name}" onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div class=&quot;assetFallback&quot;>${item.icon}</div>')">`
 }
 
-const allSections=["profiles","home","parents","learnSelect","lesson","memorize","corefacts","training","result","wardrobe","rewards","felixGarage"];
+const allSections=["profiles","home","parents","learnSelect","lesson","memorize","corefacts","training","result","wardrobe","rewards","felixDuel","felixGarage"];
 
 function stateKey(){return "quest03_"+prof}
 function backupStateKey(){return stateKey()+"_safe"}
@@ -1787,6 +1800,7 @@ function rowLevel(r){
 }
 function renderHome(){
  const p=P[prof];$("who").textContent=p.icon+" "+p.name;$("hello").textContent="Hallo "+p.name+"!";
+ if($("felixDuelHome"))$("felixDuelHome").classList.toggle("hidden",prof!=="felix");
  $("rowStatus").innerHTML=p.rows.map(r=>{let l=rowLevel(r);return `<span class="row ${l[2]}">${l[0]} ${r}</span>`}).join("");
  if(!st.learned.length)$("homeHint").innerHTML="<b>Start-Tipp:</b> Beginne mit 📚 Lernen. Danach werden die gelernten Reihen für Training und Challenge freigeschaltet.";
  else $("homeHint").innerHTML=`Du hast bereits <b>${st.learned.length}</b> Reihe${st.learned.length===1?"":"n"} gelernt. 🎯 Trainieren passt die Aufgaben an deinen Lernstand an; ⚡ Challenge mischt alle gelernten Reihen.`;
@@ -3290,6 +3304,92 @@ function renderFelixVehicleCard(item){
    </div>
  </div>`
 }
+
+const FELIX_DUEL_CATS=[
+ {key:"power",icon:"⚡",label:"Leistung",lower:false},
+ {key:"speed",icon:"🏎️",label:"Höchstgeschwindigkeit",lower:false},
+ {key:"accel",icon:"🚀",label:"0–100 km/h",lower:true},
+ {key:"range",icon:"⛽",label:"Reichweite",lower:false},
+ {key:"terrain",icon:"⛰️",label:"Gelände",lower:false},
+ {key:"utility",icon:"🔧",label:"Nutzwert",lower:false}
+];
+let felixDuel=null;
+function duelVal(item,key){
+ const raw=String((item.stats||{})[key]||"0").replace(",",".");
+ const m=raw.match(/[0-9.]+/);return m?parseFloat(m[0]):0
+}
+function duelScoreHTML(){
+ if(!felixDuel)return "";
+ return `<span class="${felixDuel.me>felixDuel.cpu?'duelLead':''}">Felix ${felixDuel.me}</span><b>:</b><span class="${felixDuel.cpu>felixDuel.me?'duelLead':''}">${felixDuel.cpu} Computer</span>`
+}
+function updateDuelScore(){if($("felixDuelScore"))$("felixDuelScore").innerHTML=duelScoreHTML()}
+function openFelixDuel(){
+ if(prof!=="felix"){goHome();return}
+ const owned=felixOwnedVehicles();
+ if(owned.length<1){alert("Kaufe zuerst mindestens eine Fahrzeugkarte im Shop.");showRewards();return}
+ if(!st.learned.length){alert("Lerne zuerst mindestens eine Reihe. Dann kannst du im Duell um die Kategorien rechnen.");openLearn();return}
+ felixDuel={me:0,cpu:0,round:1,lastCat:null,player:null,cpuCard:null,answer:"",math:null};
+ show("felixDuel");renderFelixDuelPicker()
+}
+function leaveFelixDuel(){felixDuel=null;goHome()}
+function renderFelixDuelPicker(){
+ if(!felixDuel)return;updateDuelScore();
+ const owned=felixOwnedVehicles(),host=$("felixDuelContent");
+ host.innerHTML=`<div class="duelIntro"><b>Runde ${felixDuel.round} · Wähle deine Karte</b><div class="muted" style="margin-top:4px">Nach einer richtigen 1×1-Aufgabe darfst du die Kategorie bestimmen.</div></div><div class="duelPicker">${owned.map(x=>`<button class="duelPick" onclick="chooseFelixDuelCard('${x.id}')"><img src="${ASSETS.felix[x.id]}" alt="${x.name}"><b>${x.name}</b></button>`).join("")}</div>`
+}
+function chooseFelixDuelCard(id){
+ if(!felixDuel)return;
+ const player=P.felix.rewards.find(x=>x.id===id);if(!player||!st.owned.includes(id))return;
+ let pool=P.felix.rewards.filter(x=>x.id!==id);const cpu=pool[Math.floor(Math.random()*pool.length)];
+ const rows=st.learned.length?st.learned:P.felix.rows;const r=rows[Math.floor(Math.random()*rows.length)],f=1+Math.floor(Math.random()*10);
+ felixDuel.player=player;felixDuel.cpuCard=cpu;felixDuel.answer="";felixDuel.math={r,f,ans:r*f};
+ renderFelixDuelMath()
+}
+function renderFelixDuelMath(){
+ const d=felixDuel,host=$("felixDuelContent");if(!d)return;
+ host.innerHTML=`<div class="muted" style="text-align:center">Deine Karte ist gewählt. Die Gegnerkarte bleibt noch verdeckt.</div><div class="duelMath">${d.math.r} × ${d.math.f} = ?</div><div id="duelDisplay" class="inputbox duelAnswer">&nbsp;</div><div class="duelKeys">${[1,2,3,4,5,6,7,8,9,"⌫",0,"✓"].map(k=>`<button class="${k==='✓'?'ok':''}" onclick="felixDuelKey('${k}')">${k}</button>`).join("")}</div><div id="duelFeedback" class="feedback"></div>`
+}
+function felixDuelKey(k){
+ if(!felixDuel)return;
+ if(k==="⌫")felixDuel.answer=felixDuel.answer.slice(0,-1);
+ else if(k==="✓"){checkFelixDuelMath();return}
+ else if(felixDuel.answer.length<4)felixDuel.answer+=k;
+ if($("duelDisplay"))$("duelDisplay").textContent=felixDuel.answer||"\u00a0"
+}
+function duelAvailableCats(){return FELIX_DUEL_CATS.filter(c=>c.key!==felixDuel.lastCat)}
+function checkFelixDuelMath(){
+ const d=felixDuel;if(!d||!d.answer)return;
+ const correct=Number(d.answer)===d.math.ans;
+ if(correct){playSuccessSound();renderFelixDuelCategories()}
+ else{
+  playErrorSound();const cats=duelAvailableCats(),cat=cats[Math.floor(Math.random()*cats.length)];
+  const fb=$("duelFeedback");if(fb){fb.className="feedback bad";fb.textContent=`Nicht ganz – ${d.math.r} × ${d.math.f} = ${d.math.ans}. Der Computer wählt ${cat.label}.`}
+  setTimeout(()=>resolveFelixDuel(cat.key),850)
+ }
+}
+function renderFelixDuelCategories(){
+ const d=felixDuel,host=$("felixDuelContent"),cats=FELIX_DUEL_CATS;
+ host.innerHTML=`<div class="feedback good" style="text-align:center">✓ Richtig! Du darfst die Kategorie wählen.</div><div class="duelArena"><div class="duelMiniCard">${renderFelixVehicleCard(d.player)}</div><div style="border-radius:16px;background:linear-gradient(145deg,#24384c,#0d1824);aspect-ratio:.69;display:flex;align-items:center;justify-content:center;color:white;font-size:42px;font-weight:950">?</div></div><div class="duelCategoryGrid">${cats.map(c=>`<button class="duelCat" ${c.key===d.lastCat?'disabled':''} onclick="resolveFelixDuel('${c.key}')">${c.icon} ${c.label}${c.key===d.lastCat?' · gesperrt':''}</button>`).join("")}</div><div class="muted" style="text-align:center;margin-top:10px">Die zuletzt verwendete Kategorie ist für eine Runde gesperrt.</div>`
+}
+function resolveFelixDuel(key){
+ const d=felixDuel;if(!d)return;const cat=FELIX_DUEL_CATS.find(c=>c.key===key);if(!cat||key===d.lastCat)return;
+ const a=duelVal(d.player,key),b=duelVal(d.cpuCard,key);let result=0;
+ if(a!==b)result=cat.lower?(a<b?1:-1):(a>b?1:-1);
+ if(result>0)d.me++;else if(result<0)d.cpu++;
+ d.lastCat=key;updateDuelScore();
+ const cls=result>0?"win":result<0?"lose":"tie",txt=result>0?"🏁 Punkt für Felix!":result<0?"🤖 Punkt für den Computer.":"🤝 Gleichstand – kein Punkt.";
+ $("felixDuelContent").innerHTML=`<div class="duelArena"><div class="duelMiniCard">${renderFelixVehicleCard(d.player)}</div><div class="duelMiniCard">${renderFelixVehicleCard(d.cpuCard)}</div></div><div class="duelResult ${cls}"><div>${cat.icon} <b>${cat.label}</b></div><div style="font-size:18px;margin:5px 0">${String(d.player.stats[key])} &nbsp; ↔ &nbsp; ${String(d.cpuCard.stats[key])}</div>${txt}</div><button class="btn primary" style="margin-top:12px" onclick="nextFelixDuelRound()">${d.me>=3||d.cpu>=3?'Ergebnis ansehen':'Nächste Runde'}</button>`
+}
+function nextFelixDuelRound(){
+ const d=felixDuel;if(!d)return;
+ if(d.me>=3||d.cpu>=3){renderFelixDuelFinish();return}
+ d.round++;d.player=null;d.cpuCard=null;d.answer="";d.math=null;renderFelixDuelPicker()
+}
+function renderFelixDuelFinish(){
+ const d=felixDuel,won=d.me>d.cpu;updateDuelScore();
+ $("felixDuelContent").innerHTML=`<div class="center" style="padding:18px 4px"><div style="font-size:54px">${won?'🏆':'🏁'}</div><h2>${won?'Duell gewonnen!':'Stark gespielt!'}</h2><p>${d.me} : ${d.cpu} ${won?'für Felix':'für den Computer'}</p><p class="muted">Im Karten-Duell gibt es zunächst keine Extra-Münzen – so können wir die Spielmechanik erst einmal in Ruhe testen.</p><button class="btn primary" onclick="openFelixDuel()">Noch ein Duell</button><button class="btn" style="margin-top:8px" onclick="goHome()">Zur Übersicht</button></div>`
+}
+
 let felixGarageDeckIndex=0;
 let felixGarageMode="deck";
 let felixGarageSwipeStartX=0;
