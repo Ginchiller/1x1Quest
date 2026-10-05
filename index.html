@@ -1006,6 +1006,8 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}.btn{
 
 /* V0.82 – true full-screen integrated profile splash */
 
+/* V0.88 – Felix Race-Modus */
+.raceHud{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin:7px 0 13px}.raceStage{font-weight:950;text-align:left}.raceLives{text-align:center;font-size:20px;letter-spacing:2px}.raceRecord{text-align:right;font-weight:900;font-size:12px}.racePower{margin:10px 0;padding:11px 12px;border-radius:14px;background:#fff7dc;border:1px solid #ead99c;text-align:center;font-weight:850}.racePeek{margin:8px 0;padding:9px;border-radius:12px;background:#eef5f9;text-align:center;font-weight:850}.raceTrack{height:8px;background:#e4ebef;border-radius:999px;overflow:hidden;margin:6px 0 12px}.raceTrack>i{display:block;height:100%;background:linear-gradient(90deg,#3c83b5,#53a76c);border-radius:999px;transition:width .35s ease}.raceStartNote{text-align:center;margin:6px 0 12px}.raceChosen{max-width:240px;margin:8px auto}.raceOpponentName{text-align:center;font-weight:900;margin:5px 0}.raceShield{display:inline-block;padding:3px 8px;border-radius:999px;background:#e9f4ff;font-size:12px;font-weight:900}
 /* V0.85 – Felix Karten-Duell Feedback */
 .duelScore{display:flex;justify-content:center;gap:14px;align-items:center;margin:8px 0 14px;font-weight:950}.duelScore span{padding:8px 13px;border-radius:999px;background:#eef5f9}.duelLead{background:#dff4e7!important}.duelIntro{text-align:center}.duelPicker{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}.duelPick{border:2px solid #d7e0e7;border-radius:14px;background:#fff;padding:6px;min-width:0}.duelPick:active{transform:scale(.97)}.duelPick img{width:100%;height:62px;object-fit:contain;display:block}.duelPick b{display:block;font-size:10px;line-height:1.1;margin-top:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.duelMath{font-size:31px;font-weight:950;text-align:center;margin:12px 0}.duelAnswer{max-width:180px;margin:8px auto}.duelKeys{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-width:280px;margin:12px auto}.duelKeys button{padding:13px 5px;border-radius:12px;border:1px solid #ccd8e0;background:#fff;font-size:19px;font-weight:900}.duelKeys .ok{background:#3475a8;color:white}.duelArena{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:start;margin:10px 0}.duelMiniCard{min-width:0}.duelMiniCard .quartetCard{width:100%;margin:0}.duelMiniCard .qHeader{padding:5px}.duelMiniCard .qMaker{font-size:6px}.duelMiniCard .qNum{font-size:6px}.duelMiniCard .qName{font-size:12px}.duelMiniCard .qType{font-size:6px}.duelMiniCard .qRarity{font-size:5px}.duelMiniCard .qStats{padding:5px;gap:3px}.duelMiniCard .qStat{grid-template-columns:15px 1fr;padding:3px}.duelMiniCard .qIcon{width:14px;height:14px;font-size:10px}.duelMiniCard .qStat small{font-size:5px}.duelMiniCard .qStat b{font-size:9px}.duelCategoryGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.duelCat{padding:11px 7px;border:1px solid #cbd8e1;border-radius:13px;background:#fff;font-weight:850;font-size:12px}.duelCat:disabled{opacity:.35}.duelResult{text-align:center;padding:12px;border-radius:14px;background:#eef5f9;margin-top:12px;font-weight:850}.duelResult.win{background:#e3f5e8}.duelResult.lose{background:#fff0ed}.duelResult.tie{background:#fff7dc}
 .duelResult{position:relative;overflow:hidden}.duelResult.duelPop{animation:duelPop .46s cubic-bezier(.2,.9,.25,1)}.duelResult.win.duelPop{box-shadow:0 0 0 2px rgba(36,153,79,.10)}.duelResult.lose.duelPop{animation:duelShake .38s ease-out}.duelFx{position:absolute;inset:0;pointer-events:none;overflow:hidden}.duelFx i{position:absolute;top:-18px;font-style:normal;font-size:18px;animation:duelFall var(--d,1s) ease-in forwards;animation-delay:var(--delay,0s)}.duelWinnerCard{animation:duelWinner .52s cubic-bezier(.2,.9,.25,1)}.duelLoserCard{animation:duelLoser .5s ease-out}.duelFinish{position:relative;overflow:hidden;border-radius:22px;padding:22px 8px}.duelFinish.win{background:linear-gradient(180deg,#f2fff5,#e3f5e8)}.duelFinish.lose{background:linear-gradient(180deg,#fff7f5,#fff0ed)}.duelFinishIcon{font-size:64px;animation:duelTrophy .7s cubic-bezier(.2,.9,.25,1)}
@@ -1058,7 +1060,7 @@ body:not(.frieda):not(.felix) #app{max-width:none;width:100vw;height:100dvh;min-
   <button class="btn mode" onclick="startTraining(false)">🎯<b>Trainieren</b><span class="muted">Passt sich an • Tipps • Fehler kommen wieder</span></button>
   <button class="btn mode" onclick="startTraining(true)">⚡<b>Challenge</b><span class="muted">Combo • Tempo • Meisterschaft</span></button>
   <button class="btn mode" onclick="showRewards()">🛍️<b>Prämien-Shop</b><span class="muted">Münzen ausgeben & sparen</span></button>
-  <button id="felixDuelHome" class="btn mode hidden" onclick="openFelixDuel()">🏁<b>Karten-Duell</b><span class="muted">Rechnen · Kategorie wählen · Quartett spielen</span></button>
+  <button id="felixDuelHome" class="btn mode hidden" onclick="openFelixDuel()">🏁<b>Race-Modus</b><span class="muted">5 Gegner · 3 Leben · Rechnen bringt Vorteile</span></button>
  </div>
  <div class="card"><h3>Lernpfad</h3><div id="rowStatus" class="rows"></div><p class="muted">🌱 Neu · 📖 Gelernt · 💪 In Übung · ⭐ Sicher · 👑 Gemeistert</p><p class="muted" style="font-size:12px">⭐ Sicher ab etwa 8 passenden Aufgaben mit guter Trefferquote. 👑 Gemeistert ab etwa 15 Aufgaben, mindestens 90 % im Erstversuch und ausreichend verschiedenen Rechnungen.</p></div>
  <button class="btn parentEntry" onclick="openParentArea()">⚙️ Elternbereich</button>
@@ -1096,7 +1098,7 @@ body:not(.frieda):not(.felix) #app{max-width:none;width:100vw;height:100dvh;min-
 
  <div class="card">
   <h3>🧪 Felix-Testmodus</h3>
-  <p class="muted">Zum Testen von Shop, Garage und Karten-Duell werden alle 24 Fahrzeugkarten vorübergehend freigeschaltet. Es werden keine Fahrzeuge gekauft und keine Münzen verbraucht. Nach dem Ausschalten ist wieder nur die tatsächlich gekaufte Sammlung vorhanden.</p>
+  <p class="muted">Zum Testen von Shop, Garage und Race-Modus werden alle 24 Fahrzeugkarten vorübergehend freigeschaltet. Es werden keine Fahrzeuge gekauft und keine Münzen verbraucht. Nach dem Ausschalten ist wieder nur die tatsächlich gekaufte Sammlung vorhanden.</p>
   <button id="felixTestModeBtn" class="btn" onclick="toggleFelixTestMode()">Testmodus laden …</button>
   <div id="felixTestModeStatus" class="backupStatus muted"></div>
  </div>
@@ -1107,7 +1109,7 @@ body:not(.frieda):not(.felix) #app{max-width:none;width:100vw;height:100dvh;min-
   <button class="btn" onclick="restartQuest()">Spielstand zurücksetzen</button>
   <div id="restartStatus" class="backupStatus muted"></div>
  </div>
- <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.87</div>
+ <div class="muted" style="text-align:center;font-size:12px;margin:16px 0 4px;opacity:.65">Number Clash · Version 0.89</div>
 </section>
 
 <section id="learnSelect" class="hidden">
@@ -1234,7 +1236,7 @@ body:not(.frieda):not(.felix) #app{max-width:none;width:100vw;height:100dvh;min-
 
 <section id="felixDuel" class="hidden">
  <div class="card">
-  <div class="topline"><div><span class="tag">🏁 QUARTETT</span><h2>Karten-Duell</h2></div><button class="btn back" onclick="leaveFelixDuel()">←</button></div>
+  <div class="topline"><div><span class="tag">🏁 QUARTETT</span><h2>Race-Modus</h2></div><button class="btn back" onclick="leaveFelixDuel()">←</button></div>
   <div id="felixDuelScore" class="duelScore"></div>
   <div id="felixDuelContent"></div>
  </div>
@@ -1340,18 +1342,18 @@ Object.assign(P,{
    {id:"rare8",icon:"💎",name:"Cat Street",price:90,gate:0,cat:"look",rarity:"Selten"},
    {id:"rare9",icon:"💎",name:"Night City Casual",price:90,gate:0,cat:"look",rarity:"Selten"},
    {id:"rare10",icon:"🎮",name:"Arcade Champion",price:90,gate:0,cat:"look",rarity:"Selten"},
-   {id:"epic1",icon:"🌙",name:"Moonlight Kimono",price:140,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic2",icon:"⚔️",name:"Wisteria Warrior",price:140,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic3",icon:"📚",name:"Tokyo Academy",price:140,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic4",icon:"🌸",name:"Sakura Sailor",price:140,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic5",icon:"🐉",name:"Dragon Guardian",price:140,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic6",icon:"🪐",name:"Hoshi Science Club",price:140,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic7",icon:"🦊",name:"Matsuri Dream",price:140,gate:0,cat:"look",rarity:"Episch"},
-   {id:"epic8",icon:"🐈⚡",name:"Neon Cat Guardian",price:140,gate:0,cat:"look",rarity:"Episch"},
-   {id:"legend1",icon:"⚔️💜",name:"Wisteria Slayer",price:200,gate:5,cat:"look",rarity:"Legendär"},
-   {id:"legend2",icon:"🦊",name:"Emerald Spirit Slayer",price:200,gate:5,cat:"look",rarity:"Legendär"},
-   {id:"legend3",icon:"🌌",name:"Celestial Shrine Guardian",price:200,gate:5,cat:"look",rarity:"Legendär"},
-   {id:"legend4",icon:"🐉",name:"Jade Spirit Dragon",price:200,gate:5,cat:"look",rarity:"Legendär"}
+   {id:"epic1",icon:"🌙",name:"Moonlight Kimono",price:140,gate:7,cat:"look",rarity:"Episch"},
+   {id:"epic2",icon:"⚔️",name:"Wisteria Warrior",price:140,gate:7,cat:"look",rarity:"Episch"},
+   {id:"epic3",icon:"📚",name:"Tokyo Academy",price:140,gate:7,cat:"look",rarity:"Episch"},
+   {id:"epic4",icon:"🌸",name:"Sakura Sailor",price:140,gate:7,cat:"look",rarity:"Episch"},
+   {id:"epic5",icon:"🐉",name:"Dragon Guardian",price:140,gate:7,cat:"look",rarity:"Episch"},
+   {id:"epic6",icon:"🪐",name:"Hoshi Science Club",price:140,gate:7,cat:"look",rarity:"Episch"},
+   {id:"epic7",icon:"🦊",name:"Matsuri Dream",price:140,gate:7,cat:"look",rarity:"Episch"},
+   {id:"epic8",icon:"🐈⚡",name:"Neon Cat Guardian",price:140,gate:7,cat:"look",rarity:"Episch"},
+   {id:"legend1",icon:"⚔️💜",name:"Wisteria Slayer",price:200,gate:9,cat:"look",rarity:"Legendär"},
+   {id:"legend2",icon:"🦊",name:"Emerald Spirit Slayer",price:200,gate:9,cat:"look",rarity:"Legendär"},
+   {id:"legend3",icon:"🌌",name:"Celestial Shrine Guardian",price:200,gate:9,cat:"look",rarity:"Legendär"},
+   {id:"legend4",icon:"🐉",name:"Jade Spirit Dragon",price:200,gate:9,cat:"look",rarity:"Legendär"}
   ] },
  felix:{
   name:"Felix",icon:"🏎️",rows:[2,3,4,5,6,7,8,9,10],
@@ -2565,7 +2567,8 @@ function buyReward(id){
  let item=P[prof].rewards.find(x=>x.id===id); if(!item)return;
  if(prof==="felix"&&felixTestMode()){alert("Im Felix-Testmodus werden keine Münzen ausgegeben. Schalte den Testmodus im Elternbereich aus, um Fahrzeuge wirklich zu kaufen.");return}
  if(st.owned.includes(id))return;
- if(prof==="frieda"&&rarityClass(item)==="rarity-legendary"&&safeRowCount()<item.gate){alert(`Legendäre Looks werden ab ${item.gate} Reihen auf ⭐ Sicher freigeschaltet.`);return}
+ if(prof==="frieda"&&rarityClass(item)==="rarity-epic"&&practicedRowCount()<7){alert(`Epische Looks werden freigeschaltet, sobald 7 Reihen geübt wurden.`);return}
+ if(prof==="frieda"&&rarityClass(item)==="rarity-legendary"&&practicedRowCount()<P.frieda.rows.length){alert(`Legendäre Looks werden freigeschaltet, sobald alle Reihen geübt wurden.`);return}
  if(prof==="felix"&&rarityClass(item)==="rarity-legendary"&&safeRowCount()<item.gate){alert(`Legendäre Fahrzeuge werden ab ${item.gate} Reihen auf ⭐ Sicher freigeschaltet.`);return}
  if(prof!=="frieda"&&rarityClass(item)!=="rarity-legendary"&&st.mastered.length<item.gate){alert(`Dafür musst du zuerst ${item.gate} Reihen meistern.`);return}
  if((st.coins||0)<item.price){alert(`Dir fehlen noch ${item.price-(st.coins||0)} Münzen.`);return}
@@ -2683,6 +2686,9 @@ let sceneState={look:"standard",bg:"sakura"};
 
 function safeRowCount(){
  return P[prof].rows.filter(r=>{const lvl=rowLevel(r);return lvl[1]==="Sicher"||lvl[1]==="Gemeistert"}).length;
+}
+function practicedRowCount(){
+ return P[prof].rows.filter(r=>rowProgress(r).attempts>=3).length;
 }
 function ensureSceneUnlocks(){
  normalizeRewardState();
@@ -3352,66 +3358,67 @@ const FELIX_DUEL_CATS=[
  {key:"terrain",icon:"⛰️",label:"Gelände",lower:false},
  {key:"utility",icon:"🔧",label:"Nutzwert",lower:false}
 ];
+const RACE_STAGES=5,RACE_LIVES=3;
 let felixDuel=null;
 let felixDuelOwnedSnapshot=[];
 function protectFelixDuelOwnership(){
  if(prof!=="felix"||!st)return;
  st.owned=Array.isArray(st.owned)?st.owned:[];
- const valid=new Set(P.felix.rewards.map(x=>x.id));
- let changed=false;
+ const valid=new Set(P.felix.rewards.map(x=>x.id));let changed=false;
  felixDuelOwnedSnapshot.forEach(id=>{if(valid.has(id)&&!st.owned.includes(id)){st.owned.push(id);changed=true}});
  if(changed)save();
 }
-
-function duelVal(item,key){
- const raw=String((item.stats||{})[key]||"0").replace(",",".");
- const m=raw.match(/[0-9.]+/);return m?parseFloat(m[0]):0
+function duelVal(item,key){const raw=String((item.stats||{})[key]||"0").replace(",",".");const m=raw.match(/[0-9.]+/);return m?parseFloat(m[0]):0}
+function raceHudHTML(){
+ const d=felixDuel;if(!d)return "";const hearts="❤️".repeat(d.lives)+"♡".repeat(Math.max(0,RACE_LIVES-d.lives));
+ return `<div class="raceHud"><div class="raceStage">Etappe ${Math.min(d.stage,RACE_STAGES)}/${RACE_STAGES}</div><div class="raceLives" aria-label="${d.lives} Leben">${hearts}</div><div class="raceRecord">🏁 ${d.wins} · 🤖 ${d.losses}</div></div><div class="raceTrack"><i style="width:${Math.max(0,(d.stage-1)/RACE_STAGES*100)}%"></i></div>`
 }
-function duelScoreHTML(){
- if(!felixDuel)return "";
- return `<span class="${felixDuel.me>felixDuel.cpu?'duelLead':''}">Felix ${felixDuel.me}</span><b>:</b><span class="${felixDuel.cpu>felixDuel.me?'duelLead':''}">${felixDuel.cpu} Computer</span>`
-}
+function duelScoreHTML(){return raceHudHTML()}
 function updateDuelScore(){if($("felixDuelScore"))$("felixDuelScore").innerHTML=duelScoreHTML()}
 function openFelixDuel(){
  if(prof!=="felix"){goHome();return}
  const owned=felixOwnedVehicles();
  if(owned.length<1){alert("Kaufe zuerst mindestens eine Fahrzeugkarte im Shop.");showRewards();return}
- if(!st.learned.length){alert("Lerne zuerst mindestens eine Reihe. Dann kannst du im Duell um die Kategorien rechnen.");openLearn();return}
+ if(!st.learned.length){alert("Lerne zuerst mindestens eine Reihe. Dann kannst du im Race-Modus Vorteile errechnen.");openLearn();return}
  felixDuelOwnedSnapshot=[...st.owned];
- felixDuel={me:0,cpu:0,round:1,lastCat:null,player:null,cpuCard:null,answer:"",math:null};
- show("felixDuel");renderFelixDuelPicker()
+ felixDuel={stage:1,lives:RACE_LIVES,wins:0,losses:0,ties:0,lastCat:null,player:null,cpuCard:null,answer:"",math:null,power:null,shield:false,peek:null,usedCpu:[]};
+ show("felixDuel");renderFelixRaceStart()
 }
 function leaveFelixDuel(){protectFelixDuelOwnership();felixDuel=null;goHome()}
-function renderFelixDuelPicker(){
- if(!felixDuel)return;updateDuelScore();
- const owned=felixOwnedVehicles(),host=$("felixDuelContent");
- host.innerHTML=`<div class="duelIntro"><b>Runde ${felixDuel.round} · Wähle deine Karte</b><div class="muted" style="margin-top:4px">Nach einer richtigen 1×1-Aufgabe darfst du die Kategorie bestimmen.</div></div><div class="duelPicker">${owned.map(x=>`<button class="duelPick" onclick="chooseFelixDuelCard('${x.id}')"><img src="${ASSETS.felix[x.id]}" alt="${x.name}"><b>${x.name}</b></button>`).join("")}</div>`
+function renderFelixRaceStart(){
+ const d=felixDuel;if(!d)return;updateDuelScore();const owned=felixOwnedVehicles(),host=$("felixDuelContent");
+ host.innerHTML=`<div class="duelIntro"><b>Wähle dein Fahrzeug für die Rennserie</b><div class="raceStartNote muted">Dein Auto tritt gegen bis zu 5 verschiedene Gegner an. Du hast ❤️❤️❤️ drei Leben.</div></div><div class="duelPicker">${owned.map(x=>`<button class="duelPick" onclick="chooseFelixDuelCard('${x.id}')"><img src="${ASSETS.felix[x.id]}" alt="${x.name}"><b>${x.name}</b></button>`).join("")}</div>`
+}
+function renderFelixDuelPicker(){renderFelixRaceStart()}
+function racePickOpponent(){
+ const d=felixDuel;let pool=P.felix.rewards.filter(x=>x.id!==d.player.id&&!d.usedCpu.includes(x.id));
+ if(!pool.length)pool=P.felix.rewards.filter(x=>x.id!==d.player.id);
+ const cpu=pool[Math.floor(Math.random()*pool.length)];d.cpuCard=cpu;if(!d.usedCpu.includes(cpu.id))d.usedCpu.push(cpu.id)
+}
+function raceNewMath(){
+ const d=felixDuel,rows=st.learned.length?st.learned:P.felix.rows,r=rows[Math.floor(Math.random()*rows.length)],f=1+Math.floor(Math.random()*10);
+ d.answer="";d.math={r,f,ans:r*f};d.power=null;d.shield=false;d.peek=null
 }
 function chooseFelixDuelCard(id){
- if(!felixDuel)return;
- const player=P.felix.rewards.find(x=>x.id===id);if(!player||!felixVehicleOwned(id))return;
- let pool=P.felix.rewards.filter(x=>x.id!==id);const cpu=pool[Math.floor(Math.random()*pool.length)];
- const rows=st.learned.length?st.learned:P.felix.rows;const r=rows[Math.floor(Math.random()*rows.length)],f=1+Math.floor(Math.random()*10);
- felixDuel.player=player;felixDuel.cpuCard=cpu;felixDuel.answer="";felixDuel.math={r,f,ans:r*f};
- renderFelixDuelMath()
+ const d=felixDuel;if(!d)return;const player=P.felix.rewards.find(x=>x.id===id);if(!player||!felixVehicleOwned(id))return;
+ d.player=player;racePickOpponent();raceNewMath();renderFelixDuelMath()
 }
 function renderFelixDuelMath(){
- const d=felixDuel,host=$("felixDuelContent");if(!d)return;
- host.innerHTML=`<div class="muted" style="text-align:center">Deine Karte ist gewählt. Die Gegnerkarte bleibt noch verdeckt.</div><div class="duelMath">${d.math.r} × ${d.math.f} = ?</div><div id="duelDisplay" class="inputbox duelAnswer">&nbsp;</div><div class="duelKeys">${[1,2,3,4,5,6,7,8,9,"⌫",0,"✓"].map(k=>`<button class="${k==='✓'?'ok':''}" onclick="felixDuelKey('${k}')">${k}</button>`).join("")}</div><div id="duelFeedback" class="feedback"></div>`
+ const d=felixDuel,host=$("felixDuelContent");if(!d)return;updateDuelScore();
+ host.innerHTML=`<div class="raceChosen duelMiniCard">${renderFelixVehicleCard(d.player)}</div><div class="muted" style="text-align:center">Neuer Gegner wartet. Rechne richtig und sichere dir einen Vorteil!</div><div class="duelMath">${d.math.r} × ${d.math.f} = ?</div><div id="duelDisplay" class="inputbox duelAnswer">&nbsp;</div><div class="duelKeys">${[1,2,3,4,5,6,7,8,9,"⌫",0,"✓"].map(k=>`<button class="${k==='✓'?'ok':''}" onclick="felixDuelKey('${k}')">${k}</button>`).join("")}</div><div id="duelFeedback" class="feedback"></div>`
 }
-function felixDuelKey(k){
- if(!felixDuel)return;
- if(k==="⌫")felixDuel.answer=felixDuel.answer.slice(0,-1);
- else if(k==="✓"){checkFelixDuelMath();return}
- else if(felixDuel.answer.length<4)felixDuel.answer+=k;
- if($("duelDisplay"))$("duelDisplay").textContent=felixDuel.answer||"\u00a0"
-}
+function felixDuelKey(k){if(!felixDuel)return;if(k==="⌫")felixDuel.answer=felixDuel.answer.slice(0,-1);else if(k==="✓"){checkFelixDuelMath();return}else if(felixDuel.answer.length<4)felixDuel.answer+=k;if($("duelDisplay"))$("duelDisplay").textContent=felixDuel.answer||"\u00a0"}
 function duelAvailableCats(){return FELIX_DUEL_CATS.filter(c=>c.key!==felixDuel.lastCat)}
+function racePowerLabel(p){return {choose:"🎯 Freie Wahl",swap:"🔄 Gegner-Tausch",peek:"👀 Röntgenblick",shield:"🛡️ Schutzschild"}[p]||""}
 function checkFelixDuelMath(){
- const d=felixDuel;if(!d||!d.answer)return;
- const correct=Number(d.answer)===d.math.ans;
- if(correct){playSuccessSound();renderFelixDuelCategories()}
- else{
+ const d=felixDuel;if(!d||!d.answer)return;const correct=Number(d.answer)===d.math.ans;
+ if(correct){
+  playSuccessSound();const powers=["choose","swap","peek","shield"];d.power=powers[Math.floor(Math.random()*powers.length)];
+  if(d.power==="swap"){const old=d.cpuCard.id;racePickOpponent();if(d.cpuCard.id===old)racePickOpponent()}
+  if(d.power==="shield")d.shield=true;
+  if(d.power==="peek"){const cats=duelAvailableCats(),c=cats[Math.floor(Math.random()*cats.length)];d.peek=c}
+  renderFelixDuelCategories();
+ }else{
   playErrorSound();const cats=duelAvailableCats(),cat=cats[Math.floor(Math.random()*cats.length)];
   const fb=$("duelFeedback");if(fb){fb.className="feedback bad";fb.textContent=`Nicht ganz – ${d.math.r} × ${d.math.f} = ${d.math.ans}. Der Computer wählt ${cat.label}.`}
   setTimeout(()=>resolveFelixDuel(cat.key),850)
@@ -3419,32 +3426,34 @@ function checkFelixDuelMath(){
 }
 function renderFelixDuelCategories(){
  const d=felixDuel,host=$("felixDuelContent"),cats=FELIX_DUEL_CATS;
- host.innerHTML=`<div class="feedback good" style="text-align:center">✓ Richtig! Du darfst die Kategorie wählen.</div><div class="duelArena"><div class="duelMiniCard">${renderFelixVehicleCard(d.player)}</div><div style="border-radius:16px;background:linear-gradient(145deg,#24384c,#0d1824);aspect-ratio:.69;display:flex;align-items:center;justify-content:center;color:white;font-size:42px;font-weight:950">?</div></div><div class="duelCategoryGrid">${cats.map(c=>`<button class="duelCat" ${c.key===d.lastCat?'disabled':''} onclick="resolveFelixDuel('${c.key}')">${c.icon} ${c.label}${c.key===d.lastCat?' · gesperrt':''}</button>`).join("")}</div><div class="muted" style="text-align:center;margin-top:10px">Die zuletzt verwendete Kategorie ist für eine Runde gesperrt.</div>`
+ const peek=d.peek?`<div class="racePeek">👀 Röntgenblick: Gegner hat bei <b>${d.peek.label}</b> den Wert <b>${d.cpuCard.stats[d.peek.key]}</b>.</div>`:"";
+ const extra=d.power==="swap"?"Der Gegner wurde ausgetauscht.":d.power==="shield"?"Bei einer Niederlage verlierst du diesmal kein Leben.":d.power==="peek"?"Ein Gegnerwert wird vorab sichtbar.":"Du bestimmst die Kategorie.";
+ host.innerHTML=`<div class="feedback good" style="text-align:center">✓ Richtig!</div><div class="racePower">${racePowerLabel(d.power)}<div class="muted" style="margin-top:3px">${extra}</div></div>${peek}<div class="duelArena"><div class="duelMiniCard">${renderFelixVehicleCard(d.player)}</div><div style="border-radius:16px;background:linear-gradient(145deg,#24384c,#0d1824);aspect-ratio:.69;display:flex;align-items:center;justify-content:center;color:white;font-size:42px;font-weight:950">?</div></div><div class="duelCategoryGrid">${cats.map(c=>`<button class="duelCat" ${c.key===d.lastCat?'disabled':''} onclick="resolveFelixDuel('${c.key}')">${c.icon} ${c.label}${c.key===d.lastCat?' · gesperrt':''}</button>`).join("")}</div><div class="muted" style="text-align:center;margin-top:10px">Die zuletzt verwendete Kategorie ist für eine Runde gesperrt.</div>`
 }
 function resolveFelixDuel(key){
  const d=felixDuel;if(!d)return;const cat=FELIX_DUEL_CATS.find(c=>c.key===key);if(!cat||key===d.lastCat)return;
- const a=duelVal(d.player,key),b=duelVal(d.cpuCard,key);let result=0;
- if(a!==b)result=cat.lower?(a<b?1:-1):(a>b?1:-1);
- if(result>0)d.me++;else if(result<0)d.cpu++;
- d.lastCat=key;updateDuelScore();
- const cls=result>0?"win":result<0?"lose":"tie",txt=result>0?"🏁 Punkt für Felix!":result<0?"🤖 Punkt für den Computer.":"🤝 Gleichstand – kein Punkt.";
+ const a=duelVal(d.player,key),b=duelVal(d.cpuCard,key);let result=0;if(a!==b)result=cat.lower?(a<b?1:-1):(a>b?1:-1);
+ let shieldUsed=false;if(result>0)d.wins++;else if(result<0){d.losses++;if(d.shield){shieldUsed=true}else d.lives--}else d.ties++;
+ d.lastCat=key;updateDuelScore();const cls=result>0?"win":result<0?"lose":"tie";
+ const txt=result>0?"🏁 Etappe gewonnen!":result<0?(shieldUsed?"🛡️ Verloren – aber dein Schutzschild rettet das Leben!":"🤖 Etappe verloren – ein Leben geht verloren."):"🤝 Gleichstand – kein Leben verloren.";
  const leftClass=result>0?"duelWinnerCard":result<0?"duelLoserCard":"",rightClass=result<0?"duelWinnerCard":result>0?"duelLoserCard":"";
- $("felixDuelContent").innerHTML=`<div class="duelArena"><div class="duelMiniCard ${leftClass}">${renderFelixVehicleCard(d.player)}</div><div class="duelMiniCard ${rightClass}">${renderFelixVehicleCard(d.cpuCard)}</div></div><div class="duelResult ${cls} duelPop">${duelFxHTML(cls)}<div>${cat.icon} <b>${cat.label}</b></div><div style="font-size:18px;margin:5px 0">${String(d.player.stats[key])} &nbsp; ↔ &nbsp; ${String(d.cpuCard.stats[key])}</div>${txt}</div><button class="btn primary" style="margin-top:12px" onclick="nextFelixDuelRound()">${d.me>=3||d.cpu>=3?'Ergebnis ansehen':'Nächste Runde'}</button>`;
- if(result>0)playDuelWinSound(false);else if(result<0)playDuelLoseSound(false);
+ const done=d.stage>=RACE_STAGES||d.lives<=0;
+ $("felixDuelContent").innerHTML=`<div class="raceOpponentName">Etappe ${d.stage}: ${d.cpuCard.name}</div><div class="duelArena"><div class="duelMiniCard ${leftClass}">${renderFelixVehicleCard(d.player)}</div><div class="duelMiniCard ${rightClass}">${renderFelixVehicleCard(d.cpuCard)}</div></div><div class="duelResult ${cls} duelPop">${duelFxHTML(cls)}<div>${cat.icon} <b>${cat.label}</b></div><div style="font-size:18px;margin:5px 0">${String(d.player.stats[key])} &nbsp; ↔ &nbsp; ${String(d.cpuCard.stats[key])}</div>${txt}</div><button class="btn primary" style="margin-top:12px" onclick="nextFelixDuelRound()">${done?'Rennergebnis ansehen':'Zur nächsten Etappe'}</button>`;
+ if(result>0)playDuelWinSound(false);else if(result<0)playDuelLoseSound(false)
 }
-
 function nextFelixDuelRound(){
- const d=felixDuel;if(!d)return;
- if(d.me>=3||d.cpu>=3){renderFelixDuelFinish();return}
- d.round++;d.player=null;d.cpuCard=null;d.answer="";d.math=null;renderFelixDuelPicker()
+ const d=felixDuel;if(!d)return;if(d.stage>=RACE_STAGES||d.lives<=0){renderFelixDuelFinish();return}
+ d.stage++;racePickOpponent();raceNewMath();renderFelixDuelMath()
 }
 function renderFelixDuelFinish(){
- protectFelixDuelOwnership();
- const d=felixDuel,won=d.me>d.cpu;updateDuelScore();
- $("felixDuelContent").innerHTML=`<div class="center duelFinish ${won?'win':'lose'}">${duelFxHTML(won?'win':'lose',true)}<div class="duelFinishIcon">${won?'🏆':'🏁'}</div><h2>${won?'Gesamtsieg!':'Duell verloren'}</h2><p><b>${d.me} : ${d.cpu}</b> ${won?'für Felix':'für den Computer'}</p><p class="muted">${won?'Stark gespielt – du hast das Karten-Duell gewonnen!':'Knapp daneben – beim nächsten Duell kannst du direkt wieder angreifen.'}</p><p class="muted">Im Karten-Duell gibt es zunächst keine Extra-Münzen – so können wir die Spielmechanik erst einmal in Ruhe testen.</p><button class="btn primary" onclick="openFelixDuel()">Noch ein Duell</button><button class="btn" style="margin-top:8px" onclick="goHome()">Zur Übersicht</button></div>`;
- if(won)playDuelWinSound(true);else playDuelLoseSound(true);
+ protectFelixDuelOwnership();const d=felixDuel;updateDuelScore();
+ const completed=d.stage>=RACE_STAGES&&d.lives>0,won=completed&&d.wins>d.losses;
+ const title=d.lives<=0?"Rennserie beendet":won?"Rennserie gewonnen!":"Ziel erreicht!";
+ const icon=d.lives<=0?"🏁":won?"🏆":"🏁";
+ const msg=d.lives<=0?`Du hast ${d.stage} Etappen geschafft. Nächster Versuch!`:won?`Stark! ${d.wins} von ${RACE_STAGES} Etappen gewonnen.`:`Alle ${RACE_STAGES} Gegner geschafft – ${d.wins} Siege, ${d.losses} Niederlagen${d.ties?` und ${d.ties} Gleichstand${d.ties===1?'':'e'}`:''}.`;
+ $("felixDuelContent").innerHTML=`<div class="center duelFinish ${won?'win':'lose'}">${duelFxHTML(won?'win':'lose',true)}<div class="duelFinishIcon">${icon}</div><h2>${title}</h2><p><b>${msg}</b></p><p class="muted">${d.lives>0?`Noch ${d.lives} von ${RACE_LIVES} Leben übrig.`:'Alle drei Leben sind aufgebraucht.'}</p><button class="btn primary" onclick="openFelixDuel()">Neue Rennserie</button><button class="btn" style="margin-top:8px" onclick="goHome()">Zur Übersicht</button></div>`;
+ if(won)playDuelWinSound(true);else playDuelLoseSound(true)
 }
-
 
 let felixGarageDeckIndex=0;
 let felixGarageMode="deck";
@@ -3716,7 +3725,7 @@ function showRewards(){
  $("rewardList").innerHTML=P[prof].rewards.map(x=>{
   let owned=st.owned.includes(x.id),
       equipped=isEquipped(x),
-      gateOk=(prof==="frieda"&&rarityClass(x)==="rarity-legendary")?safeRowCount()>=x.gate:st.mastered.length>=x.gate,
+      gateOk=prof==="frieda"?(rarityClass(x)==="rarity-epic"?practicedRowCount()>=7:rarityClass(x)==="rarity-legendary"?practicedRowCount()>=P.frieda.rows.length:true):st.mastered.length>=x.gate,
       canBuy=gateOk&&(st.coins||0)>=x.price&&!owned;
 
   if(prof==="frieda"){
@@ -3730,7 +3739,7 @@ function showRewards(){
 
     let substatus="";
     if(!owned){
-      if(!gateOk)substatus=rarityClass(x)==="rarity-legendary"?`🔒 Ab ${x.gate} Reihen auf ⭐ Sicher`:`🔒 Erst ab ${x.gate} gemeisterten Reihen`;
+      if(!gateOk)substatus=rarityClass(x)==="rarity-legendary"?`🔒 Erst wenn alle Reihen geübt wurden`:rarityClass(x)==="rarity-epic"?`🔒 Erst wenn 7 Reihen geübt wurden`:`🔒 Erst ab ${x.gate} gemeisterten Reihen`;
       else if((st.coins||0)<x.price)substatus=`Noch ${x.price-(st.coins||0)} Münzen bis zum Kauf`;
       else substatus=`Jetzt freischaltbar`;
     }
@@ -3757,7 +3766,7 @@ function showRewards(){
     </div>`;
   }
 
-  let status=owned?(equipped?"✅ Aktiv":"✅ Gehört dir – noch nicht angezogen"):!gateOk?`🔒 Erst ab ${x.gate} gemeisterten Reihen`:(st.coins||0)<x.price?`Noch ${x.price-(st.coins||0)} Münzen sparen`:"Jetzt kaufbar";
+  let status=owned?(equipped?"✅ Aktiv":"✅ Gehört dir – noch nicht angezogen"):!gateOk?(prof==="frieda"&&rarityClass(x)==="rarity-legendary"?`🔒 Erst wenn alle Reihen geübt wurden`:prof==="frieda"&&rarityClass(x)==="rarity-epic"?`🔒 Erst wenn 7 Reihen geübt wurden`:`🔒 Erst ab ${x.gate} gemeisterten Reihen`):(st.coins||0)<x.price?`Noch ${x.price-(st.coins||0)} Münzen sparen`:"Jetzt kaufbar";
   let action=owned?`<button class="btn ${equipped?"":"primary"}" onclick="equipReward('${x.id}')">${wearVerb(x,equipped)}</button>`:`<button class="btn ${canBuy?"primary":""}" onclick="buyReward('${x.id}')" ${canBuy?"":"disabled"}>${gateOk?"Kaufen":"Noch gesperrt"}</button>`;
   let shopVisual=rewardVisual(x,"thumb");
   return `<div class="shopItem ${owned?"owned":!gateOk?"locked":""}"><div class="shopTop"><div class="shopIcon">${shopVisual}</div><div class="shopInfo"><b>${x.name}</b><div class="lookRarity">${x.rarity||""}</div><div class="price">🪙 ${x.price}</div><div class="muted">${status}</div></div></div>${action}</div>`;
